@@ -1,7 +1,6 @@
 name: BD FreeOTT Auto Generator
 
 on:
-
   workflow_dispatch:
 
   schedule:
@@ -17,13 +16,10 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-
   generate:
-
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Checkout Repository
         uses: actions/checkout@v4
 
@@ -45,22 +41,14 @@ jobs:
 
       - name: Commit Playlist
         run: |
-
           git config user.name "github-actions[bot]"
-
-          git config user.email \
-            "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           git add BDFreechannel/Freeott.m3u8
 
           if ! git diff --cached --quiet; then
-
-            git commit -m "Auto Update FreeOTT Playlist"
-
+            git commit -m "Automatic FreeOTT Playlist Update"
             git push
-
           else
-
-            echo "No changes detected."
-
+            echo "No playlist changes."
           fi
