@@ -9,7 +9,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 
 # =====================================
-# PATH CONFIGURATION
+# CONFIGURATION
 # =====================================
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,22 +25,14 @@ STREAM_WORKERS = 15
 
 TIMEOUT = (5, 8)
 
-
-# =====================================
-# LOAD CONFIG
-# =====================================
-
 with open(CONFIG_FILE, "r", encoding="utf-8") as f:
     CONFIG = json.load(f)
 
 RAIL_API = os.getenv("AKASH_RAIL_API")
 DETAIL_API = os.getenv("AKASH_DETAIL_API_TEMPLATE")
 
-if not RAIL_API:
-    raise RuntimeError("Missing GitHub Secret: AKASH_RAIL_API")
-
-if not DETAIL_API:
-    raise RuntimeError("Missing GitHub Secret: AKASH_DETAIL_API_TEMPLATE")
+if not RAIL_API or not DETAIL_API:
+    raise RuntimeError("GitHub API Secrets missing!")
 
 
 HEADERS = {
@@ -50,7 +42,7 @@ HEADERS = {
 
 
 # =====================================
-# HTTP JSON REQUEST
+# API REQUEST
 # =====================================
 
 def get_json(url):
@@ -63,11 +55,114 @@ def get_json(url):
 
     response.raise_for_status()
 
-    return response.json()
+    try:
+        return response.json()
+
+    except ValueError:
+        raise RuntimeError("API did not return valid JSON")
 
 
 # =====================================
-# JSON HELPERS
+# RECURSIVE JSON SEARCH
+# =====================================
+
+def walk_json(data, path="$"):
+    """Walk every nested object and list."""
+
+    yield path, data
+
+    if isinstance(data, dict):
+
+        for key, value in data.items():
+            yield from walk_json(value, f"{path}.{key}")
+
+    elif isinstance(data, list):
+
+        for index, value in enumerate(data):
+            yield from walk_json(value, f"{path}[{index}]")
+
+
+def normalize_key(key):
+    return re.sub(r"[^a-z0-9]", "", str(key).lower())
+
+
+ID_KEYS = {
+    "id",
+    "channelid",
+    "channel_id",
+    "contentid",
+    "content_id"
+}
+
+NAME_KEYS = {
+    "name",
+    "channelname",
+    "channel_name",
+    "title",
+    "displayname"
+}
+
+
+def find_channel_list(data):
+
+    candidates = []
+
+    for path, value in walk_json(data):
+
+        if not isinstance(value, list) or not value:
+            continue
+
+        objects = [
+            item for item in value
+            if isinstance(item, dict)
+        ]
+
+        if not objects:
+            continue
+
+        score = 0
+
+        for item in objects:
+
+            keys = {
+                normalize_key(key)
+                for key in item.keys()
+            }
+
+            has_id = bool(keys & ID_KEYS)
+            has_name = bool(keys & NAME_KEYS)
+
+            if has_id:
+                score += 2
+
+            if has_name:
+                score += 2
+
+            if has_id and has_name:
+                score += 3
+
+        if score:
+            candidates.append((score, len(objects), path, objects))
+
+    if not candidates:
+        return []
+
+    # Prefer the list containing the most recognizable channel objects.
+    candidates.sort(
+        key=lambda item: (item[0], item[1]),
+        reverse=True
+    )
+
+    score, count, path, result = candidates[0]
+
+    print("Detected channel list:", path)
+    print("Detected channel objects:", count)
+
+    return result
+
+
+# =====================================
+# JSON VALUE HELPERS
 # =====================================
 
 def get_value(data, keys, default=None):
@@ -75,9 +170,14 @@ def get_value(data, keys, default=None):
     if not isinstance(data, dict):
         return default
 
+    normalized = {
+        normalize_key(key): value
+        for key, value in data.items()
+    }
+
     for key in keys:
 
-        value = data.get(key)
+        value = normalized.get(normalize_key(key))
 
         if value is not None and value != "":
             return value
@@ -85,42 +185,11 @@ def get_value(data, keys, default=None):
     return default
 
 
-def find_channel_list(data):
-
-    if isinstance(data, list):
-        return data
-
-    if isinstance(data, dict):
-
-        for key in [
-            "data",
-            "items",
-            "channels",
-            "content",
-            "results",
-            "records"
-        ]:
-
-            value = data.get(key)
-
-            if isinstance(value, list):
-                return value
-
-            if isinstance(value, dict):
-
-                result = find_channel_list(value)
-
-                if result:
-                    return result
-
-    return []
-
-
 def get_channel_id(channel):
 
     return get_value(
         channel,
-        ["channelId", "channel_id", "id"]
+        ["channelId", "channel_id", "id", "contentId"]
     )
 
 
@@ -155,17 +224,34 @@ def get_category(data):
 
     if isinstance(value, list):
 
-        if value:
-            first = value[0]
+        if not value:
+            return "Other"
 
-            if isinstance(first, dict):
-                value = get_value(first, ["name", "title"], "Other")
-            else:
-                value = first
+        first = value[0]
+
+        if isinstance(first, dict):
+            value = get_value(first, ["name", "title"], "Other")
         else:
-            value = "Other"
+            value = first
 
     return str(value or "Other")
+
+
+def find_total_count(data):
+
+    for path, value in walk_json(data):
+
+        if isinstance(value, dict):
+
+            total = get_value(
+                value,
+                ["totalCount", "total_count", "total"]
+            )
+
+            if total is not None:
+                return total
+
+    return "Unknown"
 
 
 # =====================================
@@ -185,38 +271,34 @@ def is_promo(channel):
 
 
 # =====================================
-# FIND M3U8 STREAMS
+# STREAM EXTRACTION
 # =====================================
 
 def find_streams(data):
 
     found = set()
 
-    if isinstance(data, dict):
+    for _, value in walk_json(data):
 
-        for value in data.values():
-            found.update(find_streams(value))
+        if isinstance(value, str):
 
-    elif isinstance(data, list):
+            url = value.strip()
 
-        for item in data:
-            found.update(find_streams(item))
-
-    elif isinstance(data, str):
-
-        value = data.strip()
-
-        if (
-            value.startswith(("http://", "https://"))
-            and re.search(r"\.m3u8(?:[?#].*)?$", value, re.I)
-        ):
-            found.add(value)
+            if (
+                url.startswith(("http://", "https://"))
+                and re.search(
+                    r"\.m3u8(?:[?#].*)?$",
+                    url,
+                    re.IGNORECASE
+                )
+            ):
+                found.add(url)
 
     return found
 
 
 # =====================================
-# CHECK STREAM
+# STREAM CHECK
 # =====================================
 
 def check_stream(url):
@@ -237,7 +319,10 @@ def check_stream(url):
             response.close()
             return None
 
-        content = next(response.iter_content(1024), b"")
+        content = next(
+            response.iter_content(1024),
+            b""
+        )
 
         response.close()
 
@@ -245,7 +330,7 @@ def check_stream(url):
             return url
 
     except requests.RequestException:
-        return None
+        pass
 
     return None
 
@@ -254,12 +339,17 @@ def check_streams_parallel(streams):
 
     working = []
 
-    with ThreadPoolExecutor(max_workers=STREAM_WORKERS) as executor:
+    if not streams:
+        return working
 
-        futures = {
-            executor.submit(check_stream, url): url
+    with ThreadPoolExecutor(
+        max_workers=STREAM_WORKERS
+    ) as executor:
+
+        futures = [
+            executor.submit(check_stream, url)
             for url in streams
-        }
+        ]
 
         for future in as_completed(futures):
 
@@ -277,7 +367,56 @@ def check_streams_parallel(streams):
 
 
 # =====================================
-# PROCESS ONE CHANNEL
+# FETCH CHANNELS
+# =====================================
+
+def fetch_channels():
+
+    print("Connecting to Rail API...")
+
+    data = get_json(RAIL_API)
+
+    total = find_total_count(data)
+
+    print("API totalCount:", total)
+
+    channels = find_channel_list(data)
+
+    if not channels:
+
+        # Print structure only, not URLs or tokens.
+        if isinstance(data, dict):
+            print("Top-level JSON keys:", list(data.keys()))
+
+        print("No recognizable channel array found.")
+
+        raise RuntimeError(
+            "Channel list not detected. API JSON structure is required."
+        )
+
+    unique = {}
+
+    for channel in channels:
+
+        cid = get_channel_id(channel)
+
+        if cid is not None:
+            unique[str(cid)] = channel
+
+    channels = list(unique.values())
+
+    maximum = int(CONFIG.get("max_channels", 56))
+
+    print("Unique channels:", len(channels))
+
+    if isinstance(total, int) and len(channels) < min(total, maximum):
+        print("WARNING: API may require pagination.")
+
+    return channels[:maximum]
+
+
+# =====================================
+# PROCESS CHANNEL DETAIL
 # =====================================
 
 def process_channel(channel):
@@ -285,10 +424,7 @@ def process_channel(channel):
     cid = get_channel_id(channel)
     name = get_channel_name(channel)
 
-    if not cid:
-        return None
-
-    if is_promo(channel):
+    if not cid or is_promo(channel):
         return None
 
     try:
@@ -303,7 +439,7 @@ def process_channel(channel):
         streams = find_streams(detail)
 
         if not streams:
-            print(f"No stream found: {name}")
+            print("No M3U8 found:", name)
             return None
 
         category = get_category(channel)
@@ -321,63 +457,21 @@ def process_channel(channel):
     except Exception as error:
 
         print(
-            f"Detail error: {name} | "
-            f"{type(error).__name__}"
+            "Detail error:",
+            name,
+            type(error).__name__
         )
 
         return None
 
 
 # =====================================
-# FETCH CHANNELS
-# =====================================
-
-def fetch_channels():
-
-    print("Connecting to Rail API...")
-
-    data = get_json(RAIL_API)
-
-    if not isinstance(data, dict):
-        raise RuntimeError("Unexpected Rail API response format")
-
-    print("API totalCount:", data.get("totalCount", "Unknown"))
-
-    channels = find_channel_list(data)
-
-    if not channels:
-        raise RuntimeError(
-            "No channel list found. API JSON structure needs adjustment."
-        )
-
-    unique = {}
-
-    for channel in channels:
-
-        cid = get_channel_id(channel)
-
-        if cid is not None:
-            unique[str(cid)] = channel
-
-    channels = list(unique.values())
-
-    maximum = int(CONFIG.get("max_channels", 56))
-
-    print("Channels received:", len(channels))
-
-    if len(channels) < min(maximum, data.get("totalCount", len(channels))):
-        print("WARNING: API may require pagination.")
-
-    return channels[:maximum]
-
-
-# =====================================
-# GENERATE PLAYLIST
+# BUILD PLAYLIST
 # =====================================
 
 def build_playlist():
 
-    print("Starting playlist generation...")
+    print("Starting AKASH OTT Generator...")
 
     channels = fetch_channels()
 
@@ -385,7 +479,9 @@ def build_playlist():
 
     results = []
 
-    with ThreadPoolExecutor(max_workers=DETAIL_WORKERS) as executor:
+    with ThreadPoolExecutor(
+        max_workers=DETAIL_WORKERS
+    ) as executor:
 
         futures = [
             executor.submit(process_channel, channel)
@@ -401,8 +497,8 @@ def build_playlist():
                 if result:
                     results.append(result)
 
-            except Exception as error:
-                print("Processing error:", type(error).__name__)
+            except Exception:
+                pass
 
     print("Channels with streams:", len(results))
 
@@ -413,7 +509,7 @@ def build_playlist():
 
     print("Total unique streams:", len(all_streams))
 
-    print("Checking streams...")
+    print("Checking working streams...")
 
     working = set(
         check_streams_parallel(list(all_streams))
@@ -444,7 +540,9 @@ def build_playlist():
                 "url": url
             })
 
-    now = datetime.now(BDT).strftime("%Y-%m-%d %H:%M:%S")
+    now = datetime.now(BDT).strftime(
+        "%Y-%m-%d %H:%M:%S"
+    )
 
     lines = [
         "#EXTM3U",
@@ -459,8 +557,6 @@ def build_playlist():
         ""
     ]
 
-    # Fixed first entry
-
     fixed = CONFIG["fixed_channel"]
 
     lines.extend([
@@ -473,8 +569,6 @@ def build_playlist():
         fixed["url"],
         ""
     ])
-
-    # Automatic categories
 
     for category in sorted(categories):
 
@@ -498,7 +592,10 @@ def build_playlist():
                 ""
             ])
 
-    os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
+    os.makedirs(
+        os.path.dirname(OUTPUT_FILE),
+        exist_ok=True
+    )
 
     temp_file = OUTPUT_FILE + ".tmp"
 
@@ -507,24 +604,30 @@ def build_playlist():
 
     os.replace(temp_file, OUTPUT_FILE)
 
-    print("--------------------------------")
+    print("================================")
     print("PLAYLIST GENERATED SUCCESSFULLY")
     print("Online channels:", len(online_channels))
     print("Categories:", len(categories))
     print("Working streams:", len(working))
-    print("Output file:", OUTPUT_FILE)
-    print("--------------------------------")
+    print("Output:", OUTPUT_FILE)
+    print("================================")
 
 
 # =====================================
-# UPDATE CONTROL
+# MAIN
 # =====================================
 
 def main():
 
-    force = os.getenv("FORCE_UPDATE", "false").lower() == "true"
+    force = os.getenv(
+        "FORCE_UPDATE",
+        "false"
+    ).lower() == "true"
 
-    os.makedirs(os.path.dirname(STATE_FILE), exist_ok=True)
+    os.makedirs(
+        os.path.dirname(STATE_FILE),
+        exist_ok=True
+    )
 
     if not force and os.path.exists(STATE_FILE):
 
@@ -543,8 +646,7 @@ def main():
 
                 if elapsed < 105 * 60:
 
-                    print("105-minute update interval not reached.")
-                    print("Use Run workflow for manual generation.")
+                    print("Update interval not reached.")
                     return
 
             except ValueError:
@@ -553,7 +655,10 @@ def main():
     build_playlist()
 
     with open(STATE_FILE, "w", encoding="utf-8") as f:
-        f.write(datetime.now(timezone.utc).isoformat())
+
+        f.write(
+            datetime.now(timezone.utc).isoformat()
+        )
 
 
 if __name__ == "__main__":
