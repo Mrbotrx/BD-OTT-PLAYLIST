@@ -1,4 +1,4 @@
-name: AKASH OTT Auto Playlist
+name: AKASH OTT Auto Playlist KBCT
 
 on:
   workflow_dispatch:
@@ -25,9 +25,12 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+          cache: "pip"
+          cache-dependency-path: requirements.txt
 
       - name: Install Requirements
-        run: pip install -r requirements.txt
+        run: |
+          python -m pip install --disable-pip-version-check --no-warn-script-location -r requirements.txt
 
       - name: Generate Playlist
         env:
