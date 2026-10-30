@@ -1,0 +1,74 @@
+name: AKASH OTT Playlist Update
+
+on:
+
+  workflow_dispatch:
+
+  schedule:
+    - cron: "*/15 * * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: akash-playlist
+  cancel-in-progress: false
+
+jobs:
+
+  update:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Python Setup
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install
+        run: pip install -r requirements.txt
+
+      - name: Check Update Interval
+        id: interval
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from datetime import datetime, timezone
+          import os
+
+          p = Path("last_update.txt")
+          due = True
+
+          if p.exists():
+              try:
+                  old = datetime.fromisoformat(p.read_text().strip())
+                  due = (datetime.now(timezone.utc) - old).total_seconds() >= 6300
+              except Exception:
+                  due = True
+
+          with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+              f.write(f"due={str(due).lower()}\n")
+          PY
+
+      - name: Generate Playlist
+        if: steps.interval.outputs.due == 'true' || github.event_name == 'workflow_dispatch'
+        env:
+          AKASH_RAIL_API: ${{ secrets.AKASH_RAIL_API }}
+          AKASH_DETAIL_API_TEMPLATE: ${{ secrets.AKASH_DETAIL_API_TEMPLATE }}
+        run: |
+          python src/generate.py
+          date -u +"%Y-%m-%dT%H:%M:%SZ" > last_update.txt
+
+      - name: Save Playlist
+        if: steps.interval.outputs.due == 'true' || github.event_name == 'workflow_dispatch'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add kb_go_playlist.m3u8 last_update.txt
+          git diff --cached --quiet || git commit -m "Update AKASH OTT Playlist"
+          git push
