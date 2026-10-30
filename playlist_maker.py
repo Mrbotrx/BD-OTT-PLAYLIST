@@ -1,22 +1,19 @@
-import requests
-import json
 import os
 import re
+import requests
 from datetime import datetime, timezone
 
-# ==============================
-# CONFIGURATION
-# ==============================
+# =====================================
+# BD FREEOTT GENERATOR
+# =====================================
 
-API_URL = "https://live.indiansserials.com/channels"
+API_URL = os.environ.get("OTT_API_URL")
 
 OUTPUT_DIR = "BDFreechannel"
 OUTPUT_FILE = os.path.join(
     OUTPUT_DIR,
     "Freeott.m3u8"
 )
-
-PROMO_NAME = "IPTV LINKS"
 
 PROMO_LOGO = (
     "https://raw.githubusercontent.com/Mrbotrx/"
@@ -34,46 +31,49 @@ HEADERS = {
 }
 
 
-# ==============================
-# FETCH API
-# ==============================
-
-def fetch_api():
-
-    print("Connecting to API...")
-
-    response = requests.get(
-        API_URL,
-        headers=HEADERS,
-        timeout=30
-    )
-
-    response.raise_for_status()
-
-    data = response.json()
-
-    print("API connected successfully.")
-
-    return data
-
-
-# ==============================
-# HELPER FUNCTIONS
-# ==============================
+# =====================================
+# CLEAN TEXT
+# =====================================
 
 def clean_text(value):
 
     if value is None:
         return ""
 
-    value = str(value)
-
     return re.sub(
         r'[\r\n",]',
-        ' ',
-        value
+        " ",
+        str(value)
     ).strip()
 
+
+# =====================================
+# FETCH API
+# =====================================
+
+def fetch_api():
+
+    if not API_URL:
+        raise ValueError("OTT_API_URL secret missing")
+
+    print("Connecting to OTT API...")
+
+    response = requests.get(
+        API_URL,
+        headers=HEADERS,
+        timeout=40
+    )
+
+    response.raise_for_status()
+
+    print("API connected successfully.")
+
+    return response.json()
+
+
+# =====================================
+# JSON VALUE FINDER
+# =====================================
 
 def get_value(item, keys):
 
@@ -86,86 +86,86 @@ def get_value(item, keys):
 
             if actual_key.lower() == key.lower():
 
-                if isinstance(value, (str, int)):
+                if isinstance(value, (str, int, float)):
                     return str(value)
 
     return ""
 
 
+# =====================================
+# AUTO CATEGORY
+# =====================================
+
+def get_category(item):
+
+    category = get_value(
+        item,
+        [
+            "category",
+            "genre",
+            "group",
+            "groupName",
+            "primaryGenre"
+        ]
+    )
+
+    return clean_text(category) or "Free OTT"
+
+
+# =====================================
+# CHANNEL FINDER
+# =====================================
+
 def find_channels(data):
 
-    """
-    Supports common JSON API structures.
-    Only processes channel records containing
-    publicly supplied HLS URLs.
-    """
+    channels = []
 
-    found = []
+    name_keys = [
+        "channelName",
+        "name",
+        "title",
+        "channel_name"
+    ]
+
+    stream_keys = [
+        "url",
+        "streamUrl",
+        "stream_url",
+        "m3u8",
+        "playbackUrl",
+        "manifestUrl"
+    ]
+
+    logo_keys = [
+        "logo",
+        "image",
+        "thumbnail",
+        "channelLogo"
+    ]
 
     def scan(obj):
 
         if isinstance(obj, dict):
 
-            stream = get_value(
-                obj,
-                [
-                    "url",
-                    "streamUrl",
-                    "stream_url",
-                    "m3u8",
-                    "playbackUrl",
-                    "manifestUrl"
-                ]
-            )
+            name = get_value(obj, name_keys)
+            stream = get_value(obj, stream_keys)
+            logo = get_value(obj, logo_keys)
 
-            if stream and re.match(
-                r'^https?://',
-                stream,
-                re.I
+            category = get_category(obj)
+
+            if (
+                name
+                and stream
+                and stream.startswith(("http://", "https://"))
+                and ".m3u8" in stream.lower()
             ):
 
-                name = get_value(
-                    obj,
-                    [
-                        "channelName",
-                        "name",
-                        "title",
-                        "channel_name"
-                    ]
-                )
-
-                logo = get_value(
-                    obj,
-                    [
-                        "logo",
-                        "image",
-                        "thumbnail",
-                        "channelLogo"
-                    ]
-                )
-
-                category = get_value(
-                    obj,
-                    [
-                        "category",
-                        "genre",
-                        "group",
-                        "groupName"
-                    ]
-                )
-
-                if name and (
-                    ".m3u8" in stream.lower()
-                    or "mpegurl" in stream.lower()
-                ):
-
-                    found.append({
-                        "name": clean_text(name),
-                        "logo": clean_text(logo),
-                        "category": clean_text(category)
-                            or "Free OTT",
-                        "url": stream.strip()
-                    })
+                channels.append({
+                    "name": clean_text(name),
+                    "logo": clean_text(logo),
+                    "category": category,
+                    "url": stream.strip()
+                })
 
             for value in obj.values():
                 scan(value)
@@ -177,12 +177,12 @@ def find_channels(data):
 
     scan(data)
 
-    return found
+    return channels
 
 
-# ==============================
+# =====================================
 # REMOVE DUPLICATES
-# ==============================
+# =====================================
 
 def remove_duplicates(channels):
 
@@ -201,9 +201,29 @@ def remove_duplicates(channels):
     return unique
 
 
-# ==============================
-# GENERATE M3U
-# ==============================
+# =====================================
+# AUTO HEADER
+# =====================================
+
+def generate_header(channels):
+
+    now = datetime.now(
+        timezone.utc
+    ).strftime("%Y-%m-%d %H:%M:%S UTC")
+
+    return [
+        "#EXTM3U",
+        "#PLAYLIST:BD FreeOTT",
+        f"#TOTAL-CHANNELS:{len(channels) + 1}",
+        f"#GENERATED:{now}",
+        "#AUTO-REFRESH:90 MINUTES",
+        ""
+    ]
+
+
+# =====================================
+# GENERATE PLAYLIST
+# =====================================
 
 def generate_playlist(channels):
 
@@ -212,10 +232,7 @@ def generate_playlist(channels):
         exist_ok=True
     )
 
-    lines = [
-        "#EXTM3U",
-        ""
-    ]
+    lines = generate_header(channels)
 
     # FIRST FIXED CHANNEL
 
@@ -234,15 +251,9 @@ def generate_playlist(channels):
     for channel in channels:
 
         name = channel["name"]
-
         logo = channel["logo"]
-
         category = channel["category"]
-
         url = channel["url"]
-
-        if not logo:
-            logo = ""
 
         lines.append(
             f'#EXTINF:-1 '
@@ -255,31 +266,40 @@ def generate_playlist(channels):
         lines.append(url)
         lines.append("")
 
-    # WRITE FILE
+    # SAVE PLAYLIST SAFELY
+
+    temporary_file = OUTPUT_FILE + ".tmp"
 
     with open(
-        OUTPUT_FILE,
+        temporary_file,
         "w",
         encoding="utf-8"
     ) as file:
 
         file.write("\n".join(lines))
 
+    os.replace(
+        temporary_file,
+        OUTPUT_FILE
+    )
+
     print("--------------------------------")
     print("PLAYLIST GENERATED")
     print("--------------------------------")
 
-    print("Total channels:", len(channels))
+    print("Total channels:", len(channels) + 1)
     print("Output:", OUTPUT_FILE)
 
 
-# ==============================
+# =====================================
 # MAIN
-# ==============================
+# =====================================
 
 def main():
 
-    print("Starting BD FreeOTT Generator")
+    print("================================")
+    print("BD FREEOTT GENERATOR")
+    print("================================")
 
     try:
 
@@ -292,20 +312,19 @@ def main():
         if not channels:
 
             raise ValueError(
-                "No supported M3U8 channels found. "
-                "Check the API JSON structure."
+                "No supported M3U8 channels found."
             )
 
         generate_playlist(channels)
 
+        print("Generation completed successfully.")
+
     except Exception as error:
 
-        print("GENERATION FAILED:")
-        print(error)
+        print("ERROR:", str(error))
 
         raise
 
 
 if __name__ == "__main__":
-
     main()
