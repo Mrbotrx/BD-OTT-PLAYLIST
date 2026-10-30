@@ -1,51 +1,12 @@
 #EXTM3U
+# PLAYLIST NAME : AKASH OTT LIVE TV
+# DEV : KB CYBER TEAM
+# PANEL : https://kbtvpro.totalh.net/
+# GITHUB : https://github.com/Mrbotrx
+# TELEGRAM : https://t.me/KBCYBERTEAM
+# CHANNELS : 0 WORKING CHANNELS
+# TIME : 2026-10-30 18:32:19 (BDT)
+# STATUS : LIVE / UPDATED
 
-# 📺 PLAYLIST NAME : AKASH OTT LIVE TV
-# 👨‍💻 DEV : KB CYBER TEAM
-# 🌐 PANEL : https://kbtvpro.totalh.net/
-# 💻 GITHUB : https://github.com/Mrbotrx
-# 📢 TELEGRAM : https://t.me/KBCYBERTEAM
-#
-# 📺 CHANNELS : 15 CHANNELS ONLINE
-# 🔍 STATUS : LOGO & SPEED VERIFIED
-#
-# • https://t.me/iptvlinksm3u8
-# • https://t.me/KBCYBERTEAM
-#
-# 🕒 TIME : 2026-10-30 06:16:36 PM
-# 🔄 STATUS : LIVE / UPDATED
-#
-# 📬 @KBCYBERTEAM
-
-#EXTINF:-1 tvg-id="" tvg-name="IPTV LINKS" tvg-logo="https://raw.githubusercontent.com/Mrbotrx/Mrbotrx/refs/heads/main/IPTV_LINKS_LOGO.jpg" group-title="KB TV",IPTV LINKS
+#EXTINF:-1 tvg-id="" tvg-name="IPTV LINKS" tvg-logo="https://raw.githubusercontent.com/Mrbotrx/Mrbotrx/refs/heads/main/IPTV_LINKS_LOGO.jpg" group-title="INFO",IPTV LINKS
 https://github.com/Mrbotrx/Mrbotrx/raw/refs/heads/main/IPTV_LINKS_VIDEO.mp4
-#EXTINF:-1 tvg-id="" tvg-name="HUM TV HD" tvg-logo="https://tstatic.akash-go.com/cms-ui/images/custom-content/1791449775244.png" group-title="AKASH OTT",HUM TV HD
-https://j6nfugukcl.gpcdn.net/tile_3/master.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="TRT World HD" tvg-logo="https://tstatic.akash-go.com/cms-ui/images/custom-content/1791450898577.png" group-title="AKASH OTT",TRT World HD
-https://j6nfugukcl.gpcdn.net/tile_4/master.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="SATV HD" tvg-logo="https://tstatic.akash-go.com/cms-ui/images/custom-content/1791451196695.png" group-title="AKASH OTT",SATV HD
-https://nkafmbewiff.gpcdn.net/tile_3/master.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="RTV HD" tvg-logo="https://tstatic.akash-go.com/cms-ui/images/custom-content/1791451321899.png" group-title="AKASH OTT",RTV HD
-https://j6nfugukcl.gpcdn.net/tile_6/master.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="HUM SITARAY HD" tvg-logo="https://tstatic.akash-go.com/cms-ui/images/custom-content/1791450714846.png" group-title="AKASH OTT",HUM SITARAY HD
-https://j6nfugukcl.gpcdn.net/tile_2/master.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="Zee Cinema HD" tvg-logo="https://tstatic.akash-go.com/cms-ui/images/custom-content/1792398028515.png" group-title="AKASH OTT",Zee Cinema HD
-https://j6nfugukcl.gpcdn.net/tile_5/master.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="HUM MASALA HD" tvg-logo="https://tstatic.akash-go.com/cms-ui/images/custom-content/1791450405424.png" group-title="AKASH OTT",HUM MASALA HD
-https://j6nfugukcl.gpcdn.net/tile_1/master.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="Ekattor HD" tvg-logo="https://tstatic.akash-go.com/cms-ui/images/custom-content/1735558503640.png" group-title="AKASH OTT",Ekattor HD
-https://nkafmbewiff.gpcdn.net/tile_1/master.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="BTV" tvg-logo="https://tstatic.akash-go.com/cms-ui/images/custom-content/1784629853305.png" group-title="AKASH OTT",BTV
-https://nkafmbewiff.gpcdn.net/tile_2/master.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="Maasranga TV" tvg-logo="https://tstatic.akash-go.com/cms-ui/images/custom-content/1782020231197.png" group-title="AKASH OTT",Maasranga TV
-https://nkafmbewiff.gpcdn.net/tile_4/master.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="Channel 9 HD" tvg-logo="https://tstatic.akash-go.com/cms-ui/images/custom-content/1770188028569.png" group-title="AKASH OTT",Channel 9 HD
-https://nkafmbewiff.gpcdn.net/tile_7/master.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="Deepto TV HD" tvg-logo="https://tstatic.akash-go.com/cms-ui/images/custom-content/1774947276300.jpeg" group-title="AKASH OTT",Deepto TV HD
-https://nkafmbewiff.gpcdn.net/tile_6/master.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="Channel I HD" tvg-logo="https://tstatic.akash-go.com/cms-ui/images/custom-content/1782020664593.png" group-title="AKASH OTT",Channel I HD
-https://nkafmbewiff.gpcdn.net/tile_5/master.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="Al Jazeera" tvg-logo="https://tstatic.akash-go.com/cms-ui/images/custom-content/1735547266862.png" group-title="AKASH OTT",Al Jazeera
-https://j6nfugukcl.gpcdn.net/tile_7/master.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="SRK TV" tvg-logo="https://tstatic.akash-go.com/cms-ui/images/custom-content/1746005965778.png" group-title="AKASH OTT",SRK TV
-https://srknowapp.ncare.live/srktvhlswodrm/srktv.stream/playlist.m3u8
