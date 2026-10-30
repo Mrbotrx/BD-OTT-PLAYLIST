@@ -1,15 +1,20 @@
-name: AKASH OTT Playlist Update
+name: AKASH OTT Auto Playlist
 
 on:
   workflow_dispatch:
+
   schedule:
-    - cron: "*/55 * * * *"
+    - cron: "*/59 * * * *"
 
 permissions:
   contents: write
 
+concurrency:
+  group: akash-ott-playlist
+  cancel-in-progress: false
+
 jobs:
-  update:
+  generate:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,19 +26,22 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install requirements
+      - name: Install Requirements
         run: pip install -r requirements.txt
 
-      - name: Generate playlist
+      - name: Generate Playlist
         env:
           AKASH_RAIL_API: ${{ secrets.AKASH_RAIL_API }}
           AKASH_DETAIL_API_TEMPLATE: ${{ secrets.AKASH_DETAIL_API_TEMPLATE }}
         run: python src/main.py
 
-      - name: Commit playlist
+      - name: Save Playlist
         run: |
           git config user.name "AKASH OTT BOT"
           git config user.email "actions@github.com"
+
           git add kb_go_playlist.m3u8 state/last_update.txt
-          git diff --cached --quiet || git commit -m "Update AKASH OTT playlist"
+
+          git diff --cached --quiet || git commit -m "AKASH OTT Playlist Update"
+
           git push
