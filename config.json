@@ -1,0 +1,27 @@
+{
+  "rail_api": "${AKASH_RAIL_API}",
+  "detail_api": "${AKASH_DETAIL_API_TEMPLATE}",
+
+  "output": "kb_go_playlist.m3u8",
+
+  "playlist_name": "AKASH OTT LIVE TV",
+
+  "developer": "KB CYBER TEAM",
+
+  "panel": "https://kbtvpro.totalh.net/",
+
+  "github": "https://github.com/Mrbotrx",
+
+  "telegram": "https://t.me/KBCYBERTEAM",
+
+  "promo_keywords": [
+    "promo",
+    "promotion",
+    "advertisement",
+    "trailer"
+  ],
+
+  "timeout": 15,
+
+  "schedule_minutes": 105
+}
