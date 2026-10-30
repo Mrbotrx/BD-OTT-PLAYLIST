@@ -1,0 +1,51 @@
+name: BD FreeOTT Auto Generator
+
+on:
+
+  workflow_dispatch:
+
+  schedule:
+    - cron: "0 0-21/3 * * *"
+    - cron: "30 1-22/3 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+
+  generate-playlist:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Requirements
+        run: |
+          pip install -r requirements.txt
+
+      - name: Generate M3U8
+        run: |
+          python playlist_maker.py
+
+      - name: Commit Playlist
+        run: |
+
+          git config user.name "github-actions[bot]"
+
+          git config user.email \
+            "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add BDFreechannel/Freeott.m3u8
+
+          git diff --cached --quiet || \
+            git commit -m "Auto Update FreeOTT Playlist"
+
+          git push
