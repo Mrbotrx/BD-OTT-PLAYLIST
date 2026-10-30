@@ -4,49 +4,34 @@ on:
   workflow_dispatch:
 
   schedule:
-    # প্রতি ৯০ মিনিটে আনুমানিক Refresh
     - cron: "0 0-21/3 * * *"
     - cron: "30 1-22/3 * * *"
 
 permissions:
   contents: write
 
-concurrency:
-  group: freeott-playlist
-  cancel-in-progress: false
-
 jobs:
   generate:
-    name: Generate M3U8 Playlist
-
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout repository
-      - name: Checkout Repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      # Setup Python
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      # Install dependencies
-      - name: Install Requirements
-        run: |
-          python -m pip install --upgrade pip
-          pip install requests
+      - name: Install Requests
+        run: pip install requests
 
-      # Generate playlist
       - name: Generate Playlist
         env:
           OTT_API_URL: ${{ secrets.OTT_API_URL }}
-        run: |
-          python playlist_maker.py
+        run: python playlist_maker.py
 
-      # Commit and push playlist
-      - name: Commit Playlist
+      - name: Push Playlist
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -54,8 +39,6 @@ jobs:
           git add BDFreechannel/Freeott.m3u8
 
           if ! git diff --cached --quiet; then
-            git commit -m "Auto Update FreeOTT Playlist"
+            git commit -m "Auto Update Playlist"
             git push
-          else
-            echo "No playlist changes."
           fi
