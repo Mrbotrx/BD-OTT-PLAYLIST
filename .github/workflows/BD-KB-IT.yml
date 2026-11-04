@@ -3,7 +3,7 @@ name: BD KB IT Auto Update
 on:
   workflow_dispatch:
   schedule:
-    - cron: "*/45 * * * *"
+    - cron: "*/15 * * * *"
 
 permissions:
   contents: write
