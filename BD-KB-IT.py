@@ -1,325 +1,220 @@
-#!/usr/bin/env python3
-"""BD KB IT — authorized API channel collector and M3U exporter."""
-from __future__ import annotations
-
-import argparse
-import json
-import os
-import re
-import sys
-import time
-from datetime import datetime, timezone
+import os, re, json, time, argparse
 from pathlib import Path
+from datetime import datetime, timezone
 from urllib.parse import urljoin, urlparse, parse_qs, urlencode, urlunparse
-
 import requests
 
-APP_NAME = "BD KB IT"
-OUT_DIR = Path(os.getenv("OUTPUT_DIR", "output"))
-TIMEOUT = int(os.getenv("HTTP_TIMEOUT", "15"))
-USER_AGENT = os.getenv("HTTP_USER_AGENT", "BD-KB-IT/1.0")
+OUT = Path("output")
+TIMEOUT = int(os.getenv("HTTP_TIMEOUT", "20"))
+MAX_PAGES = int(os.getenv("MAX_PAGES", "500"))
+URL_RE = re.compile(r"^https?://", re.I)
 M3U8_RE = re.compile(r"\.m3u8(?:$|[?#])", re.I)
-HTTP_RE = re.compile(r"^https?://", re.I)
 
-# Always pinned at the top of every generated playlist.
-PINNED_CHANNEL = {
+# Always the first item in BD-KB-IT.m3u
+PINNED = {
     "id": "",
     "name": "IPTV LINKS",
-    "category": "KB PRO TV",
     "logo": "https://raw.githubusercontent.com/Mrbotrx/Mrbotrx/refs/heads/main/IPTV_LINKS_LOGO.jpg",
-    "working_stream": "https://github.com/Mrbotrx/Mrbotrx/raw/refs/heads/main/IPTV_LINKS_VIDEO.mp4",
-    "pinned": True,
+    "category": "KB PRO TV",
+    "stream": "https://github.com/Mrbotrx/Mrbotrx/raw/refs/heads/main/IPTV_LINKS_VIDEO.mp4"
 }
 
-NAME_KEYS = ("name", "title", "channel_name", "channelTitle", "label")
-LOGO_KEYS = ("logo", "logo_url", "image", "image_url", "thumbnail", "icon", "poster")
-CATEGORY_KEYS = ("category", "category_name", "group", "genre")
-ID_KEYS = ("id", "channel_id", "uuid", "slug")
-STREAM_KEYS = ("url", "stream_url", "streamUrl", "hls", "hls_url", "m3u8",
-               "play_url", "playback_url", "source")
-
+NAME_KEYS = ("name", "title", "channel_name", "channelName", "channel_title", "label", "display_name")
+ID_KEYS = ("id", "channel_id", "channelId", "uuid", "slug", "tvg_id")
+LOGO_KEYS = ("logo", "logo_url", "logoUrl", "image", "image_url", "imageUrl", "thumbnail", "icon", "poster")
+CAT_KEYS = ("category", "category_name", "categoryName", "group", "group_title", "groupTitle", "genre", "section_title")
+STREAM_KEYS = ("url", "stream_url", "streamUrl", "hls", "hls_url", "hlsUrl", "m3u8", "play_url", "playback_url", "source", "file", "src", "link")
 
 def headers():
-    result = {"User-Agent": USER_AGENT, "Accept": "application/json, */*"}
+    h = {"User-Agent": os.getenv("HTTP_USER_AGENT", "BD-KB-IT/1.2"), "Accept": "application/json, */*"}
     token = os.getenv("BD_KB_IT_API_TOKEN", "").strip()
     if token:
-        result["Authorization"] = f"Bearer {token}"
+        h["Authorization"] = "Bearer " + token
     extra = os.getenv("BD_KB_IT_EXTRA_HEADERS", "").strip()
     if extra:
-        try:
-            extra_headers = json.loads(extra)
-            if not isinstance(extra_headers, dict):
-                raise ValueError("must be a JSON object")
-            result.update({str(k): str(v) for k, v in extra_headers.items()})
-        except (json.JSONDecodeError, ValueError) as exc:
-            raise SystemExit("BD_KB_IT_EXTRA_HEADERS must be a JSON object") from exc
-    return result
+        obj = json.loads(extra)
+        if not isinstance(obj, dict):
+            raise ValueError("BD_KB_IT_EXTRA_HEADERS must be a JSON object")
+        h.update({str(k): str(v) for k, v in obj.items()})
+    return h
 
+def is_url(v):
+    return isinstance(v, str) and bool(URL_RE.match(v.strip()))
 
-def is_http_url(value):
-    return isinstance(value, str) and bool(HTTP_RE.match(value.strip()))
-
-
-def get_first(obj, keys):
+def first(obj, keys):
     if not isinstance(obj, dict):
         return ""
-    for key in keys:
-        value = obj.get(key)
-        if isinstance(value, (str, int, float)) and str(value).strip():
-            return str(value).strip()
-        if isinstance(value, dict):
-            for nested_key in ("url", "src", "href", "path"):
-                nested = value.get(nested_key)
-                if isinstance(nested, str) and nested.strip():
-                    return nested.strip()
+    for k in keys:
+        v = obj.get(k)
+        if isinstance(v, (str, int, float)) and str(v).strip():
+            return str(v).strip()
+        if isinstance(v, dict):
+            for sk in ("url", "src", "href", "path"):
+                if isinstance(v.get(sk), str):
+                    return v[sk].strip()
     return ""
 
-
-def collect_urls(node):
-    found = []
+def urls_in(node):
     if isinstance(node, dict):
-        for value in node.values():
-            found.extend(collect_urls(value))
-    elif isinstance(node, list):
-        for value in node:
-            found.extend(collect_urls(value))
-    elif isinstance(node, str) and is_http_url(node.strip()):
-        found.append(node.strip())
-    return found
+        return sum((urls_in(v) for v in node.values()), [])
+    if isinstance(node, list):
+        return sum((urls_in(v) for v in node), [])
+    if isinstance(node, str) and is_url(node.strip()):
+        return [node.strip()]
+    return []
 
+def streams_for(obj):
+    preferred = []
+    for k in STREAM_KEYS:
+        if k in obj:
+            preferred.extend(urls_in(obj[k]))
+    result, seen = [], set()
+    for u in preferred + urls_in(obj):
+        if M3U8_RE.search(u) and u not in seen:
+            seen.add(u)
+            result.append(u)
+    return result
 
-def find_candidate_records(node, found):
-    """Recognize common channel records nested in API response structures."""
+def walk(node, inherited_category="", base_url=""):
+    """Walk nested API data and inherit category/group labels from parent blocks."""
+    found = []
     if isinstance(node, list):
         for item in node:
-            find_candidate_records(item, found)
-    elif isinstance(node, dict):
-        name = get_first(node, NAME_KEYS)
-        urls = collect_urls(node)
-        if name and urls:
-            found.append(node)
-            # Do not recursively re-add the same record's nested objects.
-            return
-        for value in node.values():
-            if isinstance(value, (dict, list)):
-                find_candidate_records(value, found)
+            found.extend(walk(item, inherited_category, base_url))
+        return found
+    if not isinstance(node, dict):
+        return found
 
+    cat = first(node, CAT_KEYS) or inherited_category
+    name = first(node, NAME_KEYS)
+    stream_urls = streams_for(node)
+    if name and stream_urls:
+        logo = first(node, LOGO_KEYS)
+        if logo and not is_url(logo):
+            logo = urljoin(base_url, logo)
+        found.append({
+            "id": first(node, ID_KEYS),
+            "name": name,
+            "logo": logo,
+            "category": cat or "Uncategorized",
+            "stream_candidates": stream_urls
+        })
+        return found
 
-def extract_streams(record):
-    preferred = []
-    if isinstance(record, dict):
-        for key in STREAM_KEYS:
-            value = record.get(key)
-            if isinstance(value, str) and is_http_url(value):
-                preferred.append(value.strip())
-            elif isinstance(value, (dict, list)):
-                preferred.extend(collect_urls(value))
-    all_urls = preferred + collect_urls(record)
-    output, seen = [], set()
-    for url in all_urls:
-        if M3U8_RE.search(url) and url not in seen:
-            seen.add(url)
-            output.append(url)
-    return output
+    for value in node.values():
+        if isinstance(value, (dict, list)):
+            found.extend(walk(value, cat, base_url))
+    return found
 
-
-def request_json(session, url):
-    response = session.get(url, headers=headers(), timeout=TIMEOUT)
-    response.raise_for_status()
-    try:
-        return response.json()
-    except ValueError as exc:
-        raise RuntimeError(f"API did not return JSON (HTTP {response.status_code})") from exc
-
-
-def get_next_url(payload, current_url):
-    if not isinstance(payload, dict):
+def next_url(data, current):
+    if not isinstance(data, dict):
         return None
-    containers = [payload]
-    for key in ("pagination", "meta"):
-        if isinstance(payload.get(key), dict):
-            containers.append(payload[key])
-
-    for container in containers:
-        next_url = container.get("next_url") or container.get("nextUrl")
-        if isinstance(next_url, str) and next_url.strip():
-            return urljoin(current_url, next_url.strip())
-
-    pagination = payload.get("pagination", {})
-    if isinstance(pagination, dict):
-        has_more = pagination.get("has_more", pagination.get("hasMore", False))
-        cursor = pagination.get("next_cursor") or pagination.get("nextCursor")
-        if has_more and cursor:
-            parsed = urlparse(current_url)
-            query = parse_qs(parsed.query, keep_blank_values=True)
-            query["cursor"] = [str(cursor)]
-            return urlunparse(parsed._replace(query=urlencode(query, doseq=True)))
+    containers = [data] + [data[k] for k in ("pagination", "meta", "links") if isinstance(data.get(k), dict)]
+    for obj in containers:
+        nxt = obj.get("next_url") or obj.get("nextUrl")
+        if isinstance(nxt, str) and nxt.strip():
+            return urljoin(current, nxt.strip())
+    pg = data.get("pagination", {})
+    if isinstance(pg, dict) and pg.get("has_more", pg.get("hasMore", False)):
+        cursor = pg.get("next_cursor") or pg.get("nextCursor")
+        if cursor:
+            p = urlparse(current)
+            q = parse_qs(p.query, keep_blank_values=True)
+            q["cursor"] = [str(cursor)]
+            return urlunparse(p._replace(query=urlencode(q, doseq=True)))
     return None
 
-
-def validate_m3u8(session, url):
-    """Validate only a direct playlist URL; no DRM/auth bypass or page scraping."""
+def check_m3u8(session, url):
     try:
-        response = session.get(
-            url,
-            headers={**headers(), "Accept": "application/vnd.apple.mpegurl,application/x-mpegURL,*/*"},
-            timeout=TIMEOUT,
-            stream=True,
-            allow_redirects=True,
-        )
-        status = response.status_code
-        content_type = response.headers.get("Content-Type", "").lower()
-        prefix = next(response.iter_content(chunk_size=512), b"")
-        response.close()
-        looks_like_playlist = b"#EXTM3U" in prefix
-        looks_like_hls_type = "mpegurl" in content_type or "m3u8" in content_type
-        return status == 200 and (looks_like_playlist or looks_like_hls_type), status
+        r = session.get(url, headers={**headers(), "Accept": "application/vnd.apple.mpegurl,application/x-mpegURL,*/*"},
+                        timeout=TIMEOUT, stream=True, allow_redirects=True)
+        status = r.status_code
+        ctype = r.headers.get("Content-Type", "").lower()
+        prefix = next(r.iter_content(1024), b"")
+        r.close()
+        return status == 200 and (b"#EXTM3U" in prefix or "mpegurl" in ctype or "m3u8" in ctype)
     except requests.RequestException:
-        return False, "request_error"
+        return False
 
-
-def normalize_record(record, base_url):
-    logo = get_first(record, LOGO_KEYS)
-    if logo and not is_http_url(logo):
-        logo = urljoin(base_url, logo)
-    return {
-        "id": get_first(record, ID_KEYS),
-        "name": get_first(record, NAME_KEYS) or "Unnamed channel",
-        "category": get_first(record, CATEGORY_KEYS) or "Uncategorized",
-        "logo": logo,
-        "stream_candidates": extract_streams(record),
-    }
-
-
-def write_outputs(channels):
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
-
-    # Pinned item is forcibly first, independent of API order or API contents.
-    # Remove accidental duplicate copies of the pinned channel from API results.
-    api_channels = [
-        channel for channel in channels
-        if not (
-            channel.get("name", "").strip().casefold() == "iptv links"
-            and channel.get("working_stream") == PINNED_CHANNEL["working_stream"]
-        )
-    ]
-    final_channels = [PINNED_CHANNEL] + api_channels
-
-    (OUT_DIR / "BD-KB-IT.json").write_text(
-        json.dumps(final_channels, ensure_ascii=False, indent=2), encoding="utf-8"
-    )
-
-    # The fixed IPTV LINKS MP4 is intentionally included as the pinned first
-    # playlist entry. Remaining entries are API-returned, validated M3U8 URLs.
-    lines = ["#EXTM3U"]
-    for channel in final_channels:
-        name = channel.get("name", "Unnamed channel")
-        logo = channel.get("logo", "")
-        category = channel.get("category", "Uncategorized")
-        channel_id = channel.get("id", "")
-        stream = channel.get("working_stream", "")
-        lines.append(
-            f'#EXTINF:-1 tvg-id="{channel_id}" tvg-name="{name}" '
-            f'tvg-logo="{logo}" group-title="{category}",{name}'
-        )
-        lines.append(stream)
-    (OUT_DIR / "BD-KB-IT.m3u").write_text("\n".join(lines) + "\n", encoding="utf-8")
-
-    # This file lists every exported entry, including the pinned MP4 item.
-    (OUT_DIR / "BD-KB-IT-WORKING.txt").write_text(
-        "\n".join(f'{c["name"]} | {c["working_stream"]}' for c in final_channels) + "\n",
-        encoding="utf-8",
-    )
-    summary = {
-        "updated_at_utc": datetime.now(timezone.utc).isoformat(),
-        "pinned_first_channel": PINNED_CHANNEL["name"],
-        "api_working_m3u8": len(api_channels),
-        "total_playlist_entries": len(final_channels),
-    }
-    (OUT_DIR / "BD-KB-IT-STATUS.json").write_text(
-        json.dumps(summary, indent=2), encoding="utf-8"
-    )
-    print(f"Exported {len(final_channels)} entries; IPTV LINKS is first.")
-
-
-def run():
-    api_url = os.getenv("BD_KB_IT_API_URL", "").strip()
-    if not is_http_url(api_url):
-        raise SystemExit("Set BD_KB_IT_API_URL to an authorized http(s) API URL in GitHub Secrets.")
-
-    session = requests.Session()
-    seen_pages, records, seen_records = set(), [], set()
-    current_url = api_url
-    max_pages = int(os.getenv("MAX_PAGES", "500"))
-
-    for page_number in range(1, max_pages + 1):
-        if current_url in seen_pages:
-            print("Pagination loop detected; stopping safely.")
+def collect(api_url):
+    s = requests.Session()
+    page, visited, records, seen = api_url, set(), [], set()
+    for n in range(1, MAX_PAGES + 1):
+        if not page or page in visited:
             break
-        seen_pages.add(current_url)
-        print(f"Fetching API page {page_number}...")
-        payload = request_json(session, current_url)
-        page_records = []
-        find_candidate_records(payload, page_records)
+        visited.add(page)
+        print(f"Reading API page {n}")
+        r = s.get(page, headers=headers(), timeout=TIMEOUT)
+        r.raise_for_status()
+        data = r.json()
+        for item in walk(data, base_url=page):
+            key = (item["id"], item["name"], tuple(item["stream_candidates"]))
+            if key not in seen:
+                seen.add(key)
+                records.append(item)
+        page = next_url(data, page)
 
-        for record in page_records:
-            key = json.dumps(record, sort_keys=True, ensure_ascii=False)
-            if key not in seen_records:
-                seen_records.add(key)
-                records.append(normalize_record(record, current_url))
-
-        next_url = get_next_url(payload, current_url)
-        if not next_url:
-            break
-        current_url = next_url
-    else:
-        print(f"Reached MAX_PAGES={max_pages}; stopping.", file=sys.stderr)
-
-    working_channels = []
-    seen_channels = set()
-    for channel in records:
-        dedupe_key = (channel["name"], tuple(channel["stream_candidates"]))
-        if dedupe_key in seen_channels:
-            continue
-        seen_channels.add(dedupe_key)
-
-        for candidate in channel["stream_candidates"]:
-            ok, status = validate_m3u8(session, candidate)
-            if ok:
-                channel["working_stream"] = candidate
-                working_channels.append(channel)
+    working = []
+    for item in records:
+        for candidate in item["stream_candidates"]:
+            if check_m3u8(s, candidate):
+                item["working_stream"] = candidate
+                working.append(item)
                 break
-            print(f"Skipped non-working M3U8: {channel['name']} ({status})")
+    return working
 
-    write_outputs(working_channels)
+def export(channels):
+    OUT.mkdir(exist_ok=True)
+    # Remove duplicate copy of the fixed entry, then pin it at position one.
+    rest = [c for c in channels if not (
+        c["name"].casefold() == "iptv links" and
+        c.get("working_stream") == PINNED["stream"]
+    )]
+    all_items = [PINNED] + rest
 
-
-def is_due(state_file, interval_minutes):
-    if not state_file.exists():
-        return True
-    try:
-        previous = float(state_file.read_text(encoding="utf-8").strip())
-        return time.time() - previous >= interval_minutes * 60
-    except (ValueError, OSError):
-        return True
-
+    (OUT / "BD-KB-IT.json").write_text(json.dumps(all_items, ensure_ascii=False, indent=2), encoding="utf-8")
+    lines = ["#EXTM3U"]
+    for c in all_items:
+        name = str(c.get("name", "Unnamed")).replace('"', "'")
+        logo = str(c.get("logo", "")).replace('"', "%22")
+        cat = str(c.get("category", "Uncategorized")).replace('"', "'")
+        cid = str(c.get("id", "")).replace('"', "'")
+        stream = c.get("working_stream") or c.get("stream", "")
+        lines += [f'#EXTINF:-1 tvg-id="{cid}" tvg-name="{name}" tvg-logo="{logo}" group-title="{cat}",{name}', stream]
+    (OUT / "BD-KB-IT.m3u").write_text("\\n".join(lines) + "\\n", encoding="utf-8")
+    (OUT / "BD-KB-IT-WORKING.txt").write_text(
+        "\\n".join(f'{c["name"]} | {c.get("working_stream") or c.get("stream", "")}' for c in all_items) + "\\n",
+        encoding="utf-8")
+    status = {
+        "updated_at_utc": datetime.now(timezone.utc).isoformat(),
+        "api_working_channels": len(rest),
+        "playlist_entries_including_pinned": len(all_items),
+        "categories": sorted({c.get("category", "Uncategorized") for c in rest})
+    }
+    (OUT / "BD-KB-IT-STATUS.json").write_text(json.dumps(status, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"Exported {len(all_items)} entries; IPTV LINKS is first.")
 
 def main():
-    parser = argparse.ArgumentParser(description="BD KB IT API-to-M3U updater")
-    parser.add_argument("--if-due", action="store_true")
-    parser.add_argument("--interval-minutes", type=int, default=105)
-    parser.add_argument("--state-file", default="output/.last_update")
-    args = parser.parse_args()
-
-    state_file = Path(args.state_file)
-    if args.if_due and not is_due(state_file, args.interval_minutes):
-        print("Refresh interval has not elapsed; skipping.")
-        return
-
-    run()
-    state_file.parent.mkdir(parents=True, exist_ok=True)
-    state_file.write_text(str(time.time()), encoding="utf-8")
-
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--if-due", action="store_true")
+    ap.add_argument("--interval-minutes", type=int, default=105)
+    ap.add_argument("--state-file", default="output/.last_update")
+    args = ap.parse_args()
+    state = Path(args.state_file)
+    if args.if_due and state.exists():
+        try:
+            if time.time() - float(state.read_text()) < args.interval_minutes * 60:
+                print("Not due yet; skipping.")
+                return
+        except (ValueError, OSError):
+            pass
+    api = os.getenv("BD_KB_IT_API_URL", "").strip()
+    if not is_url(api):
+        raise SystemExit("Set BD_KB_IT_API_URL in GitHub Actions Secrets.")
+    channels = collect(api)
+    export(channels)
+    state.parent.mkdir(parents=True, exist_ok=True)
+    state.write_text(str(time.time()))
 
 if __name__ == "__main__":
     main()
