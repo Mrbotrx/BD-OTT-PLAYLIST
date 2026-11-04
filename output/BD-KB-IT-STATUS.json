@@ -1,6 +1,5 @@
 {
-  "updated_at_utc": "2026-11-04T12:05:18.627128+00:00",
-  "pinned_first_channel": "IPTV LINKS",
-  "api_working_m3u8": 5,
-  "total_playlist_entries": 6
+  "last_success_epoch": 1793794935,
+  "last_success_utc": "2026-11-04T12:22:15Z",
+  "working_channels": 215
 }

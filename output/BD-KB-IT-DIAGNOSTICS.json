@@ -1,0 +1,55 @@
+{
+  "pages": [
+    {
+      "page": 1,
+      "http_status": 200,
+      "records_detected": 222,
+      "has_more": true,
+      "next_url_found": true,
+      "cursor_found": true
+    },
+    {
+      "page": 2,
+      "http_status": 200,
+      "records_detected": 63,
+      "has_more": true,
+      "next_url_found": true,
+      "cursor_found": true
+    },
+    {
+      "page": 3,
+      "http_status": 200,
+      "records_detected": 56,
+      "has_more": true,
+      "next_url_found": true,
+      "cursor_found": true
+    },
+    {
+      "page": 4,
+      "http_status": 200,
+      "records_detected": 20,
+      "has_more": true,
+      "next_url_found": true,
+      "cursor_found": true
+    },
+    {
+      "page": 5,
+      "http_status": 200,
+      "records_detected": 20,
+      "has_more": true,
+      "next_url_found": true,
+      "cursor_found": true
+    },
+    {
+      "page": 6,
+      "http_status": 200,
+      "records_detected": 17,
+      "has_more": false,
+      "next_url_found": false,
+      "cursor_found": false
+    }
+  ],
+  "pages_fetched": 6,
+  "channels_detected": 101,
+  "note": "A detected channel requires a name and an M3U8 URL in related JSON data."
+}
