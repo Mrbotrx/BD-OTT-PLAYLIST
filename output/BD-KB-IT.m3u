@@ -1,4 +1,13 @@
 #EXTM3U
 #EXTINF:-1 tvg-id="" tvg-name="IPTV LINKS" tvg-logo="https://raw.githubusercontent.com/Mrbotrx/Mrbotrx/refs/heads/main/IPTV_LINKS_LOGO.jpg" group-title="KB PRO TV",IPTV LINKS
 https://github.com/Mrbotrx/Mrbotrx/raw/refs/heads/main/IPTV_LINKS_VIDEO.mp4
-
+#EXTINF:-1 tvg-id="019efa5d-2eb7-7ac1-a880-647e38ba7141" tvg-name="Channels" tvg-logo="" group-title="Uncategorized",Channels
+https://tvsen6.aynaott.com/FNHpYvGZ7FkCE10PwTHm/index.m3u8
+#EXTINF:-1 tvg-id="019efa5d-2ec7-74f1-be71-32944f18972c" tvg-name="Sports" tvg-logo="" group-title="Uncategorized",Sports
+https://tvsen5.aynaott.com/asdfadsf/index.m3u8
+#EXTINF:-1 tvg-id="019efa5d-2ee4-70e0-bb74-3f21d170b49a" tvg-name="Bangla" tvg-logo="" group-title="Uncategorized",Bangla
+https://tvsen5.aynaott.com/xV4jEKf3D9zc/index.m3u8
+#EXTINF:-1 tvg-id="019efa5d-2ed5-7e82-9979-3e47ea154aa7" tvg-name="News" tvg-logo="" group-title="Uncategorized",News
+https://tvsen1.aynaott.com/shn6jGTk/index.m3u8
+#EXTINF:-1 tvg-id="019dd930-8c78-702b-8c44-4cc1bf4b7bc7" tvg-name="Popular Live Tvs" tvg-logo="" group-title="Uncategorized",Popular Live Tvs
+https://tvsen5.aynaott.com/kP9vX2mZ7qL5wN3t/index.m3u8
