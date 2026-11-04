@@ -1,0 +1,46 @@
+name: BD KB IT Auto Update
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Check every 15 minutes. Python enforces the 105-minute refresh interval.
+    - cron: "*/50 * * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: bd-kb-it-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Fetch API and validate authorized M3U8 streams
+        env:
+          BD_KB_IT_API_URL: ${{ secrets.BD_KB_IT_API_URL }}
+          BD_KB_IT_API_TOKEN: ${{ secrets.BD_KB_IT_API_TOKEN }}
+          BD_KB_IT_EXTRA_HEADERS: ${{ secrets.BD_KB_IT_EXTRA_HEADERS }}
+          HTTP_TIMEOUT: "15"
+          MAX_PAGES: "500"
+        run: python BD-KB-IT.py --if-due --interval-minutes 105
+      - name: Commit updated output
+        run: |
+          if [[ -n "$(git status --porcelain output)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add output/
+            git commit -m "chore: update BD KB IT playlist"
+            git push
+          else
+            echo "No output changes."
+          fi
