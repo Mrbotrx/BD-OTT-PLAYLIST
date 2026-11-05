@@ -154,13 +154,6 @@
     "url": "https://tvsen6.aynaott.com/1d3uG9VCgrR9DRtWZM57/index.m3u8"
   },
   {
-    "id": "019de785-3970-7fa3-a850-d2ca0e07c1e0",
-    "name": "Channel 9",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen6.aynaott.com/kajlsd57jnzxyo/index.m3u8"
-  },
-  {
     "id": "019de785-396e-7c75-b530-cb197f010279",
     "name": "Asian TV",
     "logo": "",
@@ -294,13 +287,6 @@
     "url": "https://tvsen5.aynaott.com/skynews/index.m3u8"
   },
   {
-    "id": "019de785-396a-7e3b-ae50-1d20c8ce2323",
-    "name": "Independent TV",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen6.aynaott.com/Wef2Vj67njeYGDqQNFB9/index.m3u8"
-  },
-  {
     "id": "019de785-3c2b-750a-a77e-06dda24907f2",
     "name": "ABN",
     "logo": "",
@@ -315,18 +301,18 @@
     "url": "https://feeds.intoday.in/hltapps/api/master.m3u8"
   },
   {
-    "id": "019de785-3a3c-71e5-8c69-161f0f895a02",
-    "name": "Republic TV Bharat",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen6.aynaott.com/faGd3tuq/index.m3u8"
-  },
-  {
     "id": "019de785-3a41-744d-9181-46d6365a8432",
     "name": "Bharat Samachar",
     "logo": "",
     "group": "Uncategorized",
     "url": "https://tvsen3.aynaott.com/m94BZDYb/index.m3u8"
+  },
+  {
+    "id": "019de785-3b59-7a32-a356-afc80c069215",
+    "name": "News 1 India",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen6.aynaott.com/TaVfw58T/index.m3u8"
   },
   {
     "id": "019de785-3b5b-7c37-a953-8eed8e882836",
@@ -476,11 +462,11 @@
     "url": "https://app.ncare.live/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI2/ntvuk00332211.stream/playlist.m3u8"
   },
   {
-    "id": "019de785-3b86-739c-ae1e-0e7c43b5b36d",
-    "name": "DW News",
+    "id": "019de785-3bb9-7ee4-8c94-b23590436802",
+    "name": "HBO 2",
     "logo": "",
     "group": "Uncategorized",
-    "url": "https://tvsen6.aynaott.com/Qq3s5WR2/index.m3u8"
+    "url": "https://tvsen3.aynaott.com/u3NjUrny/index.m3u8"
   },
   {
     "id": "019de785-3937-7e18-be86-47d2a7a4ab2d",
@@ -504,6 +490,13 @@
     "url": "https://vods2.aynaott.com/gseriesDrama/index.m3u8"
   },
   {
+    "id": "019de785-3a57-7892-b06f-caf61a17d1cb",
+    "name": "Goldmines Movies",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen3.aynaott.com/5CGfPvGp/index.m3u8"
+  },
+  {
     "id": "019de785-39a3-74dd-8ef6-fbe0295e1222",
     "name": "kolkata TV",
     "logo": "",
@@ -523,6 +516,13 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://tvsen3.aynaott.com/wpa56Uk3/index.m3u8"
+  },
+  {
+    "id": "019de785-3a55-70ed-9fa1-e0459e2294dc",
+    "name": "Goldmines",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen3.aynaott.com/VamXuQH8/index.m3u8"
   },
   {
     "id": "019de785-39fd-7973-b24f-0a07344fa15f",
@@ -623,6 +623,13 @@
     "url": "https://cdn.mycloudstream.io/hls/live/broadcast/nro19k2h/index.m3u8"
   },
   {
+    "id": "019de785-3a32-7736-87ef-a8588bdc159f",
+    "name": "Kids TV",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "http://origin5.mediacdn.ru/live/kidstv/index.m3u8"
+  },
+  {
     "id": "019de785-3a1c-7a97-a58d-01d956ebcfe9",
     "name": "Discovery Family",
     "logo": "",
@@ -705,13 +712,6 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://livecdn.live247stream.com/discoverpakistan/web/playlist.m3u8"
-  },
-  {
-    "id": "019de785-3bb9-7ee4-8c94-b23590436802",
-    "name": "HBO 2",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen3.aynaott.com/u3NjUrny/index.m3u8"
   },
   {
     "id": "019de785-3a47-7ef0-a5aa-b31bc6b7d02e",
