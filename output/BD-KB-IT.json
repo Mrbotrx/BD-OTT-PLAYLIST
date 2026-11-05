@@ -154,6 +154,13 @@
     "url": "https://tvsen6.aynaott.com/1d3uG9VCgrR9DRtWZM57/index.m3u8"
   },
   {
+    "id": "019de785-3970-7fa3-a850-d2ca0e07c1e0",
+    "name": "Channel 9",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen6.aynaott.com/kajlsd57jnzxyo/index.m3u8"
+  },
+  {
     "id": "019de785-396e-7c75-b530-cb197f010279",
     "name": "Asian TV",
     "logo": "",
@@ -224,18 +231,18 @@
     "url": "https://tvsen6.aynaott.com/TjGR1GcxKetHNVcMVxbq/index.m3u8"
   },
   {
-    "id": "019de785-393b-7285-8d1f-87bdfc695eb2",
-    "name": "Sangeet Bangla",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen6.aynaott.com/hT5jHczt/index.m3u8"
-  },
-  {
     "id": "019efa5d-2ed5-7e82-9979-3e47ea154aa7",
     "name": "News",
     "logo": "",
     "group": "Uncategorized",
     "url": "https://tvsen1.aynaott.com/shn6jGTk/index.m3u8"
+  },
+  {
+    "id": "019de785-3b86-739c-ae1e-0e7c43b5b36d",
+    "name": "DW News",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen6.aynaott.com/Qq3s5WR2/index.m3u8"
   },
   {
     "id": "019de785-3b80-71c1-84a7-8a74b1a63534",
@@ -280,13 +287,6 @@
     "url": "https://tvsen6.aynaott.com/cp24/index.m3u8"
   },
   {
-    "id": "019de785-3b94-797d-aeee-9faee1bc9b40",
-    "name": "Fox News",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen6.aynaott.com/foxnews/index.m3u8"
-  },
-  {
     "id": "019de785-3b90-744e-bd01-4b335dc7cb0b",
     "name": "Sky News",
     "logo": "",
@@ -313,6 +313,13 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://tvsen6.aynaott.com/faGd3tuq/index.m3u8"
+  },
+  {
+    "id": "019de785-3a41-744d-9181-46d6365a8432",
+    "name": "Bharat Samachar",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen3.aynaott.com/m94BZDYb/index.m3u8"
   },
   {
     "id": "019de785-3b59-7a32-a356-afc80c069215",
@@ -497,6 +504,13 @@
     "url": "https://vods2.aynaott.com/gseriesDrama/index.m3u8"
   },
   {
+    "id": "019de785-3a57-7892-b06f-caf61a17d1cb",
+    "name": "Goldmines Movies",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen3.aynaott.com/5CGfPvGp/index.m3u8"
+  },
+  {
     "id": "019de785-39a3-74dd-8ef6-fbe0295e1222",
     "name": "kolkata TV",
     "logo": "",
@@ -516,6 +530,13 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://tvsen3.aynaott.com/wpa56Uk3/index.m3u8"
+  },
+  {
+    "id": "019de785-3a55-70ed-9fa1-e0459e2294dc",
+    "name": "Goldmines",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen3.aynaott.com/VamXuQH8/index.m3u8"
   },
   {
     "id": "019de785-39fd-7973-b24f-0a07344fa15f",
@@ -593,6 +614,13 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://dfhsahpa45kk2.cloudfront.net/scheduler/scheduleMaster/476.m3u8"
+  },
+  {
+    "id": "019de785-3b67-7f41-bb8e-f5ad36bb3bcb",
+    "name": "Taaza TV",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen3.aynaott.com/yRMLky2j/index.m3u8"
   },
   {
     "id": "019efa5d-2ef2-7732-99d5-9cae01288b1a",
