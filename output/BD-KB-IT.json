@@ -231,18 +231,18 @@
     "url": "https://tvsen6.aynaott.com/TjGR1GcxKetHNVcMVxbq/index.m3u8"
   },
   {
+    "id": "019de785-393b-7285-8d1f-87bdfc695eb2",
+    "name": "Sangeet Bangla",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen6.aynaott.com/hT5jHczt/index.m3u8"
+  },
+  {
     "id": "019efa5d-2ed5-7e82-9979-3e47ea154aa7",
     "name": "News",
     "logo": "",
     "group": "Uncategorized",
     "url": "https://tvsen1.aynaott.com/shn6jGTk/index.m3u8"
-  },
-  {
-    "id": "019de785-3b86-739c-ae1e-0e7c43b5b36d",
-    "name": "DW News",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen6.aynaott.com/Qq3s5WR2/index.m3u8"
   },
   {
     "id": "019de785-3b80-71c1-84a7-8a74b1a63534",
@@ -294,6 +294,13 @@
     "url": "https://tvsen5.aynaott.com/skynews/index.m3u8"
   },
   {
+    "id": "019de785-396a-7e3b-ae50-1d20c8ce2323",
+    "name": "Independent TV",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen6.aynaott.com/Wef2Vj67njeYGDqQNFB9/index.m3u8"
+  },
+  {
     "id": "019de785-3c2b-750a-a77e-06dda24907f2",
     "name": "ABN",
     "logo": "",
@@ -320,13 +327,6 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://tvsen3.aynaott.com/m94BZDYb/index.m3u8"
-  },
-  {
-    "id": "019de785-3b59-7a32-a356-afc80c069215",
-    "name": "News 1 India",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen6.aynaott.com/TaVfw58T/index.m3u8"
   },
   {
     "id": "019de785-3b5b-7c37-a953-8eed8e882836",
@@ -476,11 +476,11 @@
     "url": "https://app.ncare.live/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI2/ntvuk00332211.stream/playlist.m3u8"
   },
   {
-    "id": "019de785-3bb9-7ee4-8c94-b23590436802",
-    "name": "HBO 2",
+    "id": "019de785-3b86-739c-ae1e-0e7c43b5b36d",
+    "name": "DW News",
     "logo": "",
     "group": "Uncategorized",
-    "url": "https://tvsen3.aynaott.com/u3NjUrny/index.m3u8"
+    "url": "https://tvsen6.aynaott.com/Qq3s5WR2/index.m3u8"
   },
   {
     "id": "019de785-3937-7e18-be86-47d2a7a4ab2d",
@@ -504,13 +504,6 @@
     "url": "https://vods2.aynaott.com/gseriesDrama/index.m3u8"
   },
   {
-    "id": "019de785-3a57-7892-b06f-caf61a17d1cb",
-    "name": "Goldmines Movies",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen3.aynaott.com/5CGfPvGp/index.m3u8"
-  },
-  {
     "id": "019de785-39a3-74dd-8ef6-fbe0295e1222",
     "name": "kolkata TV",
     "logo": "",
@@ -532,13 +525,6 @@
     "url": "https://tvsen3.aynaott.com/wpa56Uk3/index.m3u8"
   },
   {
-    "id": "019de785-3a55-70ed-9fa1-e0459e2294dc",
-    "name": "Goldmines",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen3.aynaott.com/VamXuQH8/index.m3u8"
-  },
-  {
     "id": "019de785-39fd-7973-b24f-0a07344fa15f",
     "name": "Bahrain Sports 1",
     "logo": "",
@@ -558,6 +544,13 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://tvsen3.aynaott.com/z24qLsqV/index.m3u8"
+  },
+  {
+    "id": "019dd930-8ca8-7108-a445-824ff552eb09",
+    "name": "Latest Live Tvs",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://g4wlkwx8l23a-hls-live.5centscdn.com/HUM/271ddf829afeece44d8732757fba1a66.sdp/playlist_dvr.m3u8"
   },
   {
     "id": "019f9d1e-903a-70f7-b217-aabdbdc97163",
@@ -616,13 +609,6 @@
     "url": "https://dfhsahpa45kk2.cloudfront.net/scheduler/scheduleMaster/476.m3u8"
   },
   {
-    "id": "019de785-3b67-7f41-bb8e-f5ad36bb3bcb",
-    "name": "Taaza TV",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen3.aynaott.com/yRMLky2j/index.m3u8"
-  },
-  {
     "id": "019efa5d-2ef2-7732-99d5-9cae01288b1a",
     "name": "Kids",
     "logo": "",
@@ -672,13 +658,6 @@
     "url": "https://tvsen6.aynaott.com/TVCArabicKids/index.m3u8"
   },
   {
-    "id": "019de785-3a49-76c5-baa6-12c71aa6e36e",
-    "name": "9x Jalwa",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen6.aynaott.com/CiPT1VTG8bVekeAZiibd/index.m3u8"
-  },
-  {
     "id": "019de785-3c27-75af-aecc-b972908c76b3",
     "name": "Adventure Earth",
     "logo": "",
@@ -726,6 +705,13 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://livecdn.live247stream.com/discoverpakistan/web/playlist.m3u8"
+  },
+  {
+    "id": "019de785-3bb9-7ee4-8c94-b23590436802",
+    "name": "HBO 2",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen3.aynaott.com/u3NjUrny/index.m3u8"
   },
   {
     "id": "019de785-3a47-7ef0-a5aa-b31bc6b7d02e",
