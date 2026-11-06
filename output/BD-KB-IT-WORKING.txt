@@ -18,10 +18,8 @@ https://tvsen5.aynaott.com/TnMn5kZz8aLmjklkk/index.m3u8
 https://tvsen5.aynaott.com/kP9vX2mZ7qL5wN3t/index.m3u8
 https://tvsen6.aynaott.com/nfl/index.m3u8
 https://tvsen6.aynaott.com/M2W2UR49dmeKbZnmdRzN/index.m3u8
-https://tvsen6.aynaott.com/Wef2Vj67njeYGDqQNFB9/index.m3u8
 https://tvsen6.aynaott.com/ryFkXfd1a4CQ7mMdc820/index.m3u8
 https://tvsen6.aynaott.com/1d3uG9VCgrR9DRtWZM57/index.m3u8
-https://tvsen6.aynaott.com/kajlsd57jnzxyo/index.m3u8
 https://tvsen6.aynaott.com/pKb5k6NnzxsKpWUs6E8M/index.m3u8
 https://tvsen6.aynaott.com/rELXiuUXqbgzPb06Npom/index.m3u8
 https://tvsen6.aynaott.com/39ee93nUbCCmm5LsyD4t/index.m3u8
@@ -44,6 +42,10 @@ https://tvsen6.aynaott.com/foxnews/index.m3u8
 https://tvsen5.aynaott.com/skynews/index.m3u8
 https://mediaserver.abnvideos.com/streams/abnurdu.m3u8
 https://feeds.intoday.in/hltapps/api/master.m3u8
+https://tvsen6.aynaott.com/faGd3tuq/index.m3u8
+https://tvsen3.aynaott.com/m94BZDYb/index.m3u8
+https://tvsen6.aynaott.com/TaVfw58T/index.m3u8
+https://tvsen3.aynaott.com/P2hjvFHV/index.m3u8
 https://cdn-ue1-prod.tsv2.amagi.tv/linear/amg00684-accuweather-accuweather-plex/playlist.m3u8
 https://247wlive.foxweather.com/stream/index.m3u8
 https://distro001-gb-hls1-prd.delivery.skycdp.com/easel_cdn/ngrp:weather_loop.stream_all/playlist.m3u8
@@ -59,6 +61,7 @@ https://live-bangla.akamaized.net/liveabr/playlist.m3u8
 https://live20.bozztv.com/giatvplayout7/giatv-209611/index.m3u8
 https://4397879b.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/UmFrdXRlblRWLWRlX0ZJRkFQbHVzR2VybWFuX0hMUw/playlist.m3u8
 https://5dd3981940faa.streamlock.net:443/thikanatv/thikanatv/playlist.m3u8
+https://tvsen6.aynaott.com/kajlsd57jnzxyo/index.m3u8
 https://tvsen3.aynaott.com/Zht5VqBb/index.m3u8
 https://vods2.aynaott.com/hindimovies/index.m3u8
 https://tvsen3.aynaott.com/7mm4pwCy/index.m3u8
@@ -71,7 +74,6 @@ https://vods2.aynaott.com/gseriesDrama/index.m3u8
 https://tvsen6.aynaott.com/kolkatatv/index.m3u8
 https://streams2.sofast.tv/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/eea68b79-bfe2-451e-a227-d637a5b9548a/manifest.m3u8
 https://tvsen3.aynaott.com/wpa56Uk3/index.m3u8
-https://tvsen3.aynaott.com/VamXuQH8/index.m3u8
 https://tvsen6.aynaott.com/mzwbzfZ4/index.m3u8
 https://5c7b683162943.streamlock.net/live/ngrp:sportsone_all/playlist.m3u8
 https://streams2.sofast.tv/sofastplayout/WiseM3U8_1/master.m3u8
@@ -99,6 +101,6 @@ https://tvsen3.aynaott.com/TJcnZW3U/index.m3u8
 https://tvsen3.aynaott.com/EuEy5mBW/index.m3u8
 https://tvsen1.aynaott.com/bB3A5dyq/index.m3u8
 https://livecdn.live247stream.com/discoverpakistan/web/playlist.m3u8
+https://tvsen6.aynaott.com/sMqhLN6n/index.m3u8
 https://tvsen3.aynaott.com/sFwCR6Fu/index.m3u8
 https://dyjmyiv3bp2ez.cloudfront.net/pub-iotv9banaen8yq/liveabr/playlist.m3u8
-https://tvsen6.aynaott.com/3Cb2WLFz/index.m3u8
