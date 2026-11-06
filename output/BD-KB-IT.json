@@ -322,13 +322,6 @@
     "url": "https://feeds.intoday.in/hltapps/api/master.m3u8"
   },
   {
-    "id": "019de785-3b59-7a32-a356-afc80c069215",
-    "name": "News 1 India",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen6.aynaott.com/TaVfw58T/index.m3u8"
-  },
-  {
     "id": "019de785-3bfa-71a7-92c2-a1cad28b99e5",
     "name": "Accu Weather",
     "logo": "",
@@ -462,13 +455,6 @@
     "url": "https://tvsen6.aynaott.com/talkSPORT/index.m3u8"
   },
   {
-    "id": "019efa45-e724-7ca0-90fd-8a837b01220c",
-    "name": "Goldmines Bollywood",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen6.aynaott.com/55xNrLdf/index.m3u8"
-  },
-  {
     "id": "019efa45-e6cf-77d1-ab66-0528b71c3826",
     "name": "NTV Europe",
     "logo": "",
@@ -476,18 +462,18 @@
     "url": "https://app.ncare.live/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI2/ntvuk00332211.stream/playlist.m3u8"
   },
   {
-    "id": "019de785-3bb9-7ee4-8c94-b23590436802",
-    "name": "HBO 2",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen3.aynaott.com/u3NjUrny/index.m3u8"
-  },
-  {
     "id": "019de785-3937-7e18-be86-47d2a7a4ab2d",
     "name": "Test Live TV",
     "logo": "",
     "group": "Uncategorized",
     "url": "https://byphdgllyk.gpcdn.net/hls/deeptotv/index.m3u8"
+  },
+  {
+    "id": "019de785-3bb9-7ee4-8c94-b23590436802",
+    "name": "HBO 2",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen3.aynaott.com/u3NjUrny/index.m3u8"
   },
   {
     "id": "019de785-39af-74c7-ad3c-bb81cae61141",
@@ -523,6 +509,13 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://tvsen3.aynaott.com/wpa56Uk3/index.m3u8"
+  },
+  {
+    "id": "019de785-3a55-70ed-9fa1-e0459e2294dc",
+    "name": "Goldmines",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen3.aynaott.com/VamXuQH8/index.m3u8"
   },
   {
     "id": "019de785-399b-79d8-9d87-854339381669",
@@ -651,6 +644,20 @@
     "url": "https://3abn.bozztv.com/3abn2/Kids_live/smil:Kids_live.smil/playlist.m3u8"
   },
   {
+    "id": "019efa45-e9a4-7c81-b8bd-efdeb31d84ec",
+    "name": "TVC Arabic Kids",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen6.aynaott.com/TVCArabicKids/index.m3u8"
+  },
+  {
+    "id": "019de785-3a49-76c5-baa6-12c71aa6e36e",
+    "name": "9x Jalwa",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen6.aynaott.com/CiPT1VTG8bVekeAZiibd/index.m3u8"
+  },
+  {
     "id": "019de785-3c27-75af-aecc-b972908c76b3",
     "name": "Adventure Earth",
     "logo": "",
@@ -698,13 +705,6 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://livecdn.live247stream.com/discoverpakistan/web/playlist.m3u8"
-  },
-  {
-    "id": "019de785-3a47-7ef0-a5aa-b31bc6b7d02e",
-    "name": "9X Tashan",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen6.aynaott.com/sMqhLN6n/index.m3u8"
   },
   {
     "id": "019de785-3be0-7c5b-ad73-e7b18ab18245",
