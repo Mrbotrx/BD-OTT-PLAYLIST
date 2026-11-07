@@ -84,13 +84,6 @@
     "url": "https://tvsen6.aynaott.com/cdgr3tw6WoG7JyRnLbi0/index.m3u8"
   },
   {
-    "id": "019de785-3943-7dff-ae3b-9b79fed284a3",
-    "name": "Channel 24",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen6.aynaott.com/YrVDF8gujkdh/index.m3u8"
-  },
-  {
     "id": "019de785-3968-7782-b69b-7c6151ae6fe1",
     "name": "DBC News",
     "logo": "",
@@ -159,13 +152,6 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://tvsen6.aynaott.com/1d3uG9VCgrR9DRtWZM57/index.m3u8"
-  },
-  {
-    "id": "019de785-3970-7fa3-a850-d2ca0e07c1e0",
-    "name": "Channel 9",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen6.aynaott.com/kajlsd57jnzxyo/index.m3u8"
   },
   {
     "id": "019de785-396e-7c75-b530-cb197f010279",
@@ -252,6 +238,13 @@
     "url": "https://tvsen1.aynaott.com/shn6jGTk/index.m3u8"
   },
   {
+    "id": "019de785-3b86-739c-ae1e-0e7c43b5b36d",
+    "name": "DW News",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen6.aynaott.com/Qq3s5WR2/index.m3u8"
+  },
+  {
     "id": "019de785-3b80-71c1-84a7-8a74b1a63534",
     "name": "CNN",
     "logo": "",
@@ -334,6 +327,13 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://tvsen3.aynaott.com/m94BZDYb/index.m3u8"
+  },
+  {
+    "id": "019de785-3b59-7a32-a356-afc80c069215",
+    "name": "News 1 India",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen6.aynaott.com/TaVfw58T/index.m3u8"
   },
   {
     "id": "019de785-3b5b-7c37-a953-8eed8e882836",
@@ -539,6 +539,13 @@
     "url": "https://tvsen3.aynaott.com/wpa56Uk3/index.m3u8"
   },
   {
+    "id": "019de785-399b-79d8-9d87-854339381669",
+    "name": "Khushboo",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen6.aynaott.com/mzwbzfZ4/index.m3u8"
+  },
+  {
     "id": "019de785-39fd-7973-b24f-0a07344fa15f",
     "name": "Bahrain Sports 1",
     "logo": "",
@@ -719,6 +726,13 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://livecdn.live247stream.com/discoverpakistan/web/playlist.m3u8"
+  },
+  {
+    "id": "019efa45-e724-7ca0-90fd-8a837b01220c",
+    "name": "Goldmines Bollywood",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen6.aynaott.com/55xNrLdf/index.m3u8"
   },
   {
     "id": "019de785-3be0-7c5b-ad73-e7b18ab18245",

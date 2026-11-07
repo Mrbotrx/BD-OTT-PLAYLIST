@@ -25,8 +25,6 @@ https://tvsen6.aynaott.com/EWDrV5QskgarZEUBb3pU/index.m3u8
 https://tvsen6.aynaott.com/KGdZEdA7qQ43dmPkgk1j/index.m3u8
 #EXTINF:-1 tvg-id="019de785-3966-7972-9dda-3707d71073ac" tvg-name="News 24 BD" tvg-logo="" group-title="Uncategorized",News 24 BD
 https://tvsen6.aynaott.com/cdgr3tw6WoG7JyRnLbi0/index.m3u8
-#EXTINF:-1 tvg-id="019de785-3943-7dff-ae3b-9b79fed284a3" tvg-name="Channel 24" tvg-logo="" group-title="Uncategorized",Channel 24
-https://tvsen6.aynaott.com/YrVDF8gujkdh/index.m3u8
 #EXTINF:-1 tvg-id="019de785-3968-7782-b69b-7c6151ae6fe1" tvg-name="DBC News" tvg-logo="" group-title="Uncategorized",DBC News
 https://tvsen6.aynaott.com/pF66Tkz0qFwP2aMMqHyt/index.m3u8
 #EXTINF:-1 tvg-id="019de785-3947-7f58-bf5b-525377fb71bd" tvg-name="ATN News" tvg-logo="" group-title="Uncategorized",ATN News
@@ -47,8 +45,6 @@ https://tvsen6.aynaott.com/Wef2Vj67njeYGDqQNFB9/index.m3u8
 https://tvsen6.aynaott.com/ryFkXfd1a4CQ7mMdc820/index.m3u8
 #EXTINF:-1 tvg-id="019de785-3978-7f99-9708-4a0d34e53511" tvg-name="Boishakhi TV" tvg-logo="" group-title="Uncategorized",Boishakhi TV
 https://tvsen6.aynaott.com/1d3uG9VCgrR9DRtWZM57/index.m3u8
-#EXTINF:-1 tvg-id="019de785-3970-7fa3-a850-d2ca0e07c1e0" tvg-name="Channel 9" tvg-logo="" group-title="Uncategorized",Channel 9
-https://tvsen6.aynaott.com/kajlsd57jnzxyo/index.m3u8
 #EXTINF:-1 tvg-id="019de785-396e-7c75-b530-cb197f010279" tvg-name="Asian TV" tvg-logo="" group-title="Uncategorized",Asian TV
 https://tvsen6.aynaott.com/pKb5k6NnzxsKpWUs6E8M/index.m3u8
 #EXTINF:-1 tvg-id="019de785-396c-7f21-9261-2bd1e5230130" tvg-name="SA TV" tvg-logo="" group-title="Uncategorized",SA TV
@@ -73,6 +69,8 @@ https://tvsen6.aynaott.com/TjGR1GcxKetHNVcMVxbq/index.m3u8
 https://tvsen6.aynaott.com/hT5jHczt/index.m3u8
 #EXTINF:-1 tvg-id="019efa5d-2ed5-7e82-9979-3e47ea154aa7" tvg-name="News" tvg-logo="" group-title="Uncategorized",News
 https://tvsen1.aynaott.com/shn6jGTk/index.m3u8
+#EXTINF:-1 tvg-id="019de785-3b86-739c-ae1e-0e7c43b5b36d" tvg-name="DW News" tvg-logo="" group-title="Uncategorized",DW News
+https://tvsen6.aynaott.com/Qq3s5WR2/index.m3u8
 #EXTINF:-1 tvg-id="019de785-3b80-71c1-84a7-8a74b1a63534" tvg-name="CNN" tvg-logo="" group-title="Uncategorized",CNN
 https://tvsen6.aynaott.com/cnn/index.m3u8
 #EXTINF:-1 tvg-id="019de785-3b82-7f2d-a547-3c57eaa3dc10" tvg-name="Aljazeera News" tvg-logo="" group-title="Uncategorized",Aljazeera News
@@ -97,6 +95,8 @@ https://feeds.intoday.in/hltapps/api/master.m3u8
 https://tvsen6.aynaott.com/faGd3tuq/index.m3u8
 #EXTINF:-1 tvg-id="019de785-3a41-744d-9181-46d6365a8432" tvg-name="Bharat Samachar" tvg-logo="" group-title="Uncategorized",Bharat Samachar
 https://tvsen3.aynaott.com/m94BZDYb/index.m3u8
+#EXTINF:-1 tvg-id="019de785-3b59-7a32-a356-afc80c069215" tvg-name="News 1 India" tvg-logo="" group-title="Uncategorized",News 1 India
+https://tvsen6.aynaott.com/TaVfw58T/index.m3u8
 #EXTINF:-1 tvg-id="019de785-3b5b-7c37-a953-8eed8e882836" tvg-name="Sadhna Prime News" tvg-logo="" group-title="Uncategorized",Sadhna Prime News
 https://tvsen3.aynaott.com/P2hjvFHV/index.m3u8
 #EXTINF:-1 tvg-id="019de785-3bfa-71a7-92c2-a1cad28b99e5" tvg-name="Accu Weather" tvg-logo="" group-title="Uncategorized",Accu Weather
@@ -155,6 +155,8 @@ https://tvsen6.aynaott.com/kolkatatv/index.m3u8
 https://streams2.sofast.tv/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/eea68b79-bfe2-451e-a227-d637a5b9548a/manifest.m3u8
 #EXTINF:-1 tvg-id="019de785-3bb5-776c-a07f-e00276c4629e" tvg-name="Animal Planet HD" tvg-logo="" group-title="Uncategorized",Animal Planet HD
 https://tvsen3.aynaott.com/wpa56Uk3/index.m3u8
+#EXTINF:-1 tvg-id="019de785-399b-79d8-9d87-854339381669" tvg-name="Khushboo" tvg-logo="" group-title="Uncategorized",Khushboo
+https://tvsen6.aynaott.com/mzwbzfZ4/index.m3u8
 #EXTINF:-1 tvg-id="019de785-39fd-7973-b24f-0a07344fa15f" tvg-name="Bahrain Sports 1" tvg-logo="" group-title="Uncategorized",Bahrain Sports 1
 https://5c7b683162943.streamlock.net/live/ngrp:sportsone_all/playlist.m3u8
 #EXTINF:-1 tvg-id="019de785-39de-7743-b801-2f7bd6007fe5" tvg-name="Goal TV" tvg-logo="" group-title="Uncategorized",Goal TV
@@ -207,6 +209,8 @@ https://tvsen3.aynaott.com/EuEy5mBW/index.m3u8
 https://tvsen1.aynaott.com/bB3A5dyq/index.m3u8
 #EXTINF:-1 tvg-id="019de785-3c02-77aa-aa8c-5457eec46ac3" tvg-name="Discover Pikstan" tvg-logo="" group-title="Uncategorized",Discover Pikstan
 https://livecdn.live247stream.com/discoverpakistan/web/playlist.m3u8
+#EXTINF:-1 tvg-id="019efa45-e724-7ca0-90fd-8a837b01220c" tvg-name="Goldmines Bollywood" tvg-logo="" group-title="Uncategorized",Goldmines Bollywood
+https://tvsen6.aynaott.com/55xNrLdf/index.m3u8
 #EXTINF:-1 tvg-id="019de785-3be0-7c5b-ad73-e7b18ab18245" tvg-name="Travel Channel" tvg-logo="" group-title="Uncategorized",Travel Channel
 https://tvsen3.aynaott.com/sFwCR6Fu/index.m3u8
 #EXTINF:-1 tvg-id="019de785-399f-7d6a-9f41-dc7f834b3300" tvg-name="TV9 Bangla" tvg-logo="" group-title="Uncategorized",TV9 Bangla
