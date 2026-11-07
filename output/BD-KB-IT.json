@@ -231,6 +231,13 @@
     "url": "https://tvsen6.aynaott.com/TjGR1GcxKetHNVcMVxbq/index.m3u8"
   },
   {
+    "id": "019de785-393b-7285-8d1f-87bdfc695eb2",
+    "name": "Sangeet Bangla",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen6.aynaott.com/hT5jHczt/index.m3u8"
+  },
+  {
     "id": "019efa5d-2ed5-7e82-9979-3e47ea154aa7",
     "name": "News",
     "logo": "",
@@ -322,6 +329,13 @@
     "url": "https://tvsen3.aynaott.com/m94BZDYb/index.m3u8"
   },
   {
+    "id": "019de785-3b59-7a32-a356-afc80c069215",
+    "name": "News 1 India",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen6.aynaott.com/TaVfw58T/index.m3u8"
+  },
+  {
     "id": "019de785-3bfa-71a7-92c2-a1cad28b99e5",
     "name": "Accu Weather",
     "logo": "",
@@ -355,13 +369,6 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://tvsen6.aynaott.com/mtv/index.m3u8"
-  },
-  {
-    "id": "019de785-3ba0-791c-8c0e-49ddadbe2415",
-    "name": "Fox 5",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen6.aynaott.com/fox5/index.m3u8"
   },
   {
     "id": "019de785-3ba2-744b-8df9-2fbba4e15303",
@@ -490,13 +497,6 @@
     "url": "https://vods2.aynaott.com/gseriesDrama/index.m3u8"
   },
   {
-    "id": "019de785-3a57-7892-b06f-caf61a17d1cb",
-    "name": "Goldmines Movies",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen3.aynaott.com/5CGfPvGp/index.m3u8"
-  },
-  {
     "id": "019de785-39a3-74dd-8ef6-fbe0295e1222",
     "name": "kolkata TV",
     "logo": "",
@@ -516,6 +516,13 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://tvsen3.aynaott.com/wpa56Uk3/index.m3u8"
+  },
+  {
+    "id": "019de785-3a55-70ed-9fa1-e0459e2294dc",
+    "name": "Goldmines",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen3.aynaott.com/VamXuQH8/index.m3u8"
   },
   {
     "id": "019de785-399b-79d8-9d87-854339381669",
