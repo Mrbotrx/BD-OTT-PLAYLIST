@@ -112,20 +112,6 @@
     "url": "https://tvsen5.aynaott.com/asdfadsf/index.m3u8"
   },
   {
-    "id": "019de785-3962-77a1-8f50-c541bb5a02c7",
-    "name": "T Sports HD",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen5.aynaott.com/TnMn5kZz8aLmjklkk/index.m3u8"
-  },
-  {
-    "id": "019de785-39bc-7bd5-b9e5-bab23ceba9ea",
-    "name": "PTV Sports",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen5.aynaott.com/kP9vX2mZ7qL5wN3t/index.m3u8"
-  },
-  {
     "id": "019de785-39ef-748a-9af9-aa3d3f488760",
     "name": "NFL Network",
     "logo": "",
@@ -152,13 +138,6 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://tvsen6.aynaott.com/1d3uG9VCgrR9DRtWZM57/index.m3u8"
-  },
-  {
-    "id": "019de785-3970-7fa3-a850-d2ca0e07c1e0",
-    "name": "Channel 9",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen6.aynaott.com/kajlsd57jnzxyo/index.m3u8"
   },
   {
     "id": "019de785-396e-7c75-b530-cb197f010279",
@@ -308,18 +287,18 @@
     "url": "https://feeds.intoday.in/hltapps/api/master.m3u8"
   },
   {
-    "id": "019de785-3a41-744d-9181-46d6365a8432",
-    "name": "Bharat Samachar",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen3.aynaott.com/m94BZDYb/index.m3u8"
-  },
-  {
     "id": "019de785-3b59-7a32-a356-afc80c069215",
     "name": "News 1 India",
     "logo": "",
     "group": "Uncategorized",
     "url": "https://tvsen6.aynaott.com/TaVfw58T/index.m3u8"
+  },
+  {
+    "id": "019de785-3b5b-7c37-a953-8eed8e882836",
+    "name": "Sadhna Prime News",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen3.aynaott.com/P2hjvFHV/index.m3u8"
   },
   {
     "id": "019de785-3bfa-71a7-92c2-a1cad28b99e5",
@@ -371,6 +350,13 @@
     "url": "https://tvsen6.aynaott.com/foxbusiness/index.m3u8"
   },
   {
+    "id": "019de785-3bc3-7f1b-9825-7f2e4bd0ad29",
+    "name": "CBS TV",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen3.aynaott.com/34fJSjZP/index.m3u8"
+  },
+  {
     "id": "019de785-3bc5-70aa-b7d9-555b10cb474f",
     "name": "USA TV",
     "logo": "",
@@ -392,6 +378,20 @@
     "url": "https://d7x8z4yuq42qn.cloudfront.net/index_7.m3u8"
   },
   {
+    "id": "019dd930-8c78-702b-8c44-4cc1bf4b7bc7",
+    "name": "Popular Live Tvs",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen5.aynaott.com/kP9vX2mZ7qL5wN3t/index.m3u8"
+  },
+  {
+    "id": "019de785-3962-77a1-8f50-c541bb5a02c7",
+    "name": "T Sports HD",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen5.aynaott.com/TnMn5kZz8aLmjklkk/index.m3u8"
+  },
+  {
     "id": "019de785-39b1-7763-ad62-b9087039241f",
     "name": "Enter 10 Bangla",
     "logo": "",
@@ -411,6 +411,13 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://4397879b.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/UmFrdXRlblRWLWRlX0ZJRkFQbHVzR2VybWFuX0hMUw/playlist.m3u8"
+  },
+  {
+    "id": "019de785-393b-7285-8d1f-87bdfc695eb2",
+    "name": "Sangeet Bangla",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen6.aynaott.com/hT5jHczt/index.m3u8"
   },
   {
     "id": "019de785-3993-7ccc-8bc0-184c2c761c69",
@@ -595,6 +602,13 @@
     "url": "https://cdn.mycloudstream.io/hls/live/broadcast/nro19k2h/index.m3u8"
   },
   {
+    "id": "019de785-3a32-7736-87ef-a8588bdc159f",
+    "name": "Kids TV",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "http://origin5.mediacdn.ru/live/kidstv/index.m3u8"
+  },
+  {
     "id": "019de785-3a1c-7a97-a58d-01d956ebcfe9",
     "name": "Discovery Family",
     "logo": "",
@@ -628,13 +642,6 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://tvsen6.aynaott.com/TVCArabicKids/index.m3u8"
-  },
-  {
-    "id": "019de785-3b5b-7c37-a953-8eed8e882836",
-    "name": "Sadhna Prime News",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen3.aynaott.com/P2hjvFHV/index.m3u8"
   },
   {
     "id": "019de785-3c27-75af-aecc-b972908c76b3",
@@ -686,18 +693,18 @@
     "url": "https://livecdn.live247stream.com/discoverpakistan/web/playlist.m3u8"
   },
   {
+    "id": "019de785-3a47-7ef0-a5aa-b31bc6b7d02e",
+    "name": "9X Tashan",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen6.aynaott.com/sMqhLN6n/index.m3u8"
+  },
+  {
     "id": "019de785-3be0-7c5b-ad73-e7b18ab18245",
     "name": "Travel Channel",
     "logo": "",
     "group": "Uncategorized",
     "url": "https://tvsen3.aynaott.com/sFwCR6Fu/index.m3u8"
-  },
-  {
-    "id": "019de785-399b-79d8-9d87-854339381669",
-    "name": "Khushboo",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen6.aynaott.com/mzwbzfZ4/index.m3u8"
   },
   {
     "id": "019de785-399f-7d6a-9f41-dc7f834b3300",
