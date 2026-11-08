@@ -4,8 +4,8 @@
 # PANEL : https://kbtvpro.totalh.net/
 # GITHUB : https://github.com/Mrbotrx
 # TELEGRAM : https://t.me/KBCYBERTEAM
-# CHANNELS : 14 WORKING CHANNELS
-# TIME : 2026-11-08 22:32:26 BDT
+# CHANNELS : 13 WORKING CHANNELS
+# TIME : 2026-11-09 02:58:21 BDT
 # STATUS : LIVE / UPDATED
 
 #EXTINF:-1 tvg-id="" tvg-name="IPTV LINKS" tvg-logo="https://raw.githubusercontent.com/Mrbotrx/Mrbotrx/refs/heads/main/IPTV_LINKS_LOGO.jpg" group-title="INFO",IPTV LINKS
@@ -34,9 +34,6 @@ https://j6nfugukcl.gpcdn.net/tile_6/master.m3u8
 
 #EXTINF:-1 tvg-id="" tvg-name="SATV HD" tvg-logo="https://tstatic.akash-go.com/cms-ui/images/custom-content/1791451196695.png" group-title="Entertainment",SATV HD
 https://nkafmbewiff.gpcdn.net/tile_3/master.m3u8
-
-#EXTINF:-1 tvg-id="" tvg-name="SRK TV" tvg-logo="https://tstatic.akash-go.com/cms-ui/images/custom-content/1746005965778.png" group-title="Entertainment",SRK TV
-https://srknowapp.ncare.live/srktvhlswodrm/srktv.stream/playlist.m3u8
 
 #EXTINF:-1 tvg-id="" tvg-name="HUM MASALA HD" tvg-logo="https://tstatic.akash-go.com/cms-ui/images/custom-content/1791450405424.png" group-title="Infotainment",HUM MASALA HD
 https://j6nfugukcl.gpcdn.net/tile_1/master.m3u8
