@@ -112,6 +112,20 @@
     "url": "https://tvsen5.aynaott.com/asdfadsf/index.m3u8"
   },
   {
+    "id": "019de785-3962-77a1-8f50-c541bb5a02c7",
+    "name": "T Sports HD",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen5.aynaott.com/TnMn5kZz8aLmjklkk/index.m3u8"
+  },
+  {
+    "id": "019de785-39bc-7bd5-b9e5-bab23ceba9ea",
+    "name": "PTV Sports",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen5.aynaott.com/kP9vX2mZ7qL5wN3t/index.m3u8"
+  },
+  {
     "id": "019de785-39ef-748a-9af9-aa3d3f488760",
     "name": "NFL Network",
     "logo": "",
@@ -210,6 +224,13 @@
     "url": "https://tvsen6.aynaott.com/TjGR1GcxKetHNVcMVxbq/index.m3u8"
   },
   {
+    "id": "019de785-393b-7285-8d1f-87bdfc695eb2",
+    "name": "Sangeet Bangla",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen6.aynaott.com/hT5jHczt/index.m3u8"
+  },
+  {
     "id": "019efa5d-2ed5-7e82-9979-3e47ea154aa7",
     "name": "News",
     "logo": "",
@@ -285,6 +306,13 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://feeds.intoday.in/hltapps/api/master.m3u8"
+  },
+  {
+    "id": "019de785-3a41-744d-9181-46d6365a8432",
+    "name": "Bharat Samachar",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen3.aynaott.com/m94BZDYb/index.m3u8"
   },
   {
     "id": "019de785-3b59-7a32-a356-afc80c069215",
@@ -378,32 +406,11 @@
     "url": "https://d7x8z4yuq42qn.cloudfront.net/index_7.m3u8"
   },
   {
-    "id": "019dd930-8c78-702b-8c44-4cc1bf4b7bc7",
-    "name": "Popular Live Tvs",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen5.aynaott.com/kP9vX2mZ7qL5wN3t/index.m3u8"
-  },
-  {
-    "id": "019de785-3962-77a1-8f50-c541bb5a02c7",
-    "name": "T Sports HD",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen5.aynaott.com/TnMn5kZz8aLmjklkk/index.m3u8"
-  },
-  {
     "id": "019de785-39b1-7763-ad62-b9087039241f",
     "name": "Enter 10 Bangla",
     "logo": "",
     "group": "Uncategorized",
     "url": "https://live-bangla.akamaized.net/liveabr/playlist.m3u8"
-  },
-  {
-    "id": "019efa45-df9a-7792-8f7c-3ea7e9aae905",
-    "name": "Sony AATH",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://live20.bozztv.com/giatvplayout7/giatv-209611/index.m3u8"
   },
   {
     "id": "019efa45-d8f0-7732-8263-6030073a34fe",
@@ -413,18 +420,18 @@
     "url": "https://4397879b.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/UmFrdXRlblRWLWRlX0ZJRkFQbHVzR2VybWFuX0hMUw/playlist.m3u8"
   },
   {
-    "id": "019de785-393b-7285-8d1f-87bdfc695eb2",
-    "name": "Sangeet Bangla",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen6.aynaott.com/hT5jHczt/index.m3u8"
-  },
-  {
     "id": "019de785-3993-7ccc-8bc0-184c2c761c69",
     "name": "Thikana",
     "logo": "",
     "group": "Uncategorized",
     "url": "https://5dd3981940faa.streamlock.net:443/thikanatv/thikanatv/playlist.m3u8"
+  },
+  {
+    "id": "019de785-3970-7fa3-a850-d2ca0e07c1e0",
+    "name": "Channel 9",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen6.aynaott.com/kajlsd57jnzxyo/index.m3u8"
   },
   {
     "id": "019de785-3bb1-775b-9c32-aad40ee46faf",
@@ -453,6 +460,13 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://tvsen6.aynaott.com/talkSPORT/index.m3u8"
+  },
+  {
+    "id": "019efa45-e724-7ca0-90fd-8a837b01220c",
+    "name": "Goldmines Bollywood",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen6.aynaott.com/55xNrLdf/index.m3u8"
   },
   {
     "id": "019efa45-e6cf-77d1-ab66-0528b71c3826",
@@ -490,6 +504,13 @@
     "url": "https://vods2.aynaott.com/gseriesDrama/index.m3u8"
   },
   {
+    "id": "019de785-3a57-7892-b06f-caf61a17d1cb",
+    "name": "Goldmines Movies",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen3.aynaott.com/5CGfPvGp/index.m3u8"
+  },
+  {
     "id": "019de785-39a3-74dd-8ef6-fbe0295e1222",
     "name": "kolkata TV",
     "logo": "",
@@ -509,6 +530,20 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://tvsen3.aynaott.com/wpa56Uk3/index.m3u8"
+  },
+  {
+    "id": "019de785-3a55-70ed-9fa1-e0459e2294dc",
+    "name": "Goldmines",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen3.aynaott.com/VamXuQH8/index.m3u8"
+  },
+  {
+    "id": "019de785-399b-79d8-9d87-854339381669",
+    "name": "Khushboo",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen6.aynaott.com/mzwbzfZ4/index.m3u8"
   },
   {
     "id": "019de785-39fd-7973-b24f-0a07344fa15f",
@@ -602,13 +637,6 @@
     "url": "https://cdn.mycloudstream.io/hls/live/broadcast/nro19k2h/index.m3u8"
   },
   {
-    "id": "019de785-3a32-7736-87ef-a8588bdc159f",
-    "name": "Kids TV",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "http://origin5.mediacdn.ru/live/kidstv/index.m3u8"
-  },
-  {
     "id": "019de785-3a1c-7a97-a58d-01d956ebcfe9",
     "name": "Discovery Family",
     "logo": "",
@@ -630,18 +658,18 @@
     "url": "https://moonbug-rokuus.amagi.tv/playlist.m3u8"
   },
   {
-    "id": "019de785-3a2e-7cc6-ae53-9a7700f7b056",
-    "name": "3ABN Kids",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://3abn.bozztv.com/3abn2/Kids_live/smil:Kids_live.smil/playlist.m3u8"
-  },
-  {
     "id": "019efa45-e9a4-7c81-b8bd-efdeb31d84ec",
     "name": "TVC Arabic Kids",
     "logo": "",
     "group": "Uncategorized",
     "url": "https://tvsen6.aynaott.com/TVCArabicKids/index.m3u8"
+  },
+  {
+    "id": "019de785-3a49-76c5-baa6-12c71aa6e36e",
+    "name": "9x Jalwa",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen6.aynaott.com/CiPT1VTG8bVekeAZiibd/index.m3u8"
   },
   {
     "id": "019de785-3c27-75af-aecc-b972908c76b3",
@@ -712,5 +740,12 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://dyjmyiv3bp2ez.cloudfront.net/pub-iotv9banaen8yq/liveabr/playlist.m3u8"
+  },
+  {
+    "id": "019de785-3a38-7452-8cf2-98336ef120ff",
+    "name": "Network 10",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen6.aynaott.com/3Cb2WLFz/index.m3u8"
   }
 ]
