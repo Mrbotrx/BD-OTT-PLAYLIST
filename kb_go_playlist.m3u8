@@ -4,12 +4,15 @@
 # PANEL : https://kbtvpro.totalh.net/
 # GITHUB : https://github.com/Mrbotrx
 # TELEGRAM : https://t.me/KBCYBERTEAM
-# CHANNELS : 14 WORKING CHANNELS
-# TIME : 2026-11-09 06:44:23 BDT
+# CHANNELS : 15 WORKING CHANNELS
+# TIME : 2026-11-09 13:40:18 BDT
 # STATUS : LIVE / UPDATED
 
 #EXTINF:-1 tvg-id="" tvg-name="IPTV LINKS" tvg-logo="https://raw.githubusercontent.com/Mrbotrx/Mrbotrx/refs/heads/main/IPTV_LINKS_LOGO.jpg" group-title="INFO",IPTV LINKS
 https://github.com/Mrbotrx/Mrbotrx/raw/refs/heads/main/IPTV_LINKS_VIDEO.mp4
+
+#EXTINF:-1 tvg-id="" tvg-name="BTV" tvg-logo="https://tstatic.akash-go.com/cms-ui/images/custom-content/1784629853305.png" group-title="Entertainment",BTV
+https://nkafmbewiff.gpcdn.net/tile_2/master.m3u8
 
 #EXTINF:-1 tvg-id="" tvg-name="Channel 9 HD" tvg-logo="https://tstatic.akash-go.com/cms-ui/images/custom-content/1770188028569.png" group-title="Entertainment",Channel 9 HD
 https://nkafmbewiff.gpcdn.net/tile_7/master.m3u8
