@@ -11,7 +11,7 @@
     {
       "page": 2,
       "http_status": 200,
-      "records_detected": 62,
+      "records_detected": 63,
       "has_more": true,
       "next_url_found": true,
       "cursor_found": true
@@ -50,6 +50,6 @@
     }
   ],
   "pages_fetched": 6,
-  "channels_detected": 105,
+  "channels_detected": 101,
   "note": "A detected channel requires a name and an M3U8 URL in related JSON data."
 }
