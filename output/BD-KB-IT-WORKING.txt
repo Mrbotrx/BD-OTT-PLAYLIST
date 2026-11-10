@@ -43,6 +43,7 @@ https://tvsen6.aynaott.com/foxnews/index.m3u8
 https://tvsen5.aynaott.com/skynews/index.m3u8
 https://mediaserver.abnvideos.com/streams/abnurdu.m3u8
 https://feeds.intoday.in/hltapps/api/master.m3u8
+https://tvsen6.aynaott.com/faGd3tuq/index.m3u8
 https://tvsen6.aynaott.com/TaVfw58T/index.m3u8
 https://cdn-ue1-prod.tsv2.amagi.tv/linear/amg00684-accuweather-accuweather-plex/playlist.m3u8
 https://247wlive.foxweather.com/stream/index.m3u8
@@ -57,12 +58,14 @@ https://4397879b.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/UmFrdX
 https://5dd3981940faa.streamlock.net:443/thikanatv/thikanatv/playlist.m3u8
 https://vods2.aynaott.com/hindimovies/index.m3u8
 https://tvsen6.aynaott.com/talkSPORT/index.m3u8
+https://tvsen6.aynaott.com/55xNrLdf/index.m3u8
 https://app.ncare.live/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI2/ntvuk00332211.stream/playlist.m3u8
 https://byphdgllyk.gpcdn.net/hls/deeptotv/index.m3u8
 https://d3qs3d2rkhfqrt.cloudfront.net/out/v1/7ff57cc9046b4c188b51a0d506f36e7f/index_3.m3u8
 https://vods2.aynaott.com/gseriesDrama/index.m3u8
 https://tvsen6.aynaott.com/kolkatatv/index.m3u8
 https://streams2.sofast.tv/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/eea68b79-bfe2-451e-a227-d637a5b9548a/manifest.m3u8
+https://tvsen6.aynaott.com/mzwbzfZ4/index.m3u8
 https://5c7b683162943.streamlock.net/live/ngrp:sportsone_all/playlist.m3u8
 https://streams2.sofast.tv/sofastplayout/WiseM3U8_1/master.m3u8
 https://g4wlkwx8l23a-hls-live.5centscdn.com/HUM/271ddf829afeece44d8732757fba1a66.sdp/playlist_dvr.m3u8
@@ -79,11 +82,12 @@ https://s.emisoras.tv:8081/diostevekids/index.m3u8
 https://moonbug-rokuus.amagi.tv/playlist.m3u8
 https://3abn.bozztv.com/3abn2/Kids_live/smil:Kids_live.smil/playlist.m3u8
 https://tvsen6.aynaott.com/TVCArabicKids/index.m3u8
+https://tvsen6.aynaott.com/CiPT1VTG8bVekeAZiibd/index.m3u8
 https://autentic-adventure-earth-1-eu.rakuten.wurl.tv/playlist.m3u8
 https://a-cdn.klowdtv.com/live1/oan_720p/playlist.m3u8
 https://27c980761ff9437d929e64647afe183a.mediatailor.us-east-1.amazonaws.com/v1/master/44f73ba4d03e9607dcd9bebdcb8494d86964f1d8/RakutenTV-eu_TravelXP/playlist.m3u8
 https://tvsen1.aynaott.com/bB3A5dyq/index.m3u8
 https://livecdn.live247stream.com/discoverpakistan/web/playlist.m3u8
-https://dyjmyiv3bp2ez.cloudfront.net/pub-iotv9banaen8yq/liveabr/playlist.m3u8
-https://tvsen6.aynaott.com/3Cb2WLFz/index.m3u8
+https://tvsen6.aynaott.com/sMqhLN6n/index.m3u8
 https://tvsen6.aynaott.com/hT5jHczt/index.m3u8
+https://dyjmyiv3bp2ez.cloudfront.net/pub-iotv9banaen8yq/liveabr/playlist.m3u8

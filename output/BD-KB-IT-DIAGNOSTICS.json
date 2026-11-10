@@ -50,6 +50,6 @@
     }
   ],
   "pages_fetched": 6,
-  "channels_detected": 89,
+  "channels_detected": 93,
   "note": "A detected channel requires a name and an M3U8 URL in related JSON data."
 }
