@@ -238,6 +238,13 @@
     "url": "https://tvsen6.aynaott.com/TjGR1GcxKetHNVcMVxbq/index.m3u8"
   },
   {
+    "id": "019de785-393b-7285-8d1f-87bdfc695eb2",
+    "name": "Sangeet Bangla",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen6.aynaott.com/hT5jHczt/index.m3u8"
+  },
+  {
     "id": "019efa5d-2ed5-7e82-9979-3e47ea154aa7",
     "name": "News",
     "logo": "",
@@ -287,13 +294,6 @@
     "url": "https://tvsen6.aynaott.com/cp24/index.m3u8"
   },
   {
-    "id": "019de785-3b94-797d-aeee-9faee1bc9b40",
-    "name": "Fox News",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen6.aynaott.com/foxnews/index.m3u8"
-  },
-  {
     "id": "019de785-3b90-744e-bd01-4b335dc7cb0b",
     "name": "Sky News",
     "logo": "",
@@ -320,6 +320,13 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://tvsen6.aynaott.com/faGd3tuq/index.m3u8"
+  },
+  {
+    "id": "019de785-3b59-7a32-a356-afc80c069215",
+    "name": "News 1 India",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen6.aynaott.com/TaVfw58T/index.m3u8"
   },
   {
     "id": "019de785-3bfa-71a7-92c2-a1cad28b99e5",
@@ -371,27 +378,6 @@
     "url": "https://tvsen6.aynaott.com/foxbusiness/index.m3u8"
   },
   {
-    "id": "019de785-3bc3-7f1b-9825-7f2e4bd0ad29",
-    "name": "CBS TV",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen3.aynaott.com/34fJSjZP/index.m3u8"
-  },
-  {
-    "id": "019de785-3bc5-70aa-b7d9-555b10cb474f",
-    "name": "USA TV",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen3.aynaott.com/dbbcY6NG/index.m3u8"
-  },
-  {
-    "id": "019de785-3bc7-7ba1-b72d-13662809fa0b",
-    "name": "FX TV",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen3.aynaott.com/jTqkTE8W/index.m3u8"
-  },
-  {
     "id": "019de785-3baa-7783-bf80-236068ce4990",
     "name": "Wion",
     "logo": "",
@@ -413,13 +399,6 @@
     "url": "https://4397879b.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/UmFrdXRlblRWLWRlX0ZJRkFQbHVzR2VybWFuX0hMUw/playlist.m3u8"
   },
   {
-    "id": "019de785-3bb1-775b-9c32-aad40ee46faf",
-    "name": "Discovery HD",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen3.aynaott.com/Zht5VqBb/index.m3u8"
-  },
-  {
     "id": "019de785-3b6b-7874-988b-5d148182b02d",
     "name": "Hindi Movie Classic 24",
     "logo": "",
@@ -427,25 +406,11 @@
     "url": "https://vods2.aynaott.com/hindimovies/index.m3u8"
   },
   {
-    "id": "019de785-3bac-72a7-b7ff-9d20d69bb27d",
-    "name": "Nat Geo TV",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen3.aynaott.com/7mm4pwCy/index.m3u8"
-  },
-  {
     "id": "019efa45-eb97-7633-b4b2-682cef878a7e",
     "name": "Talk Sport",
     "logo": "",
     "group": "Uncategorized",
     "url": "https://tvsen6.aynaott.com/talkSPORT/index.m3u8"
-  },
-  {
-    "id": "019efa45-e724-7ca0-90fd-8a837b01220c",
-    "name": "Goldmines Bollywood",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen6.aynaott.com/55xNrLdf/index.m3u8"
   },
   {
     "id": "019efa45-e6cf-77d1-ab66-0528b71c3826",
@@ -460,13 +425,6 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://byphdgllyk.gpcdn.net/hls/deeptotv/index.m3u8"
-  },
-  {
-    "id": "019de785-3bb9-7ee4-8c94-b23590436802",
-    "name": "HBO 2",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen3.aynaott.com/u3NjUrny/index.m3u8"
   },
   {
     "id": "019de785-39af-74c7-ad3c-bb81cae61141",
@@ -497,20 +455,6 @@
     "url": "https://streams2.sofast.tv/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/eea68b79-bfe2-451e-a227-d637a5b9548a/manifest.m3u8"
   },
   {
-    "id": "019de785-3bb5-776c-a07f-e00276c4629e",
-    "name": "Animal Planet HD",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen3.aynaott.com/wpa56Uk3/index.m3u8"
-  },
-  {
-    "id": "019de785-399b-79d8-9d87-854339381669",
-    "name": "Khushboo",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen6.aynaott.com/mzwbzfZ4/index.m3u8"
-  },
-  {
     "id": "019de785-39fd-7973-b24f-0a07344fa15f",
     "name": "Bahrain Sports 1",
     "logo": "",
@@ -523,13 +467,6 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://streams2.sofast.tv/sofastplayout/WiseM3U8_1/master.m3u8"
-  },
-  {
-    "id": "019de785-3c17-7ee9-9f97-7bc4e8bd84e7",
-    "name": "MADANI TV",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen3.aynaott.com/z24qLsqV/index.m3u8"
   },
   {
     "id": "019dd930-8ca8-7108-a445-824ff552eb09",
@@ -558,13 +495,6 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://tvsen6.aynaott.com/MarqueeSportsNetwork/index.m3u8"
-  },
-  {
-    "id": "019de785-3bcb-7259-a57e-958eec7798ae",
-    "name": "YTV",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen3.aynaott.com/uYpFg3RV/index.m3u8"
   },
   {
     "id": "019de785-39e6-7f60-8105-3113bd407d09",
@@ -658,20 +588,6 @@
     "url": "https://27c980761ff9437d929e64647afe183a.mediatailor.us-east-1.amazonaws.com/v1/master/44f73ba4d03e9607dcd9bebdcb8494d86964f1d8/RakutenTV-eu_TravelXP/playlist.m3u8"
   },
   {
-    "id": "019de785-3c13-703e-b125-6fe000541d15",
-    "name": "Deen TV",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen3.aynaott.com/TJcnZW3U/index.m3u8"
-  },
-  {
-    "id": "019de785-3c08-74f1-942b-3613fd2d61cf",
-    "name": "Iqra Bangla",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen3.aynaott.com/EuEy5mBW/index.m3u8"
-  },
-  {
     "id": "019de785-3c04-7852-b09a-dbcacbe4740e",
     "name": "Islam TV",
     "logo": "",
@@ -686,11 +602,18 @@
     "url": "https://livecdn.live247stream.com/discoverpakistan/web/playlist.m3u8"
   },
   {
-    "id": "019de785-3be0-7c5b-ad73-e7b18ab18245",
-    "name": "Travel Channel",
+    "id": "019efa45-e724-7ca0-90fd-8a837b01220c",
+    "name": "Goldmines Bollywood",
     "logo": "",
     "group": "Uncategorized",
-    "url": "https://tvsen3.aynaott.com/sFwCR6Fu/index.m3u8"
+    "url": "https://tvsen6.aynaott.com/55xNrLdf/index.m3u8"
+  },
+  {
+    "id": "019de785-3a47-7ef0-a5aa-b31bc6b7d02e",
+    "name": "9X Tashan",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen6.aynaott.com/sMqhLN6n/index.m3u8"
   },
   {
     "id": "019de785-399f-7d6a-9f41-dc7f834b3300",
