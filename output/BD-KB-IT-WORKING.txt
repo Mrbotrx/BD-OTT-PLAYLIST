@@ -32,7 +32,6 @@ https://tvsen6.aynaott.com/y0q9eFAuquAtvTxRzUHq/index.m3u8
 https://tvsen6.aynaott.com/XMpHaEf0ANBhv8w6NWR7/index.m3u8
 https://tvsen6.aynaott.com/LeUAm4F1iixYns3s3Non/index.m3u8
 https://tvsen6.aynaott.com/TjGR1GcxKetHNVcMVxbq/index.m3u8
-https://tvsen6.aynaott.com/hT5jHczt/index.m3u8
 https://tvsen1.aynaott.com/shn6jGTk/index.m3u8
 https://tvsen6.aynaott.com/cnn/index.m3u8
 https://live-hls-apps-aje-fa.getaj.net/AJE/index.m3u8
@@ -40,10 +39,10 @@ https://tvsen6.aynaott.com/bloombergtv/index.m3u8
 https://tvsen6.aynaott.com/ABCxzdsdNews/index.m3u8
 https://tvsen6.aynaott.com/cnbc/index.m3u8
 https://tvsen6.aynaott.com/cp24/index.m3u8
+https://tvsen6.aynaott.com/foxnews/index.m3u8
 https://tvsen5.aynaott.com/skynews/index.m3u8
 https://mediaserver.abnvideos.com/streams/abnurdu.m3u8
 https://feeds.intoday.in/hltapps/api/master.m3u8
-https://tvsen6.aynaott.com/faGd3tuq/index.m3u8
 https://tvsen6.aynaott.com/TaVfw58T/index.m3u8
 https://cdn-ue1-prod.tsv2.amagi.tv/linear/amg00684-accuweather-accuweather-plex/playlist.m3u8
 https://247wlive.foxweather.com/stream/index.m3u8
@@ -55,6 +54,7 @@ https://tvsen6.aynaott.com/foxbusiness/index.m3u8
 https://d7x8z4yuq42qn.cloudfront.net/index_7.m3u8
 https://live-bangla.akamaized.net/liveabr/playlist.m3u8
 https://4397879b.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/UmFrdXRlblRWLWRlX0ZJRkFQbHVzR2VybWFuX0hMUw/playlist.m3u8
+https://5dd3981940faa.streamlock.net:443/thikanatv/thikanatv/playlist.m3u8
 https://vods2.aynaott.com/hindimovies/index.m3u8
 https://tvsen6.aynaott.com/talkSPORT/index.m3u8
 https://app.ncare.live/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI2/ntvuk00332211.stream/playlist.m3u8
@@ -84,7 +84,6 @@ https://a-cdn.klowdtv.com/live1/oan_720p/playlist.m3u8
 https://27c980761ff9437d929e64647afe183a.mediatailor.us-east-1.amazonaws.com/v1/master/44f73ba4d03e9607dcd9bebdcb8494d86964f1d8/RakutenTV-eu_TravelXP/playlist.m3u8
 https://tvsen1.aynaott.com/bB3A5dyq/index.m3u8
 https://livecdn.live247stream.com/discoverpakistan/web/playlist.m3u8
-https://tvsen6.aynaott.com/55xNrLdf/index.m3u8
-https://tvsen6.aynaott.com/sMqhLN6n/index.m3u8
 https://dyjmyiv3bp2ez.cloudfront.net/pub-iotv9banaen8yq/liveabr/playlist.m3u8
 https://tvsen6.aynaott.com/3Cb2WLFz/index.m3u8
+https://tvsen6.aynaott.com/hT5jHczt/index.m3u8
