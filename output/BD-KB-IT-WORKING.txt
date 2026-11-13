@@ -13,6 +13,7 @@ https://tvsen6.aynaott.com/cdgr3tw6WoG7JyRnLbi0/index.m3u8
 https://tvsen6.aynaott.com/YrVDF8gujkdh/index.m3u8
 https://tvsen6.aynaott.com/pF66Tkz0qFwP2aMMqHyt/index.m3u8
 https://tvsen6.aynaott.com/da6WMXAk/index.m3u8
+https://tvsen5.aynaott.com/asdfadsf/index.m3u8
 https://tvsen5.aynaott.com/TnMn5kZz8aLmjklkk/index.m3u8
 https://tvsen5.aynaott.com/kP9vX2mZ7qL5wN3t/index.m3u8
 https://tvsen6.aynaott.com/nfl/index.m3u8
@@ -42,10 +43,11 @@ https://tvsen6.aynaott.com/foxnews/index.m3u8
 https://tvsen5.aynaott.com/skynews/index.m3u8
 https://mediaserver.abnvideos.com/streams/abnurdu.m3u8
 https://feeds.intoday.in/hltapps/api/master.m3u8
+https://tvsen6.aynaott.com/faGd3tuq/index.m3u8
+https://tvsen6.aynaott.com/TaVfw58T/index.m3u8
 https://cdn-ue1-prod.tsv2.amagi.tv/linear/amg00684-accuweather-accuweather-plex/playlist.m3u8
 https://247wlive.foxweather.com/stream/index.m3u8
 https://jukin-weatherspy-2-in.samsung.wurl.tv/playlist.m3u8
-https://tvsen6.aynaott.com/mtv/index.m3u8
 https://tvsen6.aynaott.com/fox5/index.m3u8
 https://tvsen6.aynaott.com/foxbusiness/index.m3u8
 https://d7x8z4yuq42qn.cloudfront.net/index_7.m3u8
@@ -66,7 +68,6 @@ https://streams2.sofast.tv/sofastplayout/WiseM3U8_1/master.m3u8
 https://g4wlkwx8l23a-hls-live.5centscdn.com/HUM/271ddf829afeece44d8732757fba1a66.sdp/playlist_dvr.m3u8
 https://tvsen6.aynaott.com/channel52/index.m3u8
 https://tvsen6.aynaott.com/amc/index.m3u8
-https://tvsen6.aynaott.com/MarqueeSportsNetwork/index.m3u8
 https://streams2.sofast.tv/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/e0b81a5c-6ab5-48cd-aaa9-f82de4ab5bf9/manifest.m3u8
 https://aenetworks-worldwartv-rakuten.amagi.tv/playlist.m3u8
 https://dfhsahpa45kk2.cloudfront.net/scheduler/scheduleMaster/476.m3u8
@@ -77,12 +78,14 @@ https://s.emisoras.tv:8081/diostevekids/index.m3u8
 https://moonbug-rokuus.amagi.tv/playlist.m3u8
 https://3abn.bozztv.com/3abn2/Kids_live/smil:Kids_live.smil/playlist.m3u8
 https://tvsen6.aynaott.com/TVCArabicKids/index.m3u8
+https://tvsen6.aynaott.com/CiPT1VTG8bVekeAZiibd/index.m3u8
 https://autentic-adventure-earth-1-eu.rakuten.wurl.tv/playlist.m3u8
 https://a-cdn.klowdtv.com/live1/oan_720p/playlist.m3u8
 https://27c980761ff9437d929e64647afe183a.mediatailor.us-east-1.amazonaws.com/v1/master/44f73ba4d03e9607dcd9bebdcb8494d86964f1d8/RakutenTV-eu_TravelXP/playlist.m3u8
 https://tvsen1.aynaott.com/bB3A5dyq/index.m3u8
 https://livecdn.live247stream.com/discoverpakistan/web/playlist.m3u8
 https://tvsen6.aynaott.com/sMqhLN6n/index.m3u8
+https://tvsen6.aynaott.com/hT5jHczt/index.m3u8
 https://tvsen6.aynaott.com/mzwbzfZ4/index.m3u8
 https://dyjmyiv3bp2ez.cloudfront.net/pub-iotv9banaen8yq/liveabr/playlist.m3u8
 https://tvsen6.aynaott.com/3Cb2WLFz/index.m3u8

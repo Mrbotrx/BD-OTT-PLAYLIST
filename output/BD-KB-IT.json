@@ -105,6 +105,13 @@
     "url": "https://tvsen6.aynaott.com/da6WMXAk/index.m3u8"
   },
   {
+    "id": "019de785-3a0f-7a8d-aa40-1bc1d60c9817",
+    "name": "TNT Sport 1",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen5.aynaott.com/asdfadsf/index.m3u8"
+  },
+  {
     "id": "019de785-3962-77a1-8f50-c541bb5a02c7",
     "name": "T Sports HD",
     "logo": "",
@@ -308,6 +315,20 @@
     "url": "https://feeds.intoday.in/hltapps/api/master.m3u8"
   },
   {
+    "id": "019de785-3a3c-71e5-8c69-161f0f895a02",
+    "name": "Republic TV Bharat",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen6.aynaott.com/faGd3tuq/index.m3u8"
+  },
+  {
+    "id": "019de785-3b59-7a32-a356-afc80c069215",
+    "name": "News 1 India",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen6.aynaott.com/TaVfw58T/index.m3u8"
+  },
+  {
     "id": "019de785-3bfa-71a7-92c2-a1cad28b99e5",
     "name": "Accu Weather",
     "logo": "",
@@ -327,13 +348,6 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://jukin-weatherspy-2-in.samsung.wurl.tv/playlist.m3u8"
-  },
-  {
-    "id": "019de785-3b9c-7741-ad38-6473e3f02b5d",
-    "name": "MTV",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen6.aynaott.com/mtv/index.m3u8"
   },
   {
     "id": "019de785-3ba0-791c-8c0e-49ddadbe2415",
@@ -476,13 +490,6 @@
     "url": "https://tvsen6.aynaott.com/amc/index.m3u8"
   },
   {
-    "id": "019efa45-eb56-7241-b7d5-ebb6c8209ebb",
-    "name": "Marquee Sports Network",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen6.aynaott.com/MarqueeSportsNetwork/index.m3u8"
-  },
-  {
     "id": "019de785-39e6-7f60-8105-3113bd407d09",
     "name": "Xtrem Sports",
     "logo": "",
@@ -553,6 +560,13 @@
     "url": "https://tvsen6.aynaott.com/TVCArabicKids/index.m3u8"
   },
   {
+    "id": "019de785-3a49-76c5-baa6-12c71aa6e36e",
+    "name": "9x Jalwa",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen6.aynaott.com/CiPT1VTG8bVekeAZiibd/index.m3u8"
+  },
+  {
     "id": "019de785-3c27-75af-aecc-b972908c76b3",
     "name": "Adventure Earth",
     "logo": "",
@@ -593,6 +607,13 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://tvsen6.aynaott.com/sMqhLN6n/index.m3u8"
+  },
+  {
+    "id": "019de785-393b-7285-8d1f-87bdfc695eb2",
+    "name": "Sangeet Bangla",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen6.aynaott.com/hT5jHczt/index.m3u8"
   },
   {
     "id": "019de785-399b-79d8-9d87-854339381669",
