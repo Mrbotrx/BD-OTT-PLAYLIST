@@ -69,8 +69,6 @@ https://tvsen6.aynaott.com/TjGR1GcxKetHNVcMVxbq/index.m3u8
 https://tvsen6.aynaott.com/hT5jHczt/index.m3u8
 #EXTINF:-1 tvg-id="019efa5d-2ed5-7e82-9979-3e47ea154aa7" tvg-name="News" tvg-logo="" group-title="Uncategorized",News
 https://tvsen1.aynaott.com/shn6jGTk/index.m3u8
-#EXTINF:-1 tvg-id="019de785-3b86-739c-ae1e-0e7c43b5b36d" tvg-name="DW News" tvg-logo="" group-title="Uncategorized",DW News
-https://tvsen6.aynaott.com/Qq3s5WR2/index.m3u8
 #EXTINF:-1 tvg-id="019de785-3b80-71c1-84a7-8a74b1a63534" tvg-name="CNN" tvg-logo="" group-title="Uncategorized",CNN
 https://tvsen6.aynaott.com/cnn/index.m3u8
 #EXTINF:-1 tvg-id="019de785-3b82-7f2d-a547-3c57eaa3dc10" tvg-name="Aljazeera News" tvg-logo="" group-title="Uncategorized",Aljazeera News
@@ -91,12 +89,16 @@ https://tvsen5.aynaott.com/skynews/index.m3u8
 https://mediaserver.abnvideos.com/streams/abnurdu.m3u8
 #EXTINF:-1 tvg-id="019de785-3a43-72bb-8d94-e1309e246905" tvg-name="India Today" tvg-logo="" group-title="Uncategorized",India Today
 https://feeds.intoday.in/hltapps/api/master.m3u8
+#EXTINF:-1 tvg-id="019de785-3b59-7a32-a356-afc80c069215" tvg-name="News 1 India" tvg-logo="" group-title="Uncategorized",News 1 India
+https://tvsen6.aynaott.com/TaVfw58T/index.m3u8
 #EXTINF:-1 tvg-id="019de785-3bfa-71a7-92c2-a1cad28b99e5" tvg-name="Accu Weather" tvg-logo="" group-title="Uncategorized",Accu Weather
 https://cdn-ue1-prod.tsv2.amagi.tv/linear/amg00684-accuweather-accuweather-plex/playlist.m3u8
 #EXTINF:-1 tvg-id="019de785-3bfc-77c2-821f-120164b37e37" tvg-name="Fox Weather" tvg-logo="" group-title="Uncategorized",Fox Weather
 https://247wlive.foxweather.com/stream/index.m3u8
 #EXTINF:-1 tvg-id="019de785-3c00-718e-9487-01b8e71feb2d" tvg-name="Weather SPY" tvg-logo="" group-title="Uncategorized",Weather SPY
 https://jukin-weatherspy-2-in.samsung.wurl.tv/playlist.m3u8
+#EXTINF:-1 tvg-id="019de785-3b9c-7741-ad38-6473e3f02b5d" tvg-name="MTV" tvg-logo="" group-title="Uncategorized",MTV
+https://tvsen6.aynaott.com/mtv/index.m3u8
 #EXTINF:-1 tvg-id="019de785-3ba0-791c-8c0e-49ddadbe2415" tvg-name="Fox 5" tvg-logo="" group-title="Uncategorized",Fox 5
 https://tvsen6.aynaott.com/fox5/index.m3u8
 #EXTINF:-1 tvg-id="019de785-3ba2-744b-8df9-2fbba4e15303" tvg-name="Fox business" tvg-logo="" group-title="Uncategorized",Fox business
@@ -113,6 +115,8 @@ https://5dd3981940faa.streamlock.net:443/thikanatv/thikanatv/playlist.m3u8
 https://vods2.aynaott.com/hindimovies/index.m3u8
 #EXTINF:-1 tvg-id="019efa45-eb97-7633-b4b2-682cef878a7e" tvg-name="Talk Sport" tvg-logo="" group-title="Uncategorized",Talk Sport
 https://tvsen6.aynaott.com/talkSPORT/index.m3u8
+#EXTINF:-1 tvg-id="019efa45-e724-7ca0-90fd-8a837b01220c" tvg-name="Goldmines Bollywood" tvg-logo="" group-title="Uncategorized",Goldmines Bollywood
+https://tvsen6.aynaott.com/55xNrLdf/index.m3u8
 #EXTINF:-1 tvg-id="019efa45-e6cf-77d1-ab66-0528b71c3826" tvg-name="NTV Europe" tvg-logo="" group-title="Uncategorized",NTV Europe
 https://app.ncare.live/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI2/ntvuk00332211.stream/playlist.m3u8
 #EXTINF:-1 tvg-id="019de785-3937-7e18-be86-47d2a7a4ab2d" tvg-name="Test Live TV" tvg-logo="" group-title="Uncategorized",Test Live TV
@@ -127,8 +131,6 @@ https://tvsen6.aynaott.com/kolkatatv/index.m3u8
 https://streams2.sofast.tv/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/eea68b79-bfe2-451e-a227-d637a5b9548a/manifest.m3u8
 #EXTINF:-1 tvg-id="019de785-39fd-7973-b24f-0a07344fa15f" tvg-name="Bahrain Sports 1" tvg-logo="" group-title="Uncategorized",Bahrain Sports 1
 https://5c7b683162943.streamlock.net/live/ngrp:sportsone_all/playlist.m3u8
-#EXTINF:-1 tvg-id="019de785-399b-79d8-9d87-854339381669" tvg-name="Khushboo" tvg-logo="" group-title="Uncategorized",Khushboo
-https://tvsen6.aynaott.com/mzwbzfZ4/index.m3u8
 #EXTINF:-1 tvg-id="019de785-39de-7743-b801-2f7bd6007fe5" tvg-name="Goal TV" tvg-logo="" group-title="Uncategorized",Goal TV
 https://streams2.sofast.tv/sofastplayout/WiseM3U8_1/master.m3u8
 #EXTINF:-1 tvg-id="019dd930-8ca8-7108-a445-824ff552eb09" tvg-name="Latest Live Tvs" tvg-logo="" group-title="Uncategorized",Latest Live Tvs
@@ -159,8 +161,6 @@ https://moonbug-rokuus.amagi.tv/playlist.m3u8
 https://3abn.bozztv.com/3abn2/Kids_live/smil:Kids_live.smil/playlist.m3u8
 #EXTINF:-1 tvg-id="019efa45-e9a4-7c81-b8bd-efdeb31d84ec" tvg-name="TVC Arabic Kids" tvg-logo="" group-title="Uncategorized",TVC Arabic Kids
 https://tvsen6.aynaott.com/TVCArabicKids/index.m3u8
-#EXTINF:-1 tvg-id="019de785-3a49-76c5-baa6-12c71aa6e36e" tvg-name="9x Jalwa" tvg-logo="" group-title="Uncategorized",9x Jalwa
-https://tvsen6.aynaott.com/CiPT1VTG8bVekeAZiibd/index.m3u8
 #EXTINF:-1 tvg-id="019de785-3c27-75af-aecc-b972908c76b3" tvg-name="Adventure Earth" tvg-logo="" group-title="Uncategorized",Adventure Earth
 https://autentic-adventure-earth-1-eu.rakuten.wurl.tv/playlist.m3u8
 #EXTINF:-1 tvg-id="019de785-3c29-7f47-bacb-ad12c787ba00" tvg-name="OAN" tvg-logo="" group-title="Uncategorized",OAN
@@ -171,6 +171,8 @@ https://27c980761ff9437d929e64647afe183a.mediatailor.us-east-1.amazonaws.com/v1/
 https://tvsen1.aynaott.com/bB3A5dyq/index.m3u8
 #EXTINF:-1 tvg-id="019de785-3c02-77aa-aa8c-5457eec46ac3" tvg-name="Discover Pikstan" tvg-logo="" group-title="Uncategorized",Discover Pikstan
 https://livecdn.live247stream.com/discoverpakistan/web/playlist.m3u8
+#EXTINF:-1 tvg-id="019de785-3a47-7ef0-a5aa-b31bc6b7d02e" tvg-name="9X Tashan" tvg-logo="" group-title="Uncategorized",9X Tashan
+https://tvsen6.aynaott.com/sMqhLN6n/index.m3u8
 #EXTINF:-1 tvg-id="019de785-399f-7d6a-9f41-dc7f834b3300" tvg-name="TV9 Bangla" tvg-logo="" group-title="Uncategorized",TV9 Bangla
 https://dyjmyiv3bp2ez.cloudfront.net/pub-iotv9banaen8yq/liveabr/playlist.m3u8
 #EXTINF:-1 tvg-id="019de785-3a38-7452-8cf2-98336ef120ff" tvg-name="Network 10" tvg-logo="" group-title="Uncategorized",Network 10
