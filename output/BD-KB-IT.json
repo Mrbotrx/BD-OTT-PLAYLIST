@@ -7,53 +7,11 @@
     "url": "https://tvsen6.aynaott.com/FNHpYvGZ7FkCE10PwTHm/index.m3u8"
   },
   {
-    "id": "019de785-3955-7c15-983a-4bc06362816a",
-    "name": "NTV",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen5.aynaott.com/xV4jEKf3D9zc/index.m3u8"
-  },
-  {
-    "id": "019de785-3957-788f-a366-97dc52d1eced",
-    "name": "Bangla Vision",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen5.aynaott.com/tgUzpPc9r6xw/index.m3u8"
-  },
-  {
-    "id": "019de785-3959-77e1-84fb-723fe5548b8a",
-    "name": "RTV",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen5.aynaott.com/ba47dHpDk3Se/index.m3u8"
-  },
-  {
-    "id": "019efa45-ef0a-7e72-86c1-af820f1f22e7",
-    "name": "ATN Bangla",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen5.aynaott.com/P3y2URgG7LDe/index.m3u8"
-  },
-  {
-    "id": "019de785-395b-7132-9cc9-b3571e766644",
-    "name": "ETV",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen5.aynaott.com/SyQuXz8sC3TB/index.m3u8"
-  },
-  {
     "id": "019de785-395d-7a37-8097-0780a16dc766",
     "name": "Maasranga TV",
     "logo": "",
     "group": "Uncategorized",
     "url": "https://tvsen6.aynaott.com/maasrangatv/index.m3u8"
-  },
-  {
-    "id": "019de785-3960-7cad-a051-6b707a28890b",
-    "name": "Deepto TV",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen5.aynaott.com/tK2BNdfsdfsdf/index.m3u8"
   },
   {
     "id": "019de785-3964-7509-9edd-8ad75adc1a89",
@@ -105,27 +63,6 @@
     "url": "https://tvsen6.aynaott.com/da6WMXAk/index.m3u8"
   },
   {
-    "id": "019de785-3a0f-7a8d-aa40-1bc1d60c9817",
-    "name": "TNT Sport 1",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen5.aynaott.com/asdfadsf/index.m3u8"
-  },
-  {
-    "id": "019de785-3962-77a1-8f50-c541bb5a02c7",
-    "name": "T Sports HD",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen5.aynaott.com/TnMn5kZz8aLmjklkk/index.m3u8"
-  },
-  {
-    "id": "019de785-39bc-7bd5-b9e5-bab23ceba9ea",
-    "name": "PTV Sports",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen5.aynaott.com/kP9vX2mZ7qL5wN3t/index.m3u8"
-  },
-  {
     "id": "019de785-39ef-748a-9af9-aa3d3f488760",
     "name": "NFL Network",
     "logo": "",
@@ -140,6 +77,13 @@
     "url": "https://tvsen6.aynaott.com/M2W2UR49dmeKbZnmdRzN/index.m3u8"
   },
   {
+    "id": "019de785-396a-7e3b-ae50-1d20c8ce2323",
+    "name": "Independent TV",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen6.aynaott.com/Wef2Vj67njeYGDqQNFB9/index.m3u8"
+  },
+  {
     "id": "019de785-3976-7d3f-ba88-3ab13963f65d",
     "name": "Desh TV",
     "logo": "",
@@ -152,6 +96,13 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://tvsen6.aynaott.com/1d3uG9VCgrR9DRtWZM57/index.m3u8"
+  },
+  {
+    "id": "019de785-3970-7fa3-a850-d2ca0e07c1e0",
+    "name": "Channel 9",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen6.aynaott.com/kajlsd57jnzxyo/index.m3u8"
   },
   {
     "id": "019de785-396e-7c75-b530-cb197f010279",
@@ -259,20 +210,6 @@
     "url": "https://tvsen6.aynaott.com/bloombergtv/index.m3u8"
   },
   {
-    "id": "019de785-3b8a-7550-9145-b7491e246d50",
-    "name": "ABC News",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen6.aynaott.com/ABCxzdsdNews/index.m3u8"
-  },
-  {
-    "id": "019de785-3b8c-7795-b739-15e0a02e5237",
-    "name": "CNBC TV",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen6.aynaott.com/cnbc/index.m3u8"
-  },
-  {
     "id": "019de785-3b84-75ce-b64d-bd376de18c49",
     "name": "CP 24",
     "logo": "",
@@ -287,13 +224,6 @@
     "url": "https://tvsen6.aynaott.com/foxnews/index.m3u8"
   },
   {
-    "id": "019de785-3b90-744e-bd01-4b335dc7cb0b",
-    "name": "Sky News",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen5.aynaott.com/skynews/index.m3u8"
-  },
-  {
     "id": "019de785-3c2b-750a-a77e-06dda24907f2",
     "name": "ABN",
     "logo": "",
@@ -306,13 +236,6 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://feeds.intoday.in/hltapps/api/master.m3u8"
-  },
-  {
-    "id": "019de785-3b59-7a32-a356-afc80c069215",
-    "name": "News 1 India",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen6.aynaott.com/TaVfw58T/index.m3u8"
   },
   {
     "id": "019de785-3bfa-71a7-92c2-a1cad28b99e5",
@@ -341,20 +264,6 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://tvsen6.aynaott.com/mtv/index.m3u8"
-  },
-  {
-    "id": "019de785-3ba0-791c-8c0e-49ddadbe2415",
-    "name": "Fox 5",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen6.aynaott.com/fox5/index.m3u8"
-  },
-  {
-    "id": "019de785-3ba2-744b-8df9-2fbba4e15303",
-    "name": "Fox business",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen6.aynaott.com/foxbusiness/index.m3u8"
   },
   {
     "id": "019de785-3baa-7783-bf80-236068ce4990",
@@ -399,13 +308,6 @@
     "url": "https://tvsen6.aynaott.com/talkSPORT/index.m3u8"
   },
   {
-    "id": "019efa45-e724-7ca0-90fd-8a837b01220c",
-    "name": "Goldmines Bollywood",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen6.aynaott.com/55xNrLdf/index.m3u8"
-  },
-  {
     "id": "019efa45-e6cf-77d1-ab66-0528b71c3826",
     "name": "NTV Europe",
     "logo": "",
@@ -448,6 +350,13 @@
     "url": "https://streams2.sofast.tv/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/eea68b79-bfe2-451e-a227-d637a5b9548a/manifest.m3u8"
   },
   {
+    "id": "019de785-3ba0-791c-8c0e-49ddadbe2415",
+    "name": "Fox 5",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen6.aynaott.com/fox5/index.m3u8"
+  },
+  {
     "id": "019de785-39fd-7973-b24f-0a07344fa15f",
     "name": "Bahrain Sports 1",
     "logo": "",
@@ -460,6 +369,13 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://streams2.sofast.tv/sofastplayout/WiseM3U8_1/master.m3u8"
+  },
+  {
+    "id": "019de785-399b-79d8-9d87-854339381669",
+    "name": "Khushboo",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen6.aynaott.com/mzwbzfZ4/index.m3u8"
   },
   {
     "id": "019dd930-8ca8-7108-a445-824ff552eb09",
@@ -476,11 +392,11 @@
     "url": "https://tvsen6.aynaott.com/channel52/index.m3u8"
   },
   {
-    "id": "019f400c-f681-70a8-a70f-9858e64716be",
-    "name": "Amc",
+    "id": "019efa45-ef0a-7e72-86c1-af820f1f22e7",
+    "name": "ATN Bangla",
     "logo": "",
     "group": "Uncategorized",
-    "url": "https://tvsen6.aynaott.com/amc/index.m3u8"
+    "url": "https://tvsen5.aynaott.com/P3y2URgG7LDe/index.m3u8"
   },
   {
     "id": "019efa45-eb56-7241-b7d5-ebb6c8209ebb",
@@ -509,6 +425,27 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://dfhsahpa45kk2.cloudfront.net/scheduler/scheduleMaster/476.m3u8"
+  },
+  {
+    "id": "019de785-3962-77a1-8f50-c541bb5a02c7",
+    "name": "T Sports HD",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen5.aynaott.com/TnMn5kZz8aLmjklkk/index.m3u8"
+  },
+  {
+    "id": "019de785-39bc-7bd5-b9e5-bab23ceba9ea",
+    "name": "PTV Sports",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen5.aynaott.com/kP9vX2mZ7qL5wN3t/index.m3u8"
+  },
+  {
+    "id": "019de785-3a0f-7a8d-aa40-1bc1d60c9817",
+    "name": "TNT Sport 1",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen5.aynaott.com/asdfadsf/index.m3u8"
   },
   {
     "id": "019efa5d-2ef2-7732-99d5-9cae01288b1a",
@@ -560,6 +497,13 @@
     "url": "https://tvsen6.aynaott.com/TVCArabicKids/index.m3u8"
   },
   {
+    "id": "019f400c-f681-70a8-a70f-9858e64716be",
+    "name": "Amc",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen6.aynaott.com/amc/index.m3u8"
+  },
+  {
     "id": "019de785-3c27-75af-aecc-b972908c76b3",
     "name": "Adventure Earth",
     "logo": "",
@@ -607,12 +551,5 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://dyjmyiv3bp2ez.cloudfront.net/pub-iotv9banaen8yq/liveabr/playlist.m3u8"
-  },
-  {
-    "id": "019de785-3a38-7452-8cf2-98336ef120ff",
-    "name": "Network 10",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen6.aynaott.com/3Cb2WLFz/index.m3u8"
   }
 ]
