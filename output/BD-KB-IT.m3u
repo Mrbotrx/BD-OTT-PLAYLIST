@@ -91,6 +91,8 @@ https://tvsen5.aynaott.com/skynews/index.m3u8
 https://mediaserver.abnvideos.com/streams/abnurdu.m3u8
 #EXTINF:-1 tvg-id="019de785-3a43-72bb-8d94-e1309e246905" tvg-name="India Today" tvg-logo="" group-title="Uncategorized",India Today
 https://feeds.intoday.in/hltapps/api/master.m3u8
+#EXTINF:-1 tvg-id="019de785-3a3c-71e5-8c69-161f0f895a02" tvg-name="Republic TV Bharat" tvg-logo="" group-title="Uncategorized",Republic TV Bharat
+https://tvsen6.aynaott.com/faGd3tuq/index.m3u8
 #EXTINF:-1 tvg-id="019de785-3b5b-7c37-a953-8eed8e882836" tvg-name="Sadhna Prime News" tvg-logo="" group-title="Uncategorized",Sadhna Prime News
 https://tvsen3.aynaott.com/P2hjvFHV/index.m3u8
 #EXTINF:-1 tvg-id="019de785-3bfa-71a7-92c2-a1cad28b99e5" tvg-name="Accu Weather" tvg-logo="" group-title="Uncategorized",Accu Weather
@@ -105,12 +107,16 @@ https://tvsen6.aynaott.com/mtv/index.m3u8
 https://tvsen6.aynaott.com/fox5/index.m3u8
 #EXTINF:-1 tvg-id="019de785-3ba2-744b-8df9-2fbba4e15303" tvg-name="Fox business" tvg-logo="" group-title="Uncategorized",Fox business
 https://tvsen6.aynaott.com/foxbusiness/index.m3u8
+#EXTINF:-1 tvg-id="019de785-3bc3-7f1b-9825-7f2e4bd0ad29" tvg-name="CBS TV" tvg-logo="" group-title="Uncategorized",CBS TV
+https://tvsen3.aynaott.com/34fJSjZP/index.m3u8
 #EXTINF:-1 tvg-id="019de785-3bc5-70aa-b7d9-555b10cb474f" tvg-name="USA TV" tvg-logo="" group-title="Uncategorized",USA TV
 https://tvsen3.aynaott.com/dbbcY6NG/index.m3u8
 #EXTINF:-1 tvg-id="019de785-3bc7-7ba1-b72d-13662809fa0b" tvg-name="FX TV" tvg-logo="" group-title="Uncategorized",FX TV
 https://tvsen3.aynaott.com/jTqkTE8W/index.m3u8
 #EXTINF:-1 tvg-id="019de785-3baa-7783-bf80-236068ce4990" tvg-name="Wion" tvg-logo="" group-title="Uncategorized",Wion
 https://d7x8z4yuq42qn.cloudfront.net/index_7.m3u8
+#EXTINF:-1 tvg-id="019de785-39b1-7763-ad62-b9087039241f" tvg-name="Enter 10 Bangla" tvg-logo="" group-title="Uncategorized",Enter 10 Bangla
+https://live-bangla.akamaized.net/liveabr/playlist.m3u8
 #EXTINF:-1 tvg-id="019efa45-d8f0-7732-8263-6030073a34fe" tvg-name="FIFA+" tvg-logo="" group-title="Uncategorized",FIFA+
 https://4397879b.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/UmFrdXRlblRWLWRlX0ZJRkFQbHVzR2VybWFuX0hMUw/playlist.m3u8
 #EXTINF:-1 tvg-id="019de785-3bb1-775b-9c32-aad40ee46faf" tvg-name="Discovery HD" tvg-logo="" group-title="Uncategorized",Discovery HD

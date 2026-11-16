@@ -43,6 +43,7 @@ https://tvsen6.aynaott.com/foxnews/index.m3u8
 https://tvsen5.aynaott.com/skynews/index.m3u8
 https://mediaserver.abnvideos.com/streams/abnurdu.m3u8
 https://feeds.intoday.in/hltapps/api/master.m3u8
+https://tvsen6.aynaott.com/faGd3tuq/index.m3u8
 https://tvsen3.aynaott.com/P2hjvFHV/index.m3u8
 https://cdn-ue1-prod.tsv2.amagi.tv/linear/amg00684-accuweather-accuweather-plex/playlist.m3u8
 https://247wlive.foxweather.com/stream/index.m3u8
@@ -50,9 +51,11 @@ https://jukin-weatherspy-2-in.samsung.wurl.tv/playlist.m3u8
 https://tvsen6.aynaott.com/mtv/index.m3u8
 https://tvsen6.aynaott.com/fox5/index.m3u8
 https://tvsen6.aynaott.com/foxbusiness/index.m3u8
+https://tvsen3.aynaott.com/34fJSjZP/index.m3u8
 https://tvsen3.aynaott.com/dbbcY6NG/index.m3u8
 https://tvsen3.aynaott.com/jTqkTE8W/index.m3u8
 https://d7x8z4yuq42qn.cloudfront.net/index_7.m3u8
+https://live-bangla.akamaized.net/liveabr/playlist.m3u8
 https://4397879b.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/UmFrdXRlblRWLWRlX0ZJRkFQbHVzR2VybWFuX0hMUw/playlist.m3u8
 https://tvsen3.aynaott.com/Zht5VqBb/index.m3u8
 https://vods2.aynaott.com/hindimovies/index.m3u8

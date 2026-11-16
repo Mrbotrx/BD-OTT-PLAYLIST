@@ -315,6 +315,13 @@
     "url": "https://feeds.intoday.in/hltapps/api/master.m3u8"
   },
   {
+    "id": "019de785-3a3c-71e5-8c69-161f0f895a02",
+    "name": "Republic TV Bharat",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen6.aynaott.com/faGd3tuq/index.m3u8"
+  },
+  {
     "id": "019de785-3b5b-7c37-a953-8eed8e882836",
     "name": "Sadhna Prime News",
     "logo": "",
@@ -364,6 +371,13 @@
     "url": "https://tvsen6.aynaott.com/foxbusiness/index.m3u8"
   },
   {
+    "id": "019de785-3bc3-7f1b-9825-7f2e4bd0ad29",
+    "name": "CBS TV",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen3.aynaott.com/34fJSjZP/index.m3u8"
+  },
+  {
     "id": "019de785-3bc5-70aa-b7d9-555b10cb474f",
     "name": "USA TV",
     "logo": "",
@@ -383,6 +397,13 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://d7x8z4yuq42qn.cloudfront.net/index_7.m3u8"
+  },
+  {
+    "id": "019de785-39b1-7763-ad62-b9087039241f",
+    "name": "Enter 10 Bangla",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://live-bangla.akamaized.net/liveabr/playlist.m3u8"
   },
   {
     "id": "019efa45-d8f0-7732-8263-6030073a34fe",
