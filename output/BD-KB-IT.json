@@ -483,18 +483,18 @@
     "url": "https://app.ncare.live/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI2/ntvuk00332211.stream/playlist.m3u8"
   },
   {
-    "id": "019de785-3937-7e18-be86-47d2a7a4ab2d",
-    "name": "Test Live TV",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://byphdgllyk.gpcdn.net/hls/deeptotv/index.m3u8"
-  },
-  {
     "id": "019de785-3bb9-7ee4-8c94-b23590436802",
     "name": "HBO 2",
     "logo": "",
     "group": "Uncategorized",
     "url": "https://tvsen3.aynaott.com/u3NjUrny/index.m3u8"
+  },
+  {
+    "id": "019de785-3937-7e18-be86-47d2a7a4ab2d",
+    "name": "Test Live TV",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://byphdgllyk.gpcdn.net/hls/deeptotv/index.m3u8"
   },
   {
     "id": "019de785-39af-74c7-ad3c-bb81cae61141",
@@ -509,13 +509,6 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://vods2.aynaott.com/gseriesDrama/index.m3u8"
-  },
-  {
-    "id": "019de785-3a57-7892-b06f-caf61a17d1cb",
-    "name": "Goldmines Movies",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen3.aynaott.com/5CGfPvGp/index.m3u8"
   },
   {
     "id": "019de785-39a3-74dd-8ef6-fbe0295e1222",
@@ -544,13 +537,6 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://5c7b683162943.streamlock.net/live/ngrp:sportsone_all/playlist.m3u8"
-  },
-  {
-    "id": "019de785-399b-79d8-9d87-854339381669",
-    "name": "Khushboo",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen6.aynaott.com/mzwbzfZ4/index.m3u8"
   },
   {
     "id": "019de785-39de-7743-b801-2f7bd6007fe5",
@@ -637,6 +623,13 @@
     "url": "https://cdn.mycloudstream.io/hls/live/broadcast/nro19k2h/index.m3u8"
   },
   {
+    "id": "019de785-3a32-7736-87ef-a8588bdc159f",
+    "name": "Kids TV",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "http://origin5.mediacdn.ru/live/kidstv/index.m3u8"
+  },
+  {
     "id": "019de785-3a1c-7a97-a58d-01d956ebcfe9",
     "name": "Discovery Family",
     "logo": "",
@@ -663,20 +656,6 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://3abn.bozztv.com/3abn2/Kids_live/smil:Kids_live.smil/playlist.m3u8"
-  },
-  {
-    "id": "019efa45-e9a4-7c81-b8bd-efdeb31d84ec",
-    "name": "TVC Arabic Kids",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen6.aynaott.com/TVCArabicKids/index.m3u8"
-  },
-  {
-    "id": "019de785-3a49-76c5-baa6-12c71aa6e36e",
-    "name": "9x Jalwa",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen6.aynaott.com/CiPT1VTG8bVekeAZiibd/index.m3u8"
   },
   {
     "id": "019de785-3c27-75af-aecc-b972908c76b3",
@@ -728,13 +707,6 @@
     "url": "https://livecdn.live247stream.com/discoverpakistan/web/playlist.m3u8"
   },
   {
-    "id": "019de785-3a47-7ef0-a5aa-b31bc6b7d02e",
-    "name": "9X Tashan",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen6.aynaott.com/sMqhLN6n/index.m3u8"
-  },
-  {
     "id": "019de785-3be0-7c5b-ad73-e7b18ab18245",
     "name": "Travel Channel",
     "logo": "",
@@ -747,5 +719,12 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://dyjmyiv3bp2ez.cloudfront.net/pub-iotv9banaen8yq/liveabr/playlist.m3u8"
+  },
+  {
+    "id": "019de785-3a38-7452-8cf2-98336ef120ff",
+    "name": "Network 10",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen6.aynaott.com/3Cb2WLFz/index.m3u8"
   }
 ]
