@@ -1,9 +1,13 @@
-# Make by Kallyan Biswas
-# Facebook: Www.Facebook.com/kallyan.biswas.29
+<p align="center">
+  <img src="assets/logo.jpg" width="120" alt="BD-OTT-PLAYLIST logo" />
+</p>
 
 <p align="center">
-  <img src="assets/banner.jpg" alt="BD-OTT-PLAYLIST banner" width="90%" />
+  <img src="https://raw.githubusercontent.com/Mrbotrx/BD-OTT-PLAYLIST/refs/heads/main/state/1795333412190.jpg" alt="BD-OTT-PLAYLIST banner" width="90%" />
 </p>
+
+# Make by Kallyan Biswas
+# Facebook: Www.Facebook.com/kallyan.biswas.29
 
 <p align="center">
   <a href="https://github.com/Mrbotrx/BD-OTT-PLAYLIST/raw/main/india/India_vip.m3u">
