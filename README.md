@@ -1,10 +1,11 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Mrbotrx/Mrbotrx/refs/heads/main/IPTV_LINKS_LOGO.jpg" width="140" alt="BD OTT Playlist Logo"/>
+</p>
 Made by Kallyan Biswas
 
 Facebook: "Kallyan Biswas" (https://www.facebook.com/kallyan.biswas.29)
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/Mrbotrx/Mrbotrx/refs/heads/main/IPTV_LINKS_LOGO.jpg" width="140" alt="BD OTT Playlist Logo"/>
-</p><h1 align="center">BD-OTT-PLAYLIST</h1><p align="center">
+<h1 align="center">BD-OTT-PLAYLIST</h1><p align="center">
   <b>Advanced Auto-Updating IPTV Playlist System</b><br/>
   🇮🇳 India | 🇧🇩 Bangladesh | KB OTT
   <br/>
