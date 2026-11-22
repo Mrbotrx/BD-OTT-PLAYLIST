@@ -1,5 +1,5 @@
 """
-IPTV VIP Aggregator — India + Bangla (সব working চ্যানেল)
+IPTV VIP Aggregator — India + Bangla (সব working চ্যানেল, News সীমিত)
 Health-check, classification, caching & resilience.
 """
 import os
@@ -36,14 +36,45 @@ HEADER_TITLE = "Make by Kallyan Biswas"
 FB_LINK      = "Www.Facebook.com/kallyan.biswas.29"
 BOT_NAME     = "IND.bot"
 
-CHECK_TIMEOUT   = 6
-WORKERS         = 80
-MAX_PER_CAT     = 0      # 0 = সব candidate check হবে
-TOP_PER_CAT     = 0      # 0 = সব working চ্যানেল রাখা হবে
-MAX_LINKS_PER_NAME = 3   # একই নামের চ্যানেলের সর্বোচ্চ backup লিংক
-CHECK_CHUNK     = 4096
-CACHE_TTL       = 3600 * 3   # 3 ঘণ্টা, update cadence-এর সাথে মেলে
-DOWNLOAD_RETRY  = 2
+CHECK_TIMEOUT      = 6
+WORKERS            = 80
+MAX_PER_CAT        = 0       # 0 = সব candidate check হবে
+TOP_PER_CAT        = 0       # 0 = সীমা নেই (News আলাদা নিয়মে সীমিত)
+MAX_LINKS_PER_NAME = 3       # একই নামের চ্যানেলের সর্বোচ্চ backup লিংক
+CHECK_CHUNK        = 4096
+CACHE_TTL          = 3600 * 3   # 3 ঘণ্টা, update cadence-এর সাথে মেলে
+DOWNLOAD_RETRY     = 2
+
+# ---- News নিয়ম ----
+NEWS_CATEGORY = "News"
+NEWS_MAX      = 20           # News-এ সর্বোচ্চ entry (backup লিংকসহ)
+
+# জনপ্রিয় news channel — উপরের গুলো আগে নেওয়া হবে
+NEWS_PRIORITY = [
+    r"aaj\s*tak",
+    r"ndtv\s*india|ndtv\s*24",
+    r"india\s*today",
+    r"republic\s*bharat|republic\s*tv",
+    r"times\s*now",
+    r"zee\s*news",
+    r"abp\s*news|abp\s*ananda",
+    r"news\s*18|news18",
+    r"wion",
+    r"dd\s*news",
+    r"sudarshan",
+    r"cnn",
+    r"bbc",
+    r"channel\s*24",
+    r"channel\s*i\b",
+    r"ekattor",
+    r"jamuna",
+    r"somoy|shomoy",
+    r"desh\s*tv",
+    r"atn\s*news|atn\s*bangla",
+    r"independent\s*tv",
+    r"rtv",
+    r"btv",
+]
 
 LINK_LOGO = "https://raw.githubusercontent.com/Mrbotrx/Mrbotrx/refs/heads/main/IPTV_LINKS_LOGO.jpg"
 LINK_URL  = "https://github.com/Mrbotrx/Mrbotrx/raw/refs/heads/main/IPTV_LINKS_VIDEO.mp4"
@@ -117,6 +148,7 @@ CATEGORY_ORDER = [
 
 # Pre-compiled
 CATEGORY_PATTERNS = {k: re.compile(v, re.I) for k, v in CATEGORIES.items()}
+NEWS_PRIORITY_RE  = [re.compile(p, re.I) for p in NEWS_PRIORITY]
 HD_RE        = re.compile(r"\b(?:fhd|uhd|4k|hd|1080p?|720p?)\b", re.I)
 SD_RE        = re.compile(r"\b(?:sd|360p?|480p?)\b", re.I)
 ATTR_RE      = re.compile(r'([\w-]+)="([^"]*)"')
@@ -215,7 +247,7 @@ def classify(c: Channel) -> Optional[str]:
     ]
     fields = [f for f in fields if f]
 
-    # 1) Indian brand: Zee Bangla, Star Jalsha ইত্যাদি আগে ধরা হবে
+    # 1) Indian brand: Zee Bangla, Star Jalsha ইত্যাদি আগে
     for cat in BRAND_ORDER:
         if any(CATEGORY_PATTERNS[cat].search(f) for f in fields):
             return cat
@@ -320,6 +352,15 @@ def score_channel(c: Channel) -> float:
     return s
 
 
+def news_rank(c: Channel) -> int:
+    """জনপ্রিয় news channel-এর ক্রম; তালিকায় না থাকলে শেষে।"""
+    n = _normalize(c.name)
+    for i, pat in enumerate(NEWS_PRIORITY_RE):
+        if pat.search(n):
+            return i
+    return len(NEWS_PRIORITY_RE)
+
+
 # ================== SOURCE LOADER ==================
 def load_sources(session: requests.Session) -> list[Channel]:
     channels: list[Channel] = []
@@ -341,6 +382,32 @@ def load_sources(session: requests.Session) -> list[Channel]:
     if not channels:
         raise RuntimeError("কোনো source থেকে channel পাওয়া যায়নি; আগের playlist রাখা হলো")
     return channels
+
+
+# ================== PICKING ==================
+def pick_channels(cat: str, pool: list[Channel]) -> list[Channel]:
+    """একটি category থেকে চূড়ান্ত তালিকা বাছাই।
+    News: জনপ্রিয় channel আগে, মোট NEWS_MAX পর্যন্ত।
+    বাকিগুলো: score অনুযায়ী, সীমা TOP_PER_CAT (0 = সীমা নেই)।
+    """
+    if cat == NEWS_CATEGORY:
+        pool.sort(key=lambda c: (news_rank(c), c.score))
+        limit = NEWS_MAX
+    else:
+        pool.sort(key=lambda c: c.score)
+        limit = TOP_PER_CAT
+
+    picked: list[Channel] = []
+    per_name: dict[str, int] = {}
+    for c in pool:
+        key = c.name.strip().lower()
+        if per_name.get(key, 0) >= MAX_LINKS_PER_NAME:
+            continue
+        per_name[key] = per_name.get(key, 0) + 1
+        picked.append(c)
+        if limit > 0 and len(picked) >= limit:
+            break
+    return picked
 
 
 # ================== MAIN PIPELINE ==================
@@ -373,7 +440,7 @@ def build_playlist(skip_cache: bool = False, dry_run: bool = False) -> int:
         log.info("   candidates %-14s %d", cat, len(buckets[cat]))
     log.info("   unclassified        %d", unclassified)
 
-    # 4. Candidate selection (logo আগে, MAX_PER_CAT=0 হলে সব)
+    # 4. Candidate selection (logo আগে; MAX_PER_CAT=0 হলে সব)
     candidates: list[Channel] = []
     for cat in CATEGORY_ORDER:
         pool = sorted(buckets[cat], key=lambda x: not x.attrs.get("tvg-logo"))
@@ -415,25 +482,14 @@ def build_playlist(skip_cache: bool = False, dry_run: bool = False) -> int:
 
     log.info("working links: %d", len(alive))
 
-    # 6. Score & pick (একই নামে MAX_LINKS_PER_NAME পর্যন্ত backup)
+    # 6. Score & pick
     groups: dict[str, list[Channel]] = {}
     for cat in CATEGORY_ORDER:
         pool = [c for c in alive if c.cat == cat]
         for c in pool:
             c.score = score_channel(c)
-        pool.sort(key=lambda x: x.score)
-        picked: list[Channel] = []
-        per_name: dict[str, int] = {}
-        for c in pool:
-            key = c.name.strip().lower()
-            if per_name.get(key, 0) >= MAX_LINKS_PER_NAME:
-                continue
-            per_name[key] = per_name.get(key, 0) + 1
-            picked.append(c)
-            if TOP_PER_CAT > 0 and len(picked) >= TOP_PER_CAT:
-                break
-        groups[cat] = picked
-        log.info("   working/picked %-14s %d/%d", cat, len(pool), len(picked))
+        groups[cat] = pick_channels(cat, pool)
+        log.info("   working/picked %-14s %d/%d", cat, len(pool), len(groups[cat]))
 
     # 7. Guard
     if sum(len(v) for v in groups.values()) == 0:
@@ -452,8 +508,10 @@ def build_playlist(skip_cache: bool = False, dry_run: bool = False) -> int:
 # ================== OUTPUT ==================
 def write_playlist(groups: dict[str, list[Channel]]) -> int:
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-    non_empty = {k: v for k, v in groups.items() if v}
-    total = sum(len(v) + 1 for v in non_empty.values())   # +1 = IPTV LINKS প্রতি গ্রুপে
+
+    # প্রতিটি category/group-এ IPTV LINKS থাকবে, খালি group-এও
+    cats = list(CATEGORY_ORDER)
+    total = sum(len(groups.get(cat, [])) + 1 for cat in cats)
 
     lines = [
         "#EXTM3U",
@@ -464,11 +522,13 @@ def write_playlist(groups: dict[str, list[Channel]]) -> int:
         f"# Last updated: {now}",
         f"# Total entries: {total}",
     ]
-    for cat, items in non_empty.items():
+    for cat in cats:
+        items = groups.get(cat, [])
         lines.append(f"# [{cat}] channels: {len(items) + 1}")
     lines.append("")
 
-    for cat, items in non_empty.items():
+    for cat in cats:
+        items = groups.get(cat, [])
         lines += [
             f'#EXTINF:-1 tvg-id="" tvg-name="IPTV LINKS" tvg-logo="{LINK_LOGO}" '
             f'group-title="{cat}",IPTV LINKS',
