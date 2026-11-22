@@ -122,27 +122,7 @@ A green ✅ means the playlist was built and committed.
 
 Use the links in the [Playlists](#-playlists) table.
 
----
-
-## 🛠 Configuration
-
-### India + Bangla (`scripts/build_vip.py`)
-
-| Setting | Default | Meaning |
-|---|---|---|
-| `FIXED_MODE` | `"all_groups"` | `"all_groups"` adds an `IPTV LINKS` entry to every group · `"first_group_only"` adds it once · `"off"` removes it |
-| `NEWS_MAX` | `20` | Maximum entries in the News group (backup links included) |
-| `NEWS_PRIORITY` | list | Popular news channels, in priority order |
-| `OUTPUT_ORDER` | list | Group order in the playlist |
-| `TOP_PER_CAT` | `0` | Limit per group · `0` = no limit |
-| `MAX_LINKS_PER_NAME` | `0` | Backup links per channel · `0` = keep all working links |
-| `CHECK_TIMEOUT` | `10` | Seconds to wait for each stream |
-| `CHECK_RETRIES` | `1` | Extra attempts on network errors |
-| `WORKERS` | `80` | Parallel health checks |
-| `CACHE_TTL` | `3 h` | How long a working channel is cached |
-| `FAIL_TTL` | `30 min` | How long a failed channel is cached before rechecking |
-
----
+-
 
 ## 🩺 Troubleshooting
 
