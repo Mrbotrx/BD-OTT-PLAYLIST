@@ -35,6 +35,9 @@ LOGO_KEYS = ("logo", "image", "icon", "thumbnail", "poster", "tvg-logo")
 GROUP_KEYS = ("group", "category", "category_name", "group_title", "genre")
 URL_KEYS = ("url", "stream_url", "stream", "play_url", "link", "hls", "m3u8", "source")
 
+# Cursor-based pagination শুধু এই path-এর API-তে প্রযোজ্য
+CURSOR_API_PATH = "/api/v5/pages/live-tvs"
+
 
 def env_headers():
     headers = {"User-Agent": "BD-KB-IT/3.0", "Accept": "application/json"}
@@ -141,10 +144,10 @@ def pagination_info(data, current_url):
     inspect(data)
     if next_url:
         return urljoin(current_url, next_url), has_more, cursor
-    if has_more and cursor:
-        parsed = urlparse(current_url)
-        # This API exposes subsequent live-TV blocks at /blocks?cursor=...
-        base = f"{parsed.scheme}://{parsed.netloc}/api/v5/pages/live-tvs/blocks"
+    parsed = urlparse(current_url)
+    # Cursor URL শুধু সেই API-তে বানানো হবে যার path এই pattern-এর সাথে মেলে
+    if has_more and cursor and parsed.path.startswith(CURSOR_API_PATH):
+        base = f"{parsed.scheme}://{parsed.netloc}{CURSOR_API_PATH}/blocks"
         return f"{base}?cursor={requests.utils.quote(cursor, safe='')}", has_more, cursor
     return "", has_more, cursor
 
@@ -159,12 +162,27 @@ def fetch_pages(api_url, headers, max_pages=500):
         if not current or current in seen:
             break
         seen.add(current)
-        response = session.get(current, timeout=30)
-        response.raise_for_status()
+        try:
+            response = session.get(current, timeout=30)
+            response.raise_for_status()
+        except requests.HTTPError as exc:
+            status = exc.response.status_code if exc.response is not None else "unknown"
+            if page_no == 1:
+                raise RuntimeError(
+                    f"API first page returned HTTP {status}. "
+                    "BD_KB_IT_API_URL secret-এর endpoint সঠিক কিনা দেখুন।"
+                ) from None
+            # পরের page 404 হলে pagination শেষ ধরে নিন, আগের data রাখুন
+            diagnostics.append({"page": page_no, "http_status": status, "stopped": True})
+            break
+        except requests.RequestException as exc:
+            # URL না দেখিয়ে শুধু error-এর ধরন দেখানো হচ্ছে
+            raise RuntimeError(f"API page {page_no} request failed: {type(exc).__name__}") from None
+
         try:
             data = response.json()
         except ValueError as exc:
-            raise RuntimeError(f"API page {page_no} did not return JSON") from exc
+            raise RuntimeError(f"API page {page_no} did not return JSON") from None
         records = walk_records(data)
         all_records.extend(records)
         next_url, has_more, cursor = pagination_info(data, current)
@@ -210,14 +228,15 @@ def write_outputs(records, diagnostics):
             seen.add(url)
             unique.append(row)
 
+    def clean(v):
+        return str(v or "").replace('"', "'").replace("\r", " ").replace("\n", " ").strip()
+
     # Pinned entry is always first and is not subjected to API validation.
     lines = ["#EXTM3U", (
         f'#EXTINF:-1 tvg-id="{PINNED["id"]}" tvg-name="{PINNED["name"]}" '
         f'tvg-logo="{PINNED["logo"]}" group-title="{PINNED["group"]}",{PINNED["name"]}'
     ), PINNED["url"]]
     for row in unique:
-        def clean(v):
-            return str(v or "").replace('"', "'").replace("\r", " ").replace("\n", " ").strip()
         lines.append(
             f'#EXTINF:-1 tvg-id="{clean(row.get("id"))}" '
             f'tvg-name="{clean(row.get("name"))}" tvg-logo="{clean(row.get("logo"))}" '
@@ -273,6 +292,9 @@ def main():
         }, indent=2), encoding="utf-8")
         print(f"Done: {len(working)} working channels from {len(diagnostics)} API pages.")
         return 0
+    except requests.RequestException as exc:
+        print(f"ERROR: request failed: {type(exc).__name__}", file=sys.stderr)
+        return 1
     except Exception as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
         return 1
