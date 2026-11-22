@@ -8,21 +8,27 @@ from datetime import datetime, timezone
 import requests
 
 # ================== CONFIG ==================
-SOURCE_URL = os.environ.get("IPTV_SOURCE_URL", "").strip()   # GitHub Secret থেকে আসবে (hidden)
+SOURCES = [
+    s.strip() for s in (
+        os.environ.get("IPTV_SOURCE_URL", ""),       # India playlist (hidden secret)
+        os.environ.get("IPTV_BD_SOURCE_URL", ""),    # Bangladesh playlist (hidden secret)
+    ) if s.strip()
+]
 OUT_FILE = "india/India_vip.m3u"
 HEADER_TITLE = "Make by Kallyan Biswas"
 FB_LINK = "Www.Facebook.com/kallyan.biswas.29"
 BOT_NAME = "IND.bot"
 
-CHECK_TIMEOUT = 6          # প্রতি লিংক চেকের timeout (সেকেন্ড)
-WORKERS = 60               # parallel check
-MAX_PER_CAT = 150          # প্রতি ক্যাটাগরিতে সর্বোচ্চ কতটি লিংক চেক হবে
-TOP_PER_CAT = 10           # প্রতি ক্যাটাগরিতে কতটি সেরা চ্যানেল রাখবে
+CHECK_TIMEOUT = 6
+WORKERS = 60
+MAX_PER_CAT = 150
+TOP_PER_CAT = 10
 
 LINK_LOGO = "https://raw.githubusercontent.com/Mrbotrx/Mrbotrx/refs/heads/main/IPTV_LINKS_LOGO.jpg"
 LINK_URL = "https://github.com/Mrbotrx/Mrbotrx/raw/refs/heads/main/IPTV_LINKS_VIDEO.mp4"
 
 # ক্রম গুরুত্বপূর্ণ: প্রথম মিলটাই ধরা হবে
+# Bangla সবশেষে, যাতে Zee Bangla / Star Jalsha আগেই Zee / Jalsa-তে যায়
 CATEGORIES = {
     "Movies": r"\bmovies?\b|\bcinema\b|\bbollywood\b|\bpix\b|\bmax\b",
     "24/7":   r"24\s*/?\s*7|24x7",
@@ -30,6 +36,12 @@ CATEGORIES = {
     "Zee":    r"\bzee\b",
     "Star":   r"\bstar\b",
     "India":  r"\bindia\b|\bsony\b|\bcolors\b|\bndtv\b|\baaj\b|\bdd\b|\bnews\b",
+    "Bangla": (
+        r"\bbangla\b|\bbengali\b|\bbangladesh\b|\bbd\b|\bntv\b|\brtv\b|\batn\b|"
+        r"\bsomoy\b|\bekattor\b|\bjamuna\b|\bdeepto\b|\bmaasranga\b|\bboishakhi\b|"
+        r"\bchannel\s*i\b|\bdbc\b|\bgazi\b|\bdesh\b|\bmohona\b|\bsangbad\b|"
+        r"\bbtv\b|\bnews24\b|\bdhaka\b|\bsa\s*tv\b|\bekhon\b|\bgtv\b|\bmyTV\b"
+    ),
 }
 
 ATTR_RE = re.compile(r'([\w-]+)="([^"]*)"')
@@ -51,8 +63,25 @@ def parse_m3u(text):
     return items
 
 
+def is_bangla_attr(item):
+    """Bangladesh country বা Bengali/Bangla language হলে Bangla ধরবে"""
+    a = item["attrs"]
+    country = a.get("tvg-country", "").upper()
+    lang = a.get("tvg-language", "").lower()
+    return country == "BD" or "bengali" in lang or "bangla" in lang
+
+
+def classify(item):
+    """প্রথমে নামের ভিত্তিতে, না মিললে attribute দিয়ে Bangla যাচাই"""
+    for cat, pattern in CATEGORIES.items():
+        if re.search(pattern, item["name"], re.I):
+            return cat
+    if is_bangla_attr(item):
+        return "Bangla"
+    return None
+
+
 def check_link(item):
-    """লিংক চালু আছে কিনা + response time মাপে"""
     start = time.time()
     try:
         r = requests.get(
@@ -72,20 +101,27 @@ def check_link(item):
 
 
 def score(item):
-    """কম latency ভালো; HD/FHD হলে সামান্য bonus"""
     s = item["lat"]
     if re.search(r"\bfhd\b|\bhd\b|1080|720", item["name"], re.I):
         s -= 0.3
     return s
 
 
-def main():
-    if not SOURCE_URL:
-        sys.exit("ERROR: IPTV_SOURCE_URL secret সেট করা নেই")
+def load_all_sources():
+    if not SOURCES:
+        sys.exit("ERROR: IPTV_SOURCE_URL / IPTV_BD_SOURCE_URL secret সেট করা নেই")
+    channels = []
+    for url in SOURCES:
+        try:
+            print("Downloading a source playlist...")
+            channels.extend(parse_m3u(requests.get(url, timeout=30).text))
+        except Exception as e:
+            print(f"Source failed, skipping: {type(e).__name__}")
+    return channels
 
-    print("Downloading source playlist...")
-    text = requests.get(SOURCE_URL, timeout=30).text
-    channels = parse_m3u(text)
+
+def main():
+    channels = load_all_sources()
 
     # duplicate URL বাদ
     seen, uniq = set(), []
@@ -95,14 +131,12 @@ def main():
             uniq.append(c)
     print(f"Parsed {len(uniq)} unique channels")
 
-    # ক্যাটাগরি অনুযায়ী ভাগ
     buckets = {k: [] for k in CATEGORIES}
     for c in uniq:
-        for cat, pattern in CATEGORIES.items():
-            if re.search(pattern, c["name"], re.I):
-                c["cat"] = cat
-                buckets[cat].append(c)
-                break
+        cat = classify(c)
+        if cat:
+            c["cat"] = cat
+            buckets[cat].append(c)
 
     # logo আছে এমন চ্যানেল আগে চেক
     candidates = []
@@ -111,7 +145,6 @@ def main():
         candidates.extend(pool[:MAX_PER_CAT])
     print(f"Checking {len(candidates)} candidate links...")
 
-    # parallel check
     alive = []
     with ThreadPoolExecutor(max_workers=WORKERS) as ex:
         futures = [ex.submit(check_link, c) for c in candidates]
@@ -122,7 +155,6 @@ def main():
                 alive.append(item)
     print(f"Working links: {len(alive)}")
 
-    # প্রতি ক্যাটাগরিতে সেরা চ্যানেল বাছাই
     groups = {}
     for cat in CATEGORIES:
         pool = sorted((c for c in alive if c["cat"] == cat), key=score)
@@ -139,11 +171,11 @@ def main():
 
     # ================== OUTPUT ==================
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-    total = sum(len(v) + 1 for v in groups.values())  # +1 = IPTV LINKS প্রতি গ্রুপে
+    total = sum(len(v) + 1 for v in groups.values())
 
     lines = [
         "#EXTM3U",
-        f"#PLAYLIST:{BOT_NAME} India VIP",
+        f"#PLAYLIST:{BOT_NAME} India + Bangla VIP",
         f"# {HEADER_TITLE}",
         f"# Facebook: {FB_LINK}",
         f"# Bot: {BOT_NAME} | Auto Best-Channel System | Update: every 3 hours",
@@ -174,7 +206,7 @@ def main():
     with open(OUT_FILE, "w", encoding="utf-8") as f:
         f.write("\n".join(lines) + "\n")
 
-    print(f"Done. Written to {OUT_FILE} with {total} channels.")
+    print(f"Done. Written to {OUT_FILE} with {total} entries.")
 
 
 if __name__ == "__main__":
