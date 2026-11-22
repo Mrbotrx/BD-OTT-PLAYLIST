@@ -1,255 +1,213 @@
+# Make by Kallyan Biswas
+# Facebook: Www.Facebook.com/kallyan.biswas.29
+
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Mrbotrx/Mrbotrx/refs/heads/main/IPTV_LINKS_LOGO.jpg" width="140" alt="BD OTT Playlist Logo"/>
+  <img src="assets/banner.jpg" alt="BD-OTT-PLAYLIST banner" width="90%" />
 </p>
-Made by Kallyan Biswas
 
-Facebook: "Kallyan Biswas" (https://www.facebook.com/kallyan.biswas.29)
-
-<h1 align="center">BD-OTT-PLAYLIST</h1><p align="center">
-  <b>Advanced Auto-Updating IPTV Playlist System</b><br/>
-  🇮🇳 India | 🇧🇩 Bangladesh | KB OTT
-  <br/>
-  Smart Channel Organization • Health Monitoring • Automated Updates
-</p><p align="center">
-  <a href="https://github.com/Mrbotrx/BD-OTT-PLAYLIST/actions/workflows/ind_bot.yml">
-    <img src="https://github.com/Mrbotrx/BD-OTT-PLAYLIST/actions/workflows/ind_bot.yml/badge.svg" alt="IND.bot"/>
+<p align="center">
+  <a href="https://github.com/Mrbotrx/BD-OTT-PLAYLIST/raw/main/india/India_vip.m3u">
+    <img src="https://img.shields.io/badge/▶%20OPEN%20PLAYLIST-India%20%2B%20Bangla%20VIP-E50914?style=for-the-badge&logoColor=white" alt="Open playlist" />
   </a>
-  <a href="https://github.com/Mrbotrx/BD-OTT-PLAYLIST/actions/workflows/update.yml">
-    <img src="https://github.com/Mrbotrx/BD-OTT-PLAYLIST/actions/workflows/update.yml/badge.svg" alt="AKASH OTT"/>
+  <a href="https://t.me/iptvlinksm3u8">
+    <img src="https://img.shields.io/badge/TELEGRAM-Join%20Channel-26A5E4?style=for-the-badge&logo=telegram&logoColor=white" alt="Join Telegram" />
   </a>
-  <img src="https://img.shields.io/badge/Python-3.12-blue?logo=python" alt="Python"/>
-  <img src="https://img.shields.io/badge/Playlist-M3U%20%2F%20M3U8-green" alt="M3U"/>
-  <img src="https://img.shields.io/badge/Automation-GitHub%20Actions-black?logo=githubactions" alt="GitHub Actions"/>
-</p><p align="center">
-  <a href="#-overview">Overview</a> ·
-  <a href="#-playlists">Playlists</a> ·
-  <a href="#-features">Features</a> ·
-  <a href="#-how-it-works">How It Works</a> ·
-  <a href="#-installation">Installation</a> ·
-  <a href="#-supported-players">Players</a> ·
-  <a href="#-বাংলা-গাইড">বাংলা গাইড</a>
-</p>---
+  <a href="https://www.facebook.com/kallyan.biswas.29">
+    <img src="https://img.shields.io/badge/FACEBOOK-Kallyan%20Biswas-1877F2?style=for-the-badge&logo=facebook&logoColor=white" alt="Facebook" />
+  </a>
+</p>
 
-🚀 Overview
+<h1 align="center">BD-OTT-PLAYLIST</h1>
 
-BD-OTT-PLAYLIST is an advanced automated IPTV playlist management project developed for India and Bangladesh.
+<p align="center">
+  <b>Auto-updating IPTV playlists for India & Bangladesh</b><br/>
+  WATCH · BROWSE · SWITCH
+</p>
 
-The system uses Python and GitHub Actions to collect, organize, validate and generate regularly updated M3U/M3U8 playlists.
+<p align="center">
+  <img src="https://img.shields.io/badge/PLAYLISTS-2-E50914?style=for-the-badge" alt="2 playlists" />
+  <img src="https://img.shields.io/badge/GROUPS-15-1F6FEB?style=for-the-badge" alt="15 groups" />
+  <img src="https://img.shields.io/badge/UPDATE-EVERY%203H-2EA043?style=for-the-badge" alt="Updates every 3 hours" />
+  <img src="https://img.shields.io/badge/PYTHON-3.12-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.12" />
+</p>
 
-Designed with smart channel filtering, stream health monitoring, duplicate removal and intelligent category organization.
+<p align="center">
+  <a href="https://github.com/Mrbotrx/BD-OTT-PLAYLIST/actions/workflows/ind_bot.yml"><img src="https://github.com/Mrbotrx/BD-OTT-PLAYLIST/actions/workflows/ind_bot.yml/badge.svg" alt="IND.bot status" /></a>
+  <a href="https://github.com/Mrbotrx/BD-OTT-PLAYLIST/actions/workflows/update.yml"><img src="https://github.com/Mrbotrx/BD-OTT-PLAYLIST/actions/workflows/update.yml/badge.svg" alt="AKASH OTT status" /></a>
+</p>
 
-No dedicated hosting server is required.
-
----
-
-✨ Features
-
-- 🤖 Full Automation — Automated playlist generation.
-- ⚡ Fast Processing — Concurrent stream checking.
-- 🩺 Health Monitoring — Checks stream availability.
-- 🧠 Smart Categories — Automatically organizes channels.
-- 🔍 Duplicate Removal — Removes duplicate entries.
-- ⭐ Channel Priority — Prioritizes popular channels.
-- 💾 Smart Caching — Reduces repeated checks.
-- 🔄 Automatic Updates — Scheduled playlist rebuilding.
-- 📺 M3U Support — Standard M3U/M3U8 compatibility.
-- 🌍 Multi-Region — India and Bangladesh playlist support.
+<p align="center">
+  <a href="#-quick-start"><b>Quick start</b></a> ·
+  <a href="#-playlists"><b>Playlists</b></a> ·
+  <a href="#%EF%B8%8F-setup-guide"><b>Setup</b></a> ·
+  <a href="#%EF%B8%8F-configuration"><b>Configuration</b></a> ·
+  <a href="#-troubleshooting"><b>Troubleshooting</b></a> ·
+  <a href="#-বাংলা-গাইড"><b>বাংলা</b></a>
+</p>
 
 ---
 
-📺 Playlists
+## ✨ Why this project
 
-Playlist| Update Frequency| Format
-🇮🇳 India + Bangla VIP| Every 3 hours| M3U
-🇧🇩 AKASH OTT| About every 58 minutes| M3U8
-
-🇮🇳 India + Bangla VIP
-
-https://raw.githubusercontent.com/Mrbotrx/BD-OTT-PLAYLIST/main/india/India_vip.m3u
-
-🇧🇩 AKASH OTT
-
-https://raw.githubusercontent.com/Mrbotrx/BD-OTT-PLAYLIST/main/kb_go_playlist.m3u8
-
-«Copy your preferred playlist URL and add it to your IPTV player using the M3U URL option.»
+- **Fully automatic.** GitHub Actions rebuilds every playlist on a schedule. No server to maintain.
+- **Only working links.** Every stream is health-checked before it is written, so dead channels are removed.
+- **Organised for you.** Channels are sorted into clear groups: Jalsha, Zee, Star, Entertainment, Movies, Sports, News, Bangla and more.
+- **Your favourites first.** Jalsha, Zee, Star and Entertainment (Sony, Sun, Colors, Gemini, Vijay) appear at the top.
+- **Fast after the first run.** Working channels are cached for 3 hours, so most checks are skipped.
+- **Works everywhere.** Use it in VLC, TiviMate, OTT Navigator, IPTV Smarters, Kodi and other M3U players.
 
 ---
 
-🧠 Smart Channel Organization
+## 🔄 How it works
 
-The system is designed to organize channels into multiple categories.
-
-Category| Description
-⭐ Featured| Priority channels
-🎬 Movies| Movie channels
-📺 Entertainment| Entertainment channels
-🎵 Music| Music channels
-🏏 Sports| Sports channels
-📰 News| News channels
-🇮🇳 India| Indian television
-🇧🇩 Bangla| Bangladeshi television
-🌍 International| International channels
-📡 Others| Additional channels
-
-Actual categories depend on available source data.
+```mermaid
+flowchart LR
+    A[GitHub Actions<br/>schedule or manual run] --> B[Load source]
+    B --> C[Parse M3U<br/>remove duplicates]
+    C --> D[Classify<br/>into groups]
+    D --> E[Health check<br/>working streams only]
+    E --> F[Rank & pick<br/>best channels first]
+    F --> G[Write playlist<br/>and commit]
+    G --> H[Your IPTV player]
+```
 
 ---
 
-🔄 How It Works
+## 🚀 Quick start
 
-flowchart TD
-    A[GitHub Actions] --> B[Load IPTV Sources]
-    B --> C[Parse M3U / M3U8]
-    C --> D[Normalize Channels]
-    D --> E[Remove Duplicates]
-    E --> F[Smart Categorization]
-    F --> G[Stream Health Checks]
-    G --> H[Channel Ranking]
-    H --> I[Generate Playlist]
-    I --> J[Publish Updated Files]
-    J --> K[IPTV Players]
+1. Copy a playlist link from the table below.
+2. In your IPTV player, choose **Add playlist → M3U URL** and paste the link.
+3. Open any group and start watching.
+
+> The playlist refreshes automatically on GitHub. Reload your player to see the newest list.
 
 ---
 
-⚙️ Installation
+## 📺 Playlists
 
-Follow these steps to set up the project on your GitHub account.
+| Playlist | Updates | Playlist link |
+|---|---|---|
+| **India + Bangla VIP** | Every 3 hours | `https://raw.githubusercontent.com/Mrbotrx/BD-OTT-PLAYLIST/main/india/India_vip.m3u` |
+| **AKASH OTT** | About every 58 minutes | `https://raw.githubusercontent.com/Mrbotrx/BD-OTT-PLAYLIST/main/kb_go_playlist.m3u8` |
 
-Step 1 — Clone Repository
+---
 
+## ⚙️ Setup guide
+
+Follow these steps once to run the project on your own GitHub account.
+
+### Step 1 — Get the code
+
+```bash
 git clone https://github.com/Mrbotrx/BD-OTT-PLAYLIST.git
-
 cd BD-OTT-PLAYLIST
+```
 
-Alternatively, fork the repository directly on GitHub.
+You can also click **Fork** on GitHub and clone your copy.
 
-Step 2 — Enable Workflow Permissions
+### Step 2 — Allow workflows to commit
 
-Navigate to:
+Open **Settings → Actions → General → Workflow permissions**, choose **Read and write permissions**, and save.
 
-Settings
-   ↓
-Actions
-   ↓
-General
-   ↓
-Workflow permissions
-   ↓
-Read and write permissions
+### Step 3 — Run once
 
-Save your changes.
+Open the **Actions** tab, choose a workflow, and click **Run workflow**:
 
-Step 3 — Run Workflows
+- `IND.bot - India + Bangla VIP Auto Update`
+- `AKASH OTT Auto Playlist`
 
-1. Open your GitHub repository.
-2. Navigate to the Actions tab.
-3. Select the workflow you want to execute.
-4. Click Run workflow.
+A green ✅ means the playlist was built and committed.
 
-Available workflows:
+### Step 4 — Connect your player
 
-- "IND.bot - India + Bangla VIP Auto Update"
-- "AKASH OTT Auto Playlist"
+Use the links in the [Playlists](#-playlists) table.
 
 ---
 
-📱 Supported Players
+## 🛠 Configuration
 
-Compatible with standard M3U/M3U8 applications.
+### India + Bangla (`scripts/build_vip.py`)
 
-- VLC Media Player
-- TiviMate
-- OTT Navigator
-- IPTV Smarters
-- Kodi
-- Other M3U-compatible players
+| Setting | Default | Meaning |
+|---|---|---|
+| `FIXED_MODE` | `"all_groups"` | `"all_groups"` adds an `IPTV LINKS` entry to every group · `"first_group_only"` adds it once · `"off"` removes it |
+| `NEWS_MAX` | `20` | Maximum entries in the News group (backup links included) |
+| `NEWS_PRIORITY` | list | Popular news channels, in priority order |
+| `OUTPUT_ORDER` | list | Group order in the playlist |
+| `TOP_PER_CAT` | `0` | Limit per group · `0` = no limit |
+| `MAX_LINKS_PER_NAME` | `0` | Backup links per channel · `0` = keep all working links |
+| `CHECK_TIMEOUT` | `10` | Seconds to wait for each stream |
+| `CHECK_RETRIES` | `1` | Extra attempts on network errors |
+| `WORKERS` | `80` | Parallel health checks |
+| `CACHE_TTL` | `3 h` | How long a working channel is cached |
+| `FAIL_TTL` | `30 min` | How long a failed channel is cached before rechecking |
 
 ---
 
-🩺 Troubleshooting
+## 🩺 Troubleshooting
 
 <details>
-<summary><b>Playlist is empty</b></summary>Check the GitHub Actions execution logs and verify that the configured sources are accessible.
+<summary><b>A group is empty</b></summary>
 
-Some streams may be geo-restricted or unavailable from GitHub-hosted runners.
+- Read the run log: the `candidates` and `working/picked` lines show each group's numbers.
+- Many streams are geo-blocked and cannot be reached from GitHub's servers. This is expected.
+</details>
 
-</details><details>
-<summary><b>Workflow failed</b></summary>Check the following:
+<details>
+<summary><b>Push rejected: "non-fast-forward"</b></summary>
 
-- Python version.
-- Dependency installation.
-- GitHub workflow permissions.
-- Source availability.
-- YAML indentation.
+Two workflows pushed at the same time. IND.bot retries automatically. If it still fails, run it again.
+</details>
 
-</details><details>
-<summary><b>Playlist is not updating</b></summary>Open the Actions tab and check the latest workflow execution. GitHub scheduled jobs may occasionally be delayed.
+<details>
+<summary><b>Playlist is late</b></summary>
 
-</details><details>
-<summary><b>Some channels are missing</b></summary>Unavailable, restricted or incompatible streams may be excluded during validation.
+GitHub's scheduler can start jobs several minutes late, especially at the top of the hour.
+</details>
 
-</details>---
+<details>
+<summary><b>"Invalid workflow file" error</b></summary>
 
-🇧🇩 বাংলা গাইড
+YAML is sensitive to indentation. Use spaces, not tabs, and paste the full file again.
+</details>
 
-BD-OTT-PLAYLIST একটি Advanced Automated IPTV Playlist Management Project।
+---
 
-এখানে Python এবং GitHub Actions ব্যবহার করে স্বয়ংক্রিয়ভাবে IPTV Playlist তৈরি ও আপডেট করা হয়।
+## 🇧🇩 বাংলা গাইড
 
-প্রধান সুবিধা
+**দ্রুত শুরু:**
 
-- স্বয়ংক্রিয় Playlist Update।
-- Working Stream যাচাই।
-- Duplicate Channel বাদ দেওয়া।
-- Smart Category System।
-- Popular Channel Priority।
-- M3U এবং M3U8 Support।
-- Automated GitHub Actions।
+1. Repository-টি **Fork** বা **Clone** করুন।
+2. **Settings → Actions → General → Workflow permissions**-এ **Read and write permissions** চালু করুন।
+3. **Actions** ট্যাব থেকে workflow গুলো একবার **Run workflow** দিয়ে চালান।
+4. প্লেয়ারে এই লিংকটি M3U URL হিসেবে যোগ করুন:
 
-Playlist ব্যবহার
-
-নিচের যেকোনো লিংক কপি করে IPTV Player-এ M3U URL হিসেবে যুক্ত করুন।
-
-India + Bangla VIP
-
+```text
 https://raw.githubusercontent.com/Mrbotrx/BD-OTT-PLAYLIST/main/india/India_vip.m3u
+```
 
-AKASH OTT
+**Telegram:** [t.me/iptvlinksm3u8](https://t.me/iptvlinksm3u8)
 
-https://raw.githubusercontent.com/Mrbotrx/BD-OTT-PLAYLIST/main/kb_go_playlist.m3u8
-
----
-
-⚠️ Disclaimer
-
-This project is intended for IPTV playlist organization, automation and stream availability monitoring.
-
-It does not host, create, distribute or claim ownership of third-party television channels or media content.
-
-Users are responsible for ensuring that they have appropriate authorization to access and use any included streams.
-
-The project maintainers are not responsible for third-party content, availability or copyright-related issues.
+**সমস্যা হলে:** Troubleshooting অংশটি দেখুন।
 
 ---
 
-🙏 Credits & Developer
+## ⚠️ Disclaimer
 
-Developer: Kallyan Biswas
-
-Facebook: "Kallyan Biswas" (https://www.facebook.com/kallyan.biswas.29)
-
-Team: KB Cyber Team
-
-Repository: "Mrbotrx/BD-OTT-PLAYLIST" (https://github.com/Mrbotrx/BD-OTT-PLAYLIST)
-
-If you like this project, please give the repository a ⭐.
-
-Thank you for your support!
+This project organises and health-checks IPTV playlists. It does not host, create or own any channel or content. Use only streams you are legally allowed to access. The maintainers are not responsible for third-party content, availability or copyright decisions. Check the laws in your country before use.
 
 ---
 
-<p align="center">
-  <b>Developed with ❤️ by Kallyan Biswas</b>
-  <br/>
-  <sub>BD-OTT-PLAYLIST | KB Cyber Team</sub>
-</p>
+## 🙏 Credits
+
+**Made by:** Kallyan Biswas
+**Facebook:** [Www.Facebook.com/kallyan.biswas.29](https://www.facebook.com/kallyan.biswas.29)
+**Telegram:** [t.me/iptvlinksm3u8](https://t.me/iptvlinksm3u8)
+**Team:** KB Cyber Team
+**Repository:** [Mrbotrx/BD-OTT-PLAYLIST](https://github.com/Mrbotrx/BD-OTT-PLAYLIST)
+
+If this project helps you, please give it a ⭐. Thank you!
+
+---
+
+<p align="center"><sub>Make by Kallyan Biswas · Www.Facebook.com/kallyan.biswas.29</sub></p>
