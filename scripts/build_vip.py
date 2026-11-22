@@ -1,6 +1,6 @@
 """
-IPTV VIP Aggregator — India + Bangla (সব working চ্যানেল, News সীমিত)
-Health-check, classification, caching & resilience.
+IPTV VIP Aggregator — India + Bangla
+সব working চ্যানেল খোঁজে; Jalsha, Zee, Star, Entertainment অগ্রাধিকার পায়।
 """
 import os
 import re
@@ -36,14 +36,19 @@ HEADER_TITLE = "Make by Kallyan Biswas"
 FB_LINK      = "Www.Facebook.com/kallyan.biswas.29"
 BOT_NAME     = "IND.bot"
 
-CHECK_TIMEOUT      = 6
-WORKERS            = 80
+# ---- Health check ----
+CHECK_TIMEOUT  = 10          # সেকেন্ড; ধীর stream-কে সুযোগ দিতে বাড়ানো হয়েছে
+CHECK_RETRIES  = 1           # network/timeout error হলে আরও এতবার চেষ্টা
+WORKERS        = 80
+CHECK_CHUNK    = 4096
+CACHE_TTL      = 3600 * 3    # সফল channel: 3 ঘণ্টা পর্যন্ত cache
+FAIL_TTL       = 1800        # ব্যর্থ channel: 30 মিনিট পর আবার check
+DOWNLOAD_RETRY = 2
+
+# ---- Selection ----
 MAX_PER_CAT        = 0       # 0 = সব candidate check হবে
-TOP_PER_CAT        = 0       # 0 = সীমা নেই (News আলাদা নিয়মে সীমিত)
-MAX_LINKS_PER_NAME = 3       # একই নামের চ্যানেলের সর্বোচ্চ backup লিংক
-CHECK_CHUNK        = 4096
-CACHE_TTL          = 3600 * 3   # 3 ঘণ্টা, update cadence-এর সাথে মেলে
-DOWNLOAD_RETRY     = 2
+TOP_PER_CAT        = 0       # 0 = সব working চ্যানেল রাখা হবে
+MAX_LINKS_PER_NAME = 0       # 0 = একই নামের সব working লিংক রাখা হবে
 
 # ---- News নিয়ম ----
 NEWS_CATEGORY = "News"
@@ -75,6 +80,12 @@ NEWS_PRIORITY = [
     r"rtv",
     r"btv",
 ]
+
+# ---- IPTV LINKS fixed entry ----
+# all_groups        = প্রতি group-এ একটি (খালি group-এও)
+# first_group_only  = শুধু প্রথম group-এ একটি
+# off               = একদমই যোগ হবে না
+FIXED_MODE = "all_groups"
 
 LINK_LOGO = "https://raw.githubusercontent.com/Mrbotrx/Mrbotrx/refs/heads/main/IPTV_LINKS_LOGO.jpg"
 LINK_URL  = "https://github.com/Mrbotrx/Mrbotrx/raw/refs/heads/main/IPTV_LINKS_VIDEO.mp4"
@@ -138,13 +149,23 @@ CATEGORIES = {
 }
 
 # Classification-এর ক্রম (নাম → tvg-name → tvg-id → group-title)
-# Indian brand আগে, তারপর Bangla, তারপর সাধারণ category
 BRAND_ORDER = ["Jalsa", "Zee", "Star"]
 CATEGORY_ORDER = [
     "Jalsa", "Zee", "Star", "Music", "Sports", "Kids",
     "Movies", "Entertainment", "News", "Infotainment",
     "Devotional", "Lifestyle", "24/7", "Bangla", "India",
 ]
+
+# Playlist-এ group-এর ক্রম: অগ্রাধিকার অনুযায়ী (আপনার মূল focus আগে)
+OUTPUT_ORDER = [
+    "Jalsa", "Zee", "Star", "Entertainment", "Movies", "Sports",
+    "Music", "Kids", "News", "Bangla", "India",
+    "Infotainment", "Devotional", "Lifestyle", "24/7",
+]
+
+# সব category দুই জায়গায় একই থাকতে হবে, না হলে বড় ভুল হবে
+assert set(OUTPUT_ORDER) == set(CATEGORY_ORDER) == set(CATEGORIES), \
+    "OUTPUT_ORDER, CATEGORY_ORDER ও CATEGORIES-এর category মিলছে না"
 
 # Pre-compiled
 CATEGORY_PATTERNS = {k: re.compile(v, re.I) for k, v in CATEGORIES.items()}
@@ -275,11 +296,16 @@ def classify(c: Channel) -> Optional[str]:
 
 # ================== CACHE ==================
 class CheckCache:
-    """Health-check ফলাফল সংরক্ষণ, TTL-এর মধ্যে আবার check হবে না।"""
-    def __init__(self, path: Path, ttl: int):
-        self.path, self.ttl = path, ttl
+    """সফল ও ব্যর্থ — দুই রকম TTL। ব্যর্থ channel দ্রুত আবার check হয়।"""
+
+    def __init__(self, path: Path):
+        self.path = path
         self.data: dict[str, dict] = {}
         self._load()
+
+    @staticmethod
+    def _ttl(v: dict) -> int:
+        return CACHE_TTL if v.get("ok") else FAIL_TTL
 
     def _load(self):
         if not self.path.exists():
@@ -287,14 +313,16 @@ class CheckCache:
         try:
             raw = json.loads(self.path.read_text("utf-8"))
             now = time.time()
-            self.data = {k: v for k, v in raw.items()
-                         if isinstance(v, dict) and now - v.get("ts", 0) < self.ttl}
+            self.data = {
+                k: v for k, v in raw.items()
+                if isinstance(v, dict) and now - v.get("ts", 0) < self._ttl(v)
+            }
         except Exception as e:
             log.warning("cache load failed: %s", type(e).__name__)
 
     def get(self, fp: str) -> Optional[dict]:
         v = self.data.get(fp)
-        if v and time.time() - v.get("ts", 0) < self.ttl:
+        if v and time.time() - v.get("ts", 0) < self._ttl(v):
             return v
         return None
 
@@ -310,30 +338,40 @@ class CheckCache:
 
 
 # ================== HEALTH CHECK ==================
-def check_channel(session: requests.Session, c: Channel) -> tuple[Channel, Optional[float]]:
-    start = time.time()
+def _probe(session: requests.Session, c: Channel) -> bool:
+    """চালু কিনা: 200 status, HTML নয়, প্রথম chunk আছে, m3u8 হলে #EXTM3U আছে।"""
+    r = session.get(c.url, timeout=CHECK_TIMEOUT, stream=True, allow_redirects=True)
     try:
-        r = session.get(c.url, timeout=CHECK_TIMEOUT, stream=True, allow_redirects=True)
+        if r.status_code != 200:
+            return False
+        ctype = r.headers.get("Content-Type", "").lower()
+        if "text/html" in ctype:
+            return False
+        chunk = next(r.iter_content(CHECK_CHUNK), b"")
+        if not chunk:
+            return False
+        if ".m3u8" in c.url.lower() or "mpegurl" in ctype:
+            if b"#EXTM3U" not in chunk:
+                return False
+        return True
+    finally:
+        r.close()
+
+
+def check_channel(session: requests.Session, c: Channel) -> tuple[Channel, Optional[float]]:
+    """Network/timeout error হলে CHECK_RETRIES পর্যন্ত আবার চেষ্টা।
+    HTTP বা format error হলে আর চেষ্টা নয়।"""
+    for _ in range(CHECK_RETRIES + 1):
+        start = time.time()
         try:
-            if r.status_code != 200:
-                return c, None
-            content_type = r.headers.get("Content-Type", "").lower()
-            chunk = next(r.iter_content(CHECK_CHUNK), b"")
-            if not chunk:
-                return c, None
-            # HLS playlist যাচাই
-            if ".m3u8" in c.url.lower():
-                if "#EXTM3U" not in chunk.decode("utf-8", errors="ignore"):
-                    return c, None
-            # HTML error page বাদ
-            if "text/html" in content_type:
-                return c, None
-        finally:
-            r.close()
-        return c, time.time() - start
-    except Exception:
-        # যেকোনো error একটি channel-কে বাদ দেবে, পুরো run-কে নয়
-        return c, None
+            if _probe(session, c):
+                return c, time.time() - start
+            return c, None
+        except requests.RequestException:
+            continue
+        except Exception:
+            return c, None
+    return c, None
 
 
 def score_channel(c: Channel) -> float:
@@ -386,10 +424,8 @@ def load_sources(session: requests.Session) -> list[Channel]:
 
 # ================== PICKING ==================
 def pick_channels(cat: str, pool: list[Channel]) -> list[Channel]:
-    """একটি category থেকে চূড়ান্ত তালিকা বাছাই।
-    News: জনপ্রিয় channel আগে, মোট NEWS_MAX পর্যন্ত।
-    বাকিগুলো: score অনুযায়ী, সীমা TOP_PER_CAT (0 = সীমা নেই)।
-    """
+    """News: জনপ্রিয় আগে, মোট NEWS_MAX পর্যন্ত।
+    বাকিগুলো: score অনুযায়ী, TOP_PER_CAT (0 = সীমা নেই)।"""
     if cat == NEWS_CATEGORY:
         pool.sort(key=lambda c: (news_rank(c), c.score))
         limit = NEWS_MAX
@@ -401,7 +437,7 @@ def pick_channels(cat: str, pool: list[Channel]) -> list[Channel]:
     per_name: dict[str, int] = {}
     for c in pool:
         key = c.name.strip().lower()
-        if per_name.get(key, 0) >= MAX_LINKS_PER_NAME:
+        if MAX_LINKS_PER_NAME > 0 and per_name.get(key, 0) >= MAX_LINKS_PER_NAME:
             continue
         per_name[key] = per_name.get(key, 0) + 1
         picked.append(c)
@@ -411,8 +447,9 @@ def pick_channels(cat: str, pool: list[Channel]) -> list[Channel]:
 
 
 # ================== MAIN PIPELINE ==================
-def build_playlist(skip_cache: bool = False, dry_run: bool = False) -> int:
-    session = build_session()
+def build_playlist(skip_cache: bool = False, dry_run: bool = False,
+                   session: Optional[requests.Session] = None) -> int:
+    session = session or build_session()
 
     # 1. Load
     raw = load_sources(session)
@@ -436,18 +473,18 @@ def build_playlist(skip_cache: bool = False, dry_run: bool = False) -> int:
             buckets[cat].append(c)
         else:
             unclassified += 1
-    for cat in CATEGORY_ORDER:
+    for cat in OUTPUT_ORDER:
         log.info("   candidates %-14s %d", cat, len(buckets[cat]))
     log.info("   unclassified        %d", unclassified)
 
-    # 4. Candidate selection (logo আগে; MAX_PER_CAT=0 হলে সব)
+    # 4. Candidates (MAX_PER_CAT=0 হলে সব)
     candidates: list[Channel] = []
     for cat in CATEGORY_ORDER:
         pool = sorted(buckets[cat], key=lambda x: not x.attrs.get("tvg-logo"))
         candidates.extend(pool if MAX_PER_CAT <= 0 else pool[:MAX_PER_CAT])
 
     # 5. Health-check with cache
-    cache = CheckCache(CACHE_FILE, CACHE_TTL)
+    cache = CheckCache(CACHE_FILE)
     if skip_cache:
         cache.data.clear()
 
@@ -484,7 +521,7 @@ def build_playlist(skip_cache: bool = False, dry_run: bool = False) -> int:
 
     # 6. Score & pick
     groups: dict[str, list[Channel]] = {}
-    for cat in CATEGORY_ORDER:
+    for cat in OUTPUT_ORDER:
         pool = [c for c in alive if c.cat == cat]
         for c in pool:
             c.score = score_channel(c)
@@ -506,12 +543,22 @@ def build_playlist(skip_cache: bool = False, dry_run: bool = False) -> int:
 
 
 # ================== OUTPUT ==================
+def fixed_categories() -> set[str]:
+    if FIXED_MODE == "all_groups":
+        return set(OUTPUT_ORDER)
+    if FIXED_MODE == "first_group_only":
+        return {OUTPUT_ORDER[0]}
+    return set()
+
+
 def write_playlist(groups: dict[str, list[Channel]]) -> int:
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    fixed = fixed_categories()
 
-    # প্রতিটি category/group-এ IPTV LINKS থাকবে, খালি group-এও
-    cats = list(CATEGORY_ORDER)
-    total = sum(len(groups.get(cat, [])) + 1 for cat in cats)
+    def count(cat: str) -> int:
+        return len(groups.get(cat, [])) + (1 if cat in fixed else 0)
+
+    total = sum(count(cat) for cat in OUTPUT_ORDER)
 
     lines = [
         "#EXTM3U",
@@ -522,19 +569,18 @@ def write_playlist(groups: dict[str, list[Channel]]) -> int:
         f"# Last updated: {now}",
         f"# Total entries: {total}",
     ]
-    for cat in cats:
-        items = groups.get(cat, [])
-        lines.append(f"# [{cat}] channels: {len(items) + 1}")
+    for cat in OUTPUT_ORDER:
+        lines.append(f"# [{cat}] channels: {count(cat)}")
     lines.append("")
 
-    for cat in cats:
-        items = groups.get(cat, [])
-        lines += [
-            f'#EXTINF:-1 tvg-id="" tvg-name="IPTV LINKS" tvg-logo="{LINK_LOGO}" '
-            f'group-title="{cat}",IPTV LINKS',
-            LINK_URL,
-        ]
-        for c in items:
+    for cat in OUTPUT_ORDER:
+        if cat in fixed:
+            lines += [
+                f'#EXTINF:-1 tvg-id="" tvg-name="IPTV LINKS" tvg-logo="{LINK_LOGO}" '
+                f'group-title="{cat}",IPTV LINKS',
+                LINK_URL,
+            ]
+        for c in groups.get(cat, []):
             a    = c.attrs
             name = sanitize(c.name)
             lines.append(
