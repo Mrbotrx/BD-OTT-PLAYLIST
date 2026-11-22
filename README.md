@@ -1,8 +1,4 @@
 <p align="center">
-  <img src="assets/logo.jpg" width="120" alt="BD-OTT-PLAYLIST logo" />
-</p>
-
-<p align="center">
   <img src="https://raw.githubusercontent.com/Mrbotrx/BD-OTT-PLAYLIST/refs/heads/main/state/1795333412190.jpg" alt="BD-OTT-PLAYLIST banner" width="90%" />
 </p>
 
