@@ -1,0 +1,45 @@
+name: IND.bot - India VIP Auto Update
+
+on:
+  schedule:
+    - cron: "0 */3 * * *"      # প্রতি ৩ ঘণ্টা পর পর
+  workflow_dispatch:            # ম্যানুয়ালি রান করার অপশন
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ind-bot
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install deps
+        run: pip install requests
+
+      - name: Build India VIP playlist
+        env:
+          IPTV_SOURCE_URL: ${{ secrets.IPTV_SOURCE_URL }}
+        run: python scripts/build_vip.py
+
+      - name: Commit & push
+        run: |
+          git config user.name "IND.bot"
+          git config user.email "ind.bot@users.noreply.github.com"
+          git add india/India_vip.m3u
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "IND.bot: auto update India_vip.m3u"
+            git push
+          fi
