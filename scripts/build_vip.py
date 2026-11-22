@@ -39,35 +39,87 @@ CHECK_TIMEOUT  = 6
 WORKERS        = 60
 MAX_PER_CAT    = 150
 TOP_PER_CAT    = 10
-CHECK_CHUNK    = 2048
+CHECK_CHUNK    = 4096
 CACHE_TTL      = 3600 * 3      # 3h, matches update cadence
 DOWNLOAD_RETRY = 2
 
 LINK_LOGO = "https://raw.githubusercontent.com/Mrbotrx/Mrbotrx/refs/heads/main/IPTV_LINKS_LOGO.jpg"
 LINK_URL  = "https://github.com/Mrbotrx/Mrbotrx/raw/refs/heads/main/IPTV_LINKS_VIDEO.mp4"
 
-# ক্রম গুরুত্বপূর্ণ: প্রথম মিলটাই ধরা হবে
+# ================== CATEGORIES ==================
+# প্রতিটি category-র keyword। ক্রম CATEGORY_ORDER-এ আলাদাভাবে ঠিক করা আছে।
 CATEGORIES = {
-    "Movies": r"\bmovies?\b|\bcinema\b|\bbollywood\b|\bpix\b|\bmax\b",
-    "24/7":   r"24\s*/?\s*7|24x7",
-    "Jalsa":  r"\bjalsa\b",
-    "Zee":    r"\bzee\b",
-    "Star":   r"\bstar\b",
-    "India":  r"\bindia\b|\bsony\b|\bcolors\b|\bndtv\b|\baaj\b|\bdd\b|\bnews\b",
-    "Bangla": (
-        r"\bbangla\b|\bbengali\b|\bbangladesh\b|\bbd\b|\bntv\b|\brtv\b|\batn\b|"
-        r"\bsomoy\b|\bekattor\b|\bjamuna\b|\bdeepto\b|\bmaasranga\b|\bboishakhi\b|"
-        r"\bchannel\s*i\b|\bdbc\b|\bgazi\b|\bdesh\b|\bmohona\b|\bsangbad\b|"
-        r"\bbtv\b|\bnews24\b|\bdhaka\b|\bsa\s*tv\b|\bekhon\b|\bgtv\b|\bmytv\b"
+    "Jalsa": r"star\s*jalsha|\bjalsha\b|\bjalsa\b",
+    "Zee": (
+        r"\bzee\b|zee\s*tv|zee\s*bangla|zee\s*cinema|"
+        r"zee\s*action|zee\s*cafe"
     ),
+    "Star": (
+        r"star\s*plus|star\s*gold|star\s*sports|"
+        r"star\s*utsav|star\s*maa|star\s*bharat"
+    ),
+    "Music": (
+        r"\bmusic\b|\bmtv\b|9xm|9x\s*jhatka|9x\s*tashan|"
+        r"zoom|\bb4u\b|mastiii|mtunes|\bvh1\b|music\s*india"
+    ),
+    "Sports": (
+        r"sports?|cricket|sony\s*sports|sports18|"
+        r"ten\s*sports|eurosport|willow"
+    ),
+    "Kids": (
+        r"cartoon|kids|\bnick\b|nickelodeon|\bpogo\b|"
+        r"discovery\s*kids|\bsonic\b|disney|hungama"
+    ),
+    "Movies": (
+        r"movies?|cinema|film|bollywood|"
+        r"sony\s*max|max\s*2|colors\s*cineplex"
+    ),
+    "Entertainment": (
+        r"entertainment|colors|sony|sab\s*tv|sun\s*tv|"
+        r"gemini\s*tv|vijay\s*tv|asianet|life\s*ok|and\s*tv"
+    ),
+    "News": (
+        r"news|ndtv|aaj\s*tak|india\s*tv|republic|"
+        r"times\s*now|news18|\babp\b|tv9|"
+        r"\bcnn\b|\bbbc\b|\bwion\b|mirror\s*now"
+    ),
+    "Infotainment": (
+        r"discovery|national\s*geographic|nat\s*geo|"
+        r"\bhistory\b|animal\s*planet|travel|food\s*network"
+    ),
+    "Devotional": (
+        r"devotional|bhakti|spiritual|aastha|sanskar|"
+        r"\bgod\b|shradha|darshan"
+    ),
+    "Lifestyle": r"lifestyle|fashion|\bfood\b|living|good\s*times|fox\s*life",
+    "24/7": r"24\s*/?\s*7|24x7|24\s*hours?|non\s*stop",
+    "Bangla": (
+        r"bangla|bengali|bangladesh|"
+        r"\bntv\b|\brtv\b|\batn\b|somoy|"
+        r"ekattor|jamuna|deepto|"
+        r"maasranga|boishakhi|"
+        r"channel\s*i\b|\bdbc\b|"
+        r"gazi|desh\s*tv|"
+        r"mohona|sangbad|"
+        r"\bbtv\b|news24|dhaka|"
+        r"\bsa\s*tv\b|ekhon|\bgtv\b|\bmytv\b"
+    ),
+    "India": r"india|indian|hindi|regional",
 }
+
+# classify()-এর ক্রম। প্রথম মিলটাই ধরা হবে, তাই বিশেষ category আগে।
+CATEGORY_ORDER = [
+    "Jalsa", "Zee", "Star", "Music", "Sports", "Kids",
+    "Movies", "Entertainment", "News", "Infotainment",
+    "Devotional", "Lifestyle", "24/7", "Bangla", "India",
+]
 
 # Pre-compiled
 CATEGORY_PATTERNS = {k: re.compile(v, re.I) for k, v in CATEGORIES.items()}
-HD_RE           = re.compile(r"\b(?:fhd|uhd|4k|hd|1080p?|720p?)\b", re.I)
-SD_RE           = re.compile(r"\b(?:sd|360p?|480p?)\b", re.I)
-ATTR_RE         = re.compile(r'([\w-]+)="([^"]*)"')
-SAFE_NAME_RE    = re.compile(r'[\x00-\x1f"\\]')
+HD_RE        = re.compile(r"\b(?:fhd|uhd|4k|hd|1080p?|720p?)\b", re.I)
+SD_RE        = re.compile(r"\b(?:sd|360p?|480p?)\b", re.I)
+ATTR_RE      = re.compile(r'([\w-]+)="([^"]*)"')
+SAFE_NAME_RE = re.compile(r'[\x00-\x1f"\\]')
 
 log = logging.getLogger("iptv")
 
@@ -121,6 +173,13 @@ def sanitize(name: str) -> str:
     return SAFE_NAME_RE.sub("", name).strip()
 
 
+def _normalize(s: str) -> str:
+    s = s.lower()
+    s = re.sub(r"[_\-./|()\[\]]+", " ", s)
+    s = re.sub(r"\s+", " ", s).strip()
+    return s
+
+
 # ================== PARSER ==================
 def parse_m3u(text: str) -> list[Channel]:
     out: list[Channel] = []
@@ -140,26 +199,31 @@ def parse_m3u(text: str) -> list[Channel]:
 
 
 # ================== CLASSIFY ==================
-def is_bangla_attr(c: Channel) -> bool:
-    country = c.attrs.get("tvg-country", "").upper()
-    lang    = c.attrs.get("tvg-language", "").lower()
-    return country == "BD" or "bengali" in lang or "bangla" in lang
-
-
 def classify(c: Channel) -> Optional[str]:
-    # 1) group-title hint
-    gt = c.attrs.get("group-title", "")
-    if gt:
-        for cat, pat in CATEGORY_PATTERNS.items():
-            if pat.search(gt):
-                return cat
-    # 2) channel name
-    for cat, pat in CATEGORY_PATTERNS.items():
-        if pat.search(c.name):
-            return cat
-    # 3) attribute fallback
-    if is_bangla_attr(c):
+    name     = _normalize(c.name)
+    tvg_name = _normalize(c.attrs.get("tvg-name", ""))
+    tvg_id   = _normalize(c.attrs.get("tvg-id", ""))
+    group    = _normalize(c.attrs.get("group-title", ""))
+
+    country = c.attrs.get("tvg-country", "").strip().upper()
+    lang    = c.attrs.get("tvg-language", "").strip().lower()
+
+    # 1) Bangladesh: শক্তিশালী সংকেত আগে
+    if country in ("BD", "BANGLADESH") or "bangla" in lang or "bengali" in lang:
         return "Bangla"
+
+    # 2) নাম সবচেয়ে নির্ভরযোগ্য, তারপর tvg-name/tvg-id, সবশেষে group-title
+    for source in (name, tvg_name, tvg_id, group):
+        if not source:
+            continue
+        for cat in CATEGORY_ORDER:
+            if CATEGORY_PATTERNS[cat].search(source):
+                return cat
+
+    # 3) Country fallback
+    if country in ("IN", "INDIA"):
+        return "India"
+
     return None
 
 
@@ -200,23 +264,48 @@ class CheckCache:
 
 
 # ================== HEALTH CHECK ==================
-def check_channel(session: requests.Session, c: Channel) -> tuple[Channel, Optional[float]]:
+def check_channel(
+    session: requests.Session,
+    c: Channel
+) -> tuple[Channel, Optional[float]]:
+
     start = time.time()
+
     try:
-        r = session.get(c.url, timeout=CHECK_TIMEOUT, stream=True, allow_redirects=True)
+        r = session.get(
+            c.url,
+            timeout=CHECK_TIMEOUT,
+            stream=True,
+            allow_redirects=True
+        )
+
         try:
             if r.status_code != 200:
                 return c, None
-            # HTML error page হলে stream নয়
-            if "text/html" in r.headers.get("Content-Type", "").lower():
-                return c, None
+
+            content_type = r.headers.get("Content-Type", "").lower()
+
             chunk = next(r.iter_content(CHECK_CHUNK), b"")
             if not chunk:
                 return c, None
+
+            # HLS playlist validation
+            if ".m3u8" in c.url.lower():
+                sample = chunk.decode("utf-8", errors="ignore")
+                if "#EXTM3U" not in sample:
+                    return c, None
+
+            # Reject obvious HTML error pages
+            if "text/html" in content_type:
+                return c, None
+
         finally:
             r.close()
+
         return c, time.time() - start
+
     except Exception:
+        # যেকোনো error (network, decode, ইত্যাদি) একটি channel-কে বাদ দেবে, পুরো run-কে নয়
         return c, None
 
 
@@ -277,7 +366,7 @@ def build_playlist(skip_cache: bool = False, dry_run: bool = False) -> int:
 
     # 4. Candidate selection (logo priority + cap)
     candidates: list[Channel] = []
-    for cat in CATEGORIES:
+    for cat in CATEGORY_ORDER:
         pool = sorted(buckets[cat], key=lambda x: not x.attrs.get("tvg-logo"))
         candidates.extend(pool[:MAX_PER_CAT])
 
@@ -317,9 +406,9 @@ def build_playlist(skip_cache: bool = False, dry_run: bool = False) -> int:
 
     log.info("working links: %d", len(alive))
 
-    # 6. Score & pick top per category (dedupe by name)
+    # 6. Score & pick top per category (name দিয়ে dedupe)
     groups: dict[str, list[Channel]] = {}
-    for cat in CATEGORIES:
+    for cat in CATEGORY_ORDER:
         pool = [c for c in alive if c.cat == cat]
         for c in pool:
             c.score = score_channel(c)
@@ -334,9 +423,9 @@ def build_playlist(skip_cache: bool = False, dry_run: bool = False) -> int:
             if len(picked) >= TOP_PER_CAT:
                 break
         groups[cat] = picked
-        log.info("   %-7s %d", cat, len(picked))
+        log.info("   %-14s %d", cat, len(picked))
 
-    # 7. Guard: কিছু না পেলে আগের playlist রেখে দাও
+    # 7. Guard
     if sum(len(v) for v in groups.values()) == 0:
         raise RuntimeError("no working channels found; keeping previous playlist")
 
