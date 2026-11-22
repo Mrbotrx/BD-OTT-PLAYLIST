@@ -1,5 +1,5 @@
 """
-IPTV VIP Aggregator — Production Grade
+IPTV VIP Aggregator — India + Bangla
 Auto best-channel system with health-check, scoring, caching & resilience.
 """
 import os
@@ -23,29 +23,30 @@ from urllib3.util.retry import Retry
 
 # ================== CONFIG ==================
 SOURCES = [s.strip() for s in (
-    os.environ.get("IPTV_SOURCE_URL", ""),
-    os.environ.get("IPTV_BD_SOURCE_URL", ""),
+    os.environ.get("IPTV_SOURCE_URL", ""),       # India playlist (secret)
+    os.environ.get("IPTV_BD_SOURCE_URL", ""),    # Bangladesh playlist (secret)
 ) if s.strip()]
 
-OUT_FILE      = Path("india/India_vip.m3u")
-CACHE_FILE    = Path(".cache/check_cache.json")
-STATE_FILE    = Path(".cache/state.json")
+OUT_FILE   = Path("india/India_vip.m3u")
+CACHE_FILE = Path(".cache/check_cache.json")
+STATE_FILE = Path(".cache/state.json")
 
-HEADER_TITLE  = "Make by Kallyan Biswas"
-FB_LINK       = "Www.Facebook.com/kallyan.biswas.29"
-BOT_NAME      = "IND.bot"
+HEADER_TITLE = "Make by Kallyan Biswas"
+FB_LINK      = "Www.Facebook.com/kallyan.biswas.29"
+BOT_NAME     = "IND.bot"
 
-CHECK_TIMEOUT = 6
-WORKERS       = 60
-MAX_PER_CAT   = 150
-TOP_PER_CAT   = 10
-CHECK_CHUNK   = 2048
-CACHE_TTL     = 3600 * 3          # 3h — matches update cadence
+CHECK_TIMEOUT  = 6
+WORKERS        = 60
+MAX_PER_CAT    = 150
+TOP_PER_CAT    = 10
+CHECK_CHUNK    = 2048
+CACHE_TTL      = 3600 * 3      # 3h, matches update cadence
 DOWNLOAD_RETRY = 2
 
 LINK_LOGO = "https://raw.githubusercontent.com/Mrbotrx/Mrbotrx/refs/heads/main/IPTV_LINKS_LOGO.jpg"
 LINK_URL  = "https://github.com/Mrbotrx/Mrbotrx/raw/refs/heads/main/IPTV_LINKS_VIDEO.mp4"
 
+# ক্রম গুরুত্বপূর্ণ: প্রথম মিলটাই ধরা হবে
 CATEGORIES = {
     "Movies": r"\bmovies?\b|\bcinema\b|\bbollywood\b|\bpix\b|\bmax\b",
     "24/7":   r"24\s*/?\s*7|24x7",
@@ -61,13 +62,12 @@ CATEGORIES = {
     ),
 }
 
-# Pre-compiled (huge CPU win on 10k+ channels)
+# Pre-compiled
 CATEGORY_PATTERNS = {k: re.compile(v, re.I) for k, v in CATEGORIES.items()}
-HD_RE    = re.compile(r"\b(?:fhd|uhd|4k|hd|1080p?|720p?)\b", re.I)
-SD_RE    = re.compile(r"\b(?:sd|360p?|480p?)\b", re.I)
-ATTR_RE  = re.compile(r'([\w-]+)="([^"]*)"')
-EXTINF_GROUP_RE = re.compile(r'group-title="([^"]*)"', re.I)
-SAFE_NAME_RE    = re.compile(r'[\x00-\x1f"\\]')   # strip control + quote + backslash
+HD_RE           = re.compile(r"\b(?:fhd|uhd|4k|hd|1080p?|720p?)\b", re.I)
+SD_RE           = re.compile(r"\b(?:sd|360p?|480p?)\b", re.I)
+ATTR_RE         = re.compile(r'([\w-]+)="([^"]*)"')
+SAFE_NAME_RE    = re.compile(r'[\x00-\x1f"\\]')
 
 log = logging.getLogger("iptv")
 
@@ -147,7 +147,7 @@ def is_bangla_attr(c: Channel) -> bool:
 
 
 def classify(c: Channel) -> Optional[str]:
-    # 1) group-title hint wins first if it matches a known category
+    # 1) group-title hint
     gt = c.attrs.get("group-title", "")
     if gt:
         for cat, pat in CATEGORY_PATTERNS.items():
@@ -180,7 +180,7 @@ class CheckCache:
             self.data = {k: v for k, v in raw.items()
                          if isinstance(v, dict) and now - v.get("ts", 0) < self.ttl}
         except Exception as e:
-            log.warning("cache load failed: %s", e)
+            log.warning("cache load failed: %s", type(e).__name__)
 
     def get(self, fp: str) -> Optional[dict]:
         v = self.data.get(fp)
@@ -196,7 +196,7 @@ class CheckCache:
         try:
             self.path.write_text(json.dumps(self.data), "utf-8")
         except Exception as e:
-            log.warning("cache save failed: %s", e)
+            log.warning("cache save failed: %s", type(e).__name__)
 
 
 # ================== HEALTH CHECK ==================
@@ -207,9 +207,8 @@ def check_channel(session: requests.Session, c: Channel) -> tuple[Channel, Optio
         try:
             if r.status_code != 200:
                 return c, None
-            # Reject HTML error pages masquerading as streams
-            ctype = r.headers.get("Content-Type", "").lower()
-            if "text/html" in ctype:
+            # HTML error page হলে stream নয়
+            if "text/html" in r.headers.get("Content-Type", "").lower():
                 return c, None
             chunk = next(r.iter_content(CHECK_CHUNK), b"")
             if not chunk:
@@ -222,12 +221,12 @@ def check_channel(session: requests.Session, c: Channel) -> tuple[Channel, Optio
 
 
 def score_channel(c: Channel) -> float:
-    """Lower = better. Latency + quality + metadata bonuses."""
+    """Lower = better."""
     s = c.latency or 1e9
     if HD_RE.search(c.name): s -= 0.40
     if SD_RE.search(c.name): s += 0.20
-    if c.attrs.get("tvg-logo"):    s -= 0.15
-    if c.attrs.get("tvg-id"):      s -= 0.05
+    if c.attrs.get("tvg-logo"): s -= 0.15
+    if c.attrs.get("tvg-id"):   s -= 0.05
     if "backup" in c.name.lower(): s += 0.50
     return s
 
@@ -247,12 +246,13 @@ def load_sources(session: requests.Session) -> list[Channel]:
             log.info("   → %d channels", len(parsed))
             channels.extend(parsed)
         except Exception as e:
-            log.warning("   source failed: %s: %s", type(e).__name__, e)
+            # URL log করা হচ্ছে না, কারণ error message-এ secret URL থাকতে পারে
+            log.warning("   source failed: %s", type(e).__name__)
     return channels
 
 
 # ================== MAIN PIPELINE ==================
-def build_playlist(skip_cache: bool = False) -> int:
+def build_playlist(skip_cache: bool = False, dry_run: bool = False) -> int:
     session = build_session()
 
     # 1. Load
@@ -267,7 +267,7 @@ def build_playlist(skip_cache: bool = False) -> int:
         uniq.append(c)
     log.info("unique channels: %d (dropped %d duplicates)", len(uniq), len(raw) - len(uniq))
 
-    # 3. Classify into buckets
+    # 3. Classify
     buckets: dict[str, list[Channel]] = {k: [] for k in CATEGORIES}
     for c in uniq:
         cat = classify(c)
@@ -293,6 +293,7 @@ def build_playlist(skip_cache: bool = False) -> int:
         if hit:
             if hit["ok"]:
                 c.latency = hit["lat"]
+                c.ok = True
                 alive.append(c)
             continue
         to_check.append(c)
@@ -333,8 +334,17 @@ def build_playlist(skip_cache: bool = False) -> int:
             if len(picked) >= TOP_PER_CAT:
                 break
         groups[cat] = picked
+        log.info("   %-7s %d", cat, len(picked))
 
-    # 7. Write
+    # 7. Guard: কিছু না পেলে আগের playlist রেখে দাও
+    if sum(len(v) for v in groups.values()) == 0:
+        raise RuntimeError("no working channels found; keeping previous playlist")
+
+    if dry_run:
+        log.info("dry-run: playlist লেখা হলো না")
+        return 0
+
+    # 8. Write
     total = write_playlist(groups)
     write_state(groups, total)
     return total
@@ -343,7 +353,7 @@ def build_playlist(skip_cache: bool = False) -> int:
 # ================== OUTPUT ==================
 def write_playlist(groups: dict[str, list[Channel]]) -> int:
     now   = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-    total = sum(len(v) + 1 for v in groups.values())
+    total = sum(len(v) + 1 for v in groups.values())   # +1 = IPTV LINKS প্রতি গ্রুপে
 
     lines = [
         "#EXTM3U",
@@ -381,14 +391,12 @@ def write_playlist(groups: dict[str, list[Channel]]) -> int:
 
 def write_state(groups: dict[str, list[Channel]], total: int):
     STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
+    lat_values = [c.latency for v in groups.values() for c in v if c.latency is not None]
     state = {
         "updated": datetime.now(timezone.utc).isoformat(),
         "total": total,
         "per_category": {k: len(v) for k, v in groups.items()},
-        "avg_latency_ms": round(
-            1000 * sum(c.latency for v in groups.values() for c in v)
-            / max(1, sum(len(v) for v in groups.values())), 1
-        ),
+        "avg_latency_ms": round(1000 * sum(lat_values) / max(1, len(lat_values)), 1),
     }
     STATE_FILE.write_text(json.dumps(state, indent=2), "utf-8")
 
@@ -398,7 +406,7 @@ def main():
     parser = argparse.ArgumentParser(description="IPTV VIP Aggregator")
     parser.add_argument("-v", "--verbose", action="store_true")
     parser.add_argument("--no-cache", action="store_true", help="ignore cached health checks")
-    parser.add_argument("--dry-run", action="store_true", help="parse+classify only, no write")
+    parser.add_argument("--dry-run", action="store_true", help="check only, do not write playlist")
     args = parser.parse_args()
 
     logging.basicConfig(
@@ -408,7 +416,11 @@ def main():
     )
 
     t0 = time.time()
-    total = build_playlist(skip_cache=args.no_cache)
+    try:
+        total = build_playlist(skip_cache=args.no_cache, dry_run=args.dry_run)
+    except RuntimeError as e:
+        log.error("%s", e)
+        sys.exit(1)
     log.info("done in %.1fs — %d entries", time.time() - t0, total)
 
 
