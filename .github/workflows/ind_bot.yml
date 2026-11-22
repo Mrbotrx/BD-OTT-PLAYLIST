@@ -39,6 +39,7 @@ jobs:
 
       - name: Build India + Bangla VIP playlist
         env:
+          IPTV_BEN_SOURCE_URL: ${{ secrets.IPTV_BEN_SOURCE_URL }}
           IPTV_SOURCE_URL: ${{ secrets.IPTV_SOURCE_URL }}
           IPTV_BD_SOURCE_URL: ${{ secrets.IPTV_BD_SOURCE_URL }}
         run: python scripts/build_vip.py
