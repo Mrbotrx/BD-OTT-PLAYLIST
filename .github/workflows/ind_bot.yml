@@ -27,9 +27,10 @@ jobs:
       - name: Install deps
         run: pip install requests
 
-      - name: Build India VIP playlist
+            - name: Build India VIP playlist
         env:
           IPTV_SOURCE_URL: ${{ secrets.IPTV_SOURCE_URL }}
+          IPTV_BD_SOURCE_URL: ${{ secrets.IPTV_BD_SOURCE_URL }}
         run: python scripts/build_vip.py
 
       - name: Commit & push
