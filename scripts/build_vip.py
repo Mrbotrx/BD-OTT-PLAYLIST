@@ -24,6 +24,7 @@ from urllib3.util.retry import Retry
 # ================== CONFIG ==================
 # (label, environment variable) — secret থেকে আসে, repo-তে লেখা নেই
 SOURCE_ENV = [
+    ("Bengali (iptv-org)", "IPTV_BEN_SOURCE_URL"),   # প্রথম source — duplicate হলে এটিই রাখা হবে
     ("India", "IPTV_SOURCE_URL"),
     ("Bangladesh", "IPTV_BD_SOURCE_URL"),
 ]
