@@ -18,6 +18,7 @@ https://tvsen5.aynaott.com/TnMn5kZz8/index.m3u8
 https://tvsen5.aynaott.com/kP9vX2mZ7qL5wN3t/index.m3u8
 https://tvsen6.aynaott.com/nfl/index.m3u8
 https://tvsen6.aynaott.com/M2W2UR49dmeKbZnmdRzN/index.m3u8
+https://tvsen6.aynaott.com/Wef2Vj67njeYGDqQNFB9/index.m3u8
 https://tvsen6.aynaott.com/ryFkXfd1a4CQ7mMdc820/index.m3u8
 https://tvsen6.aynaott.com/1d3uG9VCgrR9DRtWZM57/index.m3u8
 https://tvsen6.aynaott.com/kajlsd57jnzxyo/index.m3u8
@@ -65,6 +66,7 @@ https://tvsen3.aynaott.com/Zht5VqBb/index.m3u8
 https://vods2.aynaott.com/hindimovies/index.m3u8
 https://tvsen3.aynaott.com/7mm4pwCy/index.m3u8
 https://tvsen6.aynaott.com/talkSPORT/index.m3u8
+https://tvsen6.aynaott.com/55xNrLdf/index.m3u8
 https://app.ncare.live/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI2/ntvuk00332211.stream/playlist.m3u8
 https://byphdgllyk.gpcdn.net/hls/deeptotv/index.m3u8
 https://tvsen3.aynaott.com/u3NjUrny/index.m3u8
@@ -73,8 +75,8 @@ https://tvsen3.aynaott.com/5CGfPvGp/index.m3u8
 https://vods2.aynaott.com/gseriesDrama/index.m3u8
 https://tvsen6.aynaott.com/kolkatatv/index.m3u8
 https://streams2.sofast.tv/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/eea68b79-bfe2-451e-a227-d637a5b9548a/manifest.m3u8
-https://tvsen3.aynaott.com/VamXuQH8/index.m3u8
 https://tvsen3.aynaott.com/wpa56Uk3/index.m3u8
+https://tvsen3.aynaott.com/VamXuQH8/index.m3u8
 https://5c7b683162943.streamlock.net/live/ngrp:sportsone_all/playlist.m3u8
 https://tvsen6.aynaott.com/mzwbzfZ4/index.m3u8
 https://streams2.sofast.tv/sofastplayout/WiseM3U8_1/master.m3u8
@@ -89,6 +91,7 @@ https://aenetworks-worldwartv-rakuten.amagi.tv/playlist.m3u8
 https://dfhsahpa45kk2.cloudfront.net/scheduler/scheduleMaster/476.m3u8
 https://2-fss-2.streamhoster.com/pl_140/amlst:200914-1298290/playlist.m3u8
 https://cdn.mycloudstream.io/hls/live/broadcast/nro19k2h/index.m3u8
+http://origin5.mediacdn.ru/live/kidstv/index.m3u8
 https://tvsen5.aynaott.com/discoveryfamily/index.m3u8
 https://s.emisoras.tv:8081/diostevekids/index.m3u8
 https://moonbug-rokuus.amagi.tv/playlist.m3u8
