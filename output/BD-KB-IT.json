@@ -49,13 +49,6 @@
     "url": "https://tvsen6.aynaott.com/maasrangatv/index.m3u8"
   },
   {
-    "id": "019de785-3960-7cad-a051-6b707a28890b",
-    "name": "Deepto TV",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen5.aynaott.com/tK2BNdfsdfsdf/index.m3u8"
-  },
-  {
     "id": "019de785-3964-7509-9edd-8ad75adc1a89",
     "name": "Ekhon TV",
     "logo": "",
@@ -105,6 +98,20 @@
     "url": "https://tvsen6.aynaott.com/da6WMXAk/index.m3u8"
   },
   {
+    "id": "019de785-3962-77a1-8f50-c541bb5a02c7",
+    "name": "T Sports HD",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen5.aynaott.com/TnMn5kZz8/index.m3u8"
+  },
+  {
+    "id": "019de785-39bc-7bd5-b9e5-bab23ceba9ea",
+    "name": "PTV Sports",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen5.aynaott.com/kP9vX2mZ7qL5wN3t/index.m3u8"
+  },
+  {
     "id": "019efa45-e8e5-7353-a606-b361cf5f42ce",
     "name": "Cricket Gold",
     "logo": "",
@@ -131,6 +138,13 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://tvsen6.aynaott.com/1d3uG9VCgrR9DRtWZM57/index.m3u8"
+  },
+  {
+    "id": "019de785-3970-7fa3-a850-d2ca0e07c1e0",
+    "name": "Channel 9",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen6.aynaott.com/kajlsd57jnzxyo/index.m3u8"
   },
   {
     "id": "019de785-396e-7c75-b530-cb197f010279",
@@ -203,13 +217,6 @@
     "url": "https://tvsen6.aynaott.com/TjGR1GcxKetHNVcMVxbq/index.m3u8"
   },
   {
-    "id": "019de785-393b-7285-8d1f-87bdfc695eb2",
-    "name": "Sangeet Bangla",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen6.aynaott.com/hT5jHczt/index.m3u8"
-  },
-  {
     "id": "019efa5d-2ed5-7e82-9979-3e47ea154aa7",
     "name": "News",
     "logo": "",
@@ -266,11 +273,11 @@
     "url": "https://feeds.intoday.in/hltapps/api/master.m3u8"
   },
   {
-    "id": "019de785-3a41-744d-9181-46d6365a8432",
-    "name": "Bharat Samachar",
+    "id": "019de785-3b5b-7c37-a953-8eed8e882836",
+    "name": "Sadhna Prime News",
     "logo": "",
     "group": "Uncategorized",
-    "url": "https://tvsen3.aynaott.com/m94BZDYb/index.m3u8"
+    "url": "https://tvsen3.aynaott.com/P2hjvFHV/index.m3u8"
   },
   {
     "id": "019de785-3bfa-71a7-92c2-a1cad28b99e5",
@@ -341,6 +348,13 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://tvsen6.aynaott.com/talkSPORT/index.m3u8"
+  },
+  {
+    "id": "019efa45-e724-7ca0-90fd-8a837b01220c",
+    "name": "Goldmines Bollywood",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen6.aynaott.com/55xNrLdf/index.m3u8"
   },
   {
     "id": "019efa45-e6cf-77d1-ab66-0528b71c3826",
@@ -511,6 +525,13 @@
     "url": "https://tvsen6.aynaott.com/TVCArabicKids/index.m3u8"
   },
   {
+    "id": "019de785-3a49-76c5-baa6-12c71aa6e36e",
+    "name": "9x Jalwa",
+    "logo": "",
+    "group": "Uncategorized",
+    "url": "https://tvsen6.aynaott.com/CiPT1VTG8bVekeAZiibd/index.m3u8"
+  },
+  {
     "id": "019de785-3c27-75af-aecc-b972908c76b3",
     "name": "Adventure Earth",
     "logo": "",
@@ -544,13 +565,6 @@
     "logo": "",
     "group": "Uncategorized",
     "url": "https://tvsen6.aynaott.com/sMqhLN6n/index.m3u8"
-  },
-  {
-    "id": "019de785-3a49-76c5-baa6-12c71aa6e36e",
-    "name": "9x Jalwa",
-    "logo": "",
-    "group": "Uncategorized",
-    "url": "https://tvsen6.aynaott.com/CiPT1VTG8bVekeAZiibd/index.m3u8"
   },
   {
     "id": "019de785-399f-7d6a-9f41-dc7f834b3300",
